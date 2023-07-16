@@ -1,19 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Nico.UI;
 using UnityEngine;
 
 namespace GamePlay
 {
     public class GameWindow : UIWindow
     {
-        // Start is called before the first frame update
-        void Start()
+        public override void OnInit()
         {
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
+            
         }
     }
 }
