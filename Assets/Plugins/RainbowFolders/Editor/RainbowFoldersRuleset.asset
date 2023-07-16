@@ -373,33 +373,9 @@ MonoBehaviour:
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
     IsHidden: 0
-  - Type: 1
-    Key: Assets/AddressablesResources
+  - Type: 0
+    Key: UIPrefab
     Ordinal: 30
-    Priority: 0
-    IconType: 2140
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 0
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 1
-    Key: Assets/Assemblies
-    Ordinal: 31
-    Priority: 0
-    IconType: 2160
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 0
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 1
-    Key: Assets/AddressablesResources/UIPrefab
-    Ordinal: 32
     Priority: 0
     IconType: 2090
     SmallIcon: {fileID: 0}
@@ -409,9 +385,9 @@ MonoBehaviour:
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
     IsHidden: 0
-  - Type: 1
-    Key: Assets/AddressablesResources/Meshs
-    Ordinal: 33
+  - Type: 0
+    Key: Meshs
+    Ordinal: 31
     Priority: 0
     IconType: 2190
     SmallIcon: {fileID: 0}
@@ -420,4 +396,40 @@ MonoBehaviour:
     BackgroundType: 0
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 1
+    IsHidden: 0
+  - Type: 1
+    Key: Assets/Games
+    Ordinal: 32
+    Priority: 0
+    IconType: 3040
+    SmallIcon: {fileID: 0}
+    LargeIcon: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 0
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Key: Assemblies
+    Ordinal: 33
+    Priority: 0
+    IconType: 2160
+    SmallIcon: {fileID: 0}
+    LargeIcon: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 0
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Key: AddressablesResources
+    Ordinal: 34
+    Priority: 0
+    IconType: 2140
+    SmallIcon: {fileID: 0}
+    LargeIcon: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 0
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
     IsHidden: 0
