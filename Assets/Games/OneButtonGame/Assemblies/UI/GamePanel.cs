@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace OneButtonGame
 {
-    public class GamePane: MonoBehaviour,IEventListener<LevelUp>
+    public class GamePanel: MonoBehaviour,IEventListener<LevelUp>
     {
         private void Awake()
         {

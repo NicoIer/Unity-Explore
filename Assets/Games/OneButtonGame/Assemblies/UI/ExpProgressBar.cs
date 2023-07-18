@@ -19,7 +19,7 @@ namespace OneButtonGame
         public void OnReceiveEvent(ExpChange e)
         {
             float targetPercent = e.currentExp / e.levelNeedExp;
-            Debug.Log($"targetPercent:{targetPercent}");
+            // Debug.Log($"targetPercent:{targetPercent}");
             float delay = 0.5f;
             if (targetPercent > 1)
             {
