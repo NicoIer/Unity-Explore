@@ -3,9 +3,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Nico;
 using TMPro;
-using UnityEditor.Graphs;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace OneButtonGame
 {
