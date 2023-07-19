@@ -50,6 +50,11 @@ namespace OneButtonGame
             obj.transform.SetParent(parent);
             Prompt prompt = obj.GetComponent<Prompt>();
             prompt.Print($"Level Up! {PlayerModelController.model.level}", Color.red, 3);
+            
+            
+           ship.render.DOColor(Color.yellow, 0.5f);
+           ship.render.DOColor(Color.white, 0.5f).SetDelay(0.5f);
+
         }
 
 
@@ -61,6 +66,10 @@ namespace OneButtonGame
             obj.transform.SetParent(parent);
             Prompt prompt = obj.GetComponent<Prompt>();
             prompt.Print($"{e.current - e.previous}", Color.gray);
+            
+            //受伤效果
+            ship.maskTransform.transform.localScale = Vector3.one * (1 - e.current / (float)e.maxHealth);
+
         }
 
         public void OnReceiveEvent(EnemyHitSpaceShip e)

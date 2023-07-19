@@ -9,8 +9,7 @@ namespace OneButtonGame
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public partial class SpaceShip : SceneSingleton<SpaceShip>, IEventListener<OneButtonDown>,
-        IEventListener<OneButtonUp>,
-        IEventListener<LevelUp>, IEventListener<EnemyHitSpaceShip>, IEventListener<HealthChange>
+        IEventListener<OneButtonUp>, IEventListener<LevelUp>, IEventListener<EnemyHitSpaceShip>
     {
         public float velocityRate = 40;
         public float angelSpeed = 5; //角速度
@@ -41,6 +40,7 @@ namespace OneButtonGame
 
             _stateMachine.Start<RotateState>();
         }
+        
 
         private void OnEnable()
         {
@@ -76,16 +76,10 @@ namespace OneButtonGame
 
         public void OnReceiveEvent(LevelUp e)
         {
-            render.DOColor(Color.yellow, 0.5f);
-            render.DOColor(Color.white, 0.5f).SetDelay(0.5f);
             angelSpeed += 5f;
             velocityRate += 5f;
         }
 
-        public void OnReceiveEvent(HealthChange e)
-        {
-            maskTransform.transform.localScale = Vector3.one * e.current / e.maxHealth;
-        }
 
         public void OnReceiveEvent(EnemyHitSpaceShip e)
         {
