@@ -8,7 +8,7 @@ namespace OneButtonGame
     {
         private void Start()
         {
-            transform.position = transform.position.RandomXYOffset(1000f);
+            transform.position = transform.position.RandomXYOffset(100f);
         }
     }
 }

@@ -2,68 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Nico
 {
-    public static class ObjectPoolManager
+    public class ObjectPoolManager : SceneSingleton<ObjectPoolManager>
     {
-        private static readonly Dictionary<string, PrefabPool> _pool = new Dictionary<string, PrefabPool>();
+        private readonly Dictionary<string, PrefabPool> _pool = new Dictionary<string, PrefabPool>();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T Get<T>() where T : IPoolObject, new() => ObjectPool<T>.Get();
+        public T Get<T>() where T : IPoolObject, new() => ObjectPool<T>.Get();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Return<T>(T obj) where T : IPoolObject, new() => ObjectPool<T>.Return(obj);
-
-        // ObjectPoolManager在Editor模式下可以使用预制体池 但是在进入运行时模式后 会自动清空Editor下注册的预制体池
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private static void Init()
+        public void Return<T>(T obj) where T : IPoolObject, new() => ObjectPool<T>.Return(obj);
+        
+        protected override void Awake()
         {
-            _pool.Clear();
-            Application.quitting -= OnApplicationQuit;
-            Application.quitting += OnApplicationQuit;
-        }
-
-        private static void OnApplicationQuit()
-        {
+            base.Awake();
             _pool.Clear();
         }
 
-        // public static void RegisterBehavior<TBehavior>(GameObject prefab) where TBehavior : MonoBehaviour, IPoolObject
-        // {
-        //     if (!prefab.TryGetComponent(out IPoolObject poolObject))
-        //     {
-        //         return;
-        //     }
-        //
-        //     if (MonoBehaviourPools<TBehavior>.pool == null)
-        //     {
-        //         MonoBehaviourPools<TBehavior>.pool = new MonoBehaviourPool<TBehavior>(prefab);
-        //         Application.quitting -= Clear<TBehavior>;
-        //         Application.quitting += Clear<TBehavior>;
-        //         return;
-        //     }
-        //
-        //     Debug.LogWarning($"{typeof(TBehavior)} is already in pool");
-        // }
-        //
-        // public static TBehavior GetBehavior<TBehavior>() where TBehavior : MonoBehaviour, IPoolObject
-        // {
-        //     if (MonoBehaviourPools<TBehavior>.pool == null)
-        //     {
-        //         Debug.LogWarning($"{typeof(TBehavior)} is not in pool");
-        //         return null;
-        //     }
-        //
-        //     return MonoBehaviourPools<TBehavior>.pool.Get();
-        // }
-        //
-        // private static void Clear<TBehavior>() where TBehavior : MonoBehaviour, IPoolObject
-        // {
-        //     MonoBehaviourPools<TBehavior>.pool = null;
-        // }
-
-        public static void Register(GameObject prefab, string prefabName = null, OnSpawnDelegate onSpawn = null,
+        public void Register(GameObject prefab, string prefabName = null, OnSpawnDelegate onSpawn = null,
             OnRecycleDelegate onRecycle = null)
         {
             if (prefab == null)
@@ -87,7 +46,7 @@ namespace Nico
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static GameObject Get(string prefabName)
+        public GameObject Get(string prefabName)
         {
             if (_pool.TryGetValue(prefabName, out var value))
             {
@@ -100,13 +59,13 @@ namespace Nico
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Return(MonoBehaviour behaviour, string name = null)
+        public void Return(MonoBehaviour behaviour, string name = null)
         {
             Return(behaviour.gameObject, name);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Return(GameObject gameObject, string name = null)
+        public void Return(GameObject gameObject, string name = null)
         {
             if (name == null)
             {

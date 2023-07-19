@@ -9,16 +9,12 @@ namespace OneButtonGame
     {
         public SpaceShip spaceShip => SpaceShip.Instance;
         public float defaultSpeed = 2;
-        public float enableTime;
         public float hitPower = 5;
         public float returnTime = 12;
         public float radius = 1;
         public int damage = 1;
-
-        private void OnEnable()
-        {
-            enableTime = Time.time;
-        }
+        public float maxDistance = 40;
+        
 
 
         public void FixedUpdate()
@@ -43,12 +39,13 @@ namespace OneButtonGame
                     pos = position,
                     enemy = this
                 });
-                ObjectPoolManager.Return(gameObject);
+                ObjectPoolManager.Instance.Return(gameObject);
                 return;
             }
 
             //撞击到飞船
-            if (Vector3.Distance(position, spaceShip.transform.position) < spaceShip.radius + radius)
+            float playerShipDistance = Vector3.Distance(position, spaceShip.transform.position);
+            if (playerShipDistance < spaceShip.radius + radius)
             {
                 EventManager.Send<EnemyHitSpaceShip>(new EnemyHitSpaceShip()
                 {
@@ -57,23 +54,20 @@ namespace OneButtonGame
                     speed = speed
                 });
                 PlayerModelController.Damage(damage);
-                ObjectPoolManager.Return(gameObject);
+                ObjectPoolManager.Instance.Return(gameObject);
                 return;
             }
 
-            //超出存活时间
-            if (returnTime < Time.time - enableTime)
+            if (playerShipDistance > maxDistance)
             {
-                ObjectPoolManager.Return(gameObject);
-                return;
+                ObjectPoolManager.Instance.Return(gameObject);
             }
         }
 
 
         public float GetSpeed()
         {
-            return defaultSpeed + 0.5f * spaceShip.velocity.magnitude * (Time.time - enableTime) /
-                Time.time;
+            return defaultSpeed + 0.9f * spaceShip.velocity.magnitude;
         }
 
 #if UNITY_EDITOR
@@ -94,10 +88,7 @@ namespace OneButtonGame
             Vector3 dir = vec.normalized;
             float distance = vec.magnitude - spaceShip.radius;
             Vector3 end = position + dir * distance;
-
             Gizmos.DrawLine(position, end);
-
-
         }
 #endif
     }

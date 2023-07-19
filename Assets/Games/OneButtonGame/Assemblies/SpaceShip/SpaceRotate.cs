@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using Nico;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace OneButtonGame
@@ -10,7 +11,7 @@ namespace OneButtonGame
     {
         private float _pauseTime = 0;
         private bool _isPause = false;
-        public float forceRate = 30;
+        public float force = 30;
         [SerializeField] private float growRate = 0.02f;
         [SerializeField] private Vector3 scaleLimit = new Vector3(8, 8, 8);
         private Vector3 _startScale;
@@ -48,9 +49,9 @@ namespace OneButtonGame
             }
         }
 
-        public Vector2 GetVelocity(float multiple)
+        public Vector2 GetVelocity()
         {
-            return -transform.localPosition.normalized * (multiple * (Time.time - _pauseTime) * forceRate);
+            return -transform.localPosition.normalized * ((Time.time - _pauseTime) * force);
         }
 
         public void Rotate(float currentAngel, float radius)
@@ -76,10 +77,10 @@ namespace OneButtonGame
         private void ReleaseEffect()
         {
             //生成一个云朵
-            GameObject cloudObj = ObjectPoolManager.Get(nameof(Cloud));
+            GameObject cloudObj = ObjectPoolManager.Instance.Get(nameof(Cloud));
             cloudObj.transform.position = transform.position;
             Cloud cloud = cloudObj.GetComponent<Cloud>();
-            cloud.SetVelocity(-GetVelocity(Random.Range(forceRate*0.3f, forceRate * 0.8f)));
+            cloud.SetVelocity(-GetVelocity());
         }
 
         public Vector2 GetDir()

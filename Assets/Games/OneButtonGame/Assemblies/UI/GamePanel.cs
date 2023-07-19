@@ -8,7 +8,7 @@ namespace OneButtonGame
     {
         private void Awake()
         {
-            EventManager.Register<LevelUp>(this);
+            EventManager.Listen<LevelUp>(this);
         }
 
         public void OnReceiveEvent(LevelUp e)

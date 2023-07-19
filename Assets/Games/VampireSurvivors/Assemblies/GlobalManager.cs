@@ -13,7 +13,7 @@ namespace VampireSurvivors
         {
             foreach (var prefab in prefabs)
             {
-                ObjectPoolManager.Register(prefab);
+                ObjectPoolManager.Instance.Register(prefab);
             }
             Application.targetFrameRate = 60;
         }

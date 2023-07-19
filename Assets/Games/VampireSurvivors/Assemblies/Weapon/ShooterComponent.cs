@@ -25,7 +25,7 @@ namespace VampireSurvivors
             Transform tar = _findTarget();
             if (tar != null)
             {
-                GameObject bulletObj = ObjectPoolManager.Get(_setting.bulletName);
+                GameObject bulletObj = ObjectPoolManager.Instance.Get(_setting.bulletName);
                 bulletObj.transform.position = start;
                 Bullet bullet = bulletObj.GetComponent<Bullet>();
                 bullet.Init(tar);

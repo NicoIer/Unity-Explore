@@ -14,8 +14,8 @@ namespace OneButtonGame
         public TextMeshProUGUI title;
         private void OnEnable()
         {
-            EventManager.Register<ExpChange>(this);
-            EventManager.Register<LevelUp>(this);
+            EventManager.Listen<ExpChange>(this);
+            EventManager.Listen<LevelUp>(this);
 
         }
 

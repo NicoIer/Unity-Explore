@@ -2,11 +2,20 @@ using Nico;
 
 namespace OneButtonGame
 {
-    public struct OneButtonDown: IEvent
+    public struct ForceButtonDown: IEvent
     {
         
     }
-    public struct OneButtonUp: IEvent
+    public struct ForceButtonUp: IEvent
+    {
+        
+    }
+    public struct RotateButtonDown: IEvent
+    {
+        
+    }
+    
+    public struct RotateButtonUp: IEvent
     {
         
     }

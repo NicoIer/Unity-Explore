@@ -25,7 +25,7 @@ namespace OneButtonGame
         {
             for (int i = 0; i < generateNum; i++)
             {
-                Enemy enemy = ObjectPoolManager.Get(nameof(Enemy)).GetComponent<Enemy>();
+                Enemy enemy = ObjectPoolManager.Instance.Get(nameof(Enemy)).GetComponent<Enemy>();
                 enemy.transform.position = SpaceShip.Instance.transform.position.RandomXYOffset(range);
             }
         }

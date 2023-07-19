@@ -12,10 +12,10 @@ namespace OneButtonGame
 
         private void OnEnable()
         {
-            EventManager.Register<ExpChange>(this);
-            EventManager.Register<LevelUp>(this);
-            EventManager.Register<EnemyHitSpaceShip>(this);
-            EventManager.Register<HealthChange>(this);
+            EventManager.Listen<ExpChange>(this);
+            EventManager.Listen<LevelUp>(this);
+            EventManager.Listen<EnemyHitSpaceShip>(this);
+            EventManager.Listen<HealthChange>(this);
         }
 
         // private void OnDisable()
@@ -27,7 +27,7 @@ namespace OneButtonGame
 
         public void OnReceiveEvent(ExpChange e)
         {
-            GameObject prompt = ObjectPoolManager.Get(nameof(Prompt));
+            GameObject prompt = ObjectPoolManager.Instance.Get(nameof(Prompt));
             var transform1 = SpaceShip.Instance.spaceRotate.transform;
             prompt.transform.position = transform1.position;
             prompt.transform.SetParent(transform1);
@@ -44,32 +44,34 @@ namespace OneButtonGame
 
         public void OnReceiveEvent(LevelUp e)
         {
-            GameObject obj = ObjectPoolManager.Get(nameof(Prompt));
+            GameObject obj = ObjectPoolManager.Instance.Get(nameof(Prompt));
             Transform parent = SpaceShip.Instance.transform;
             obj.transform.position = parent.position;
             obj.transform.SetParent(parent);
             Prompt prompt = obj.GetComponent<Prompt>();
             prompt.Print($"Level Up! {PlayerModelController.model.level}", Color.red, 3);
-            
-            
-           ship.render.DOColor(Color.yellow, 0.5f);
-           ship.render.DOColor(Color.white, 0.5f).SetDelay(0.5f);
 
+            Color color = Color.yellow;
+            color.a = ship.render.color.a;
+            Color color2 = ship.render.color;
+            ship.render.DOColor(color, 0.5f);
+            ship.render.DOColor(color2, 0.5f).SetDelay(0.5f);
         }
 
 
         public void OnReceiveEvent(HealthChange e)
         {
-            GameObject obj = ObjectPoolManager.Get(nameof(Prompt));
+            GameObject obj = ObjectPoolManager.Instance.Get(nameof(Prompt));
             Transform parent = SpaceShip.Instance.transform;
             obj.transform.position = parent.position;
             obj.transform.SetParent(parent);
             Prompt prompt = obj.GetComponent<Prompt>();
             prompt.Print($"{e.current - e.previous}", Color.gray);
-            
-            //受伤效果
-            ship.maskTransform.transform.localScale = Vector3.one * (1 - e.current / (float)e.maxHealth);
 
+            //受伤效果
+            Color color = ship.render.color;
+            color.a = e.current / e.maxHealth;
+            ship.render.color = color;
         }
 
         public void OnReceiveEvent(EnemyHitSpaceShip e)
@@ -78,8 +80,9 @@ namespace OneButtonGame
             if (_canPlayHitEffect)
             {
                 _canPlayHitEffect = false;
-                ship.render.DOFade(0.5f, 0.3f);
-                ship.render.DOFade(1, 0.3f).SetDelay(0.3f).OnComplete(() => { _canPlayHitEffect = true; });
+                Color color = ship.render.color;
+                ship.render.DOFade(color.a*0.5f, 0.3f);
+                ship.render.DOFade(color.a, 0.3f).SetDelay(0.3f).OnComplete(() => { _canPlayHitEffect = true; });
             }
         }
     }

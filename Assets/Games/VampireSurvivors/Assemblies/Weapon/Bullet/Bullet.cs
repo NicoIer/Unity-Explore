@@ -33,7 +33,7 @@ namespace VampireSurvivors
             Vector3 dir = tar.position - transform.position;
             if (dir.magnitude < 0.5f)
             {
-                ObjectPoolManager.Return(gameObject);
+                ObjectPoolManager.Instance.Return(gameObject);
                 return;
             }
             
@@ -43,7 +43,7 @@ namespace VampireSurvivors
             if (_currentLifeTime > setting.lifeTime)
             {
                 _currentLifeTime = 0;
-                ObjectPoolManager.Return(gameObject);
+                ObjectPoolManager.Instance.Return(gameObject);
             }
         }
     }

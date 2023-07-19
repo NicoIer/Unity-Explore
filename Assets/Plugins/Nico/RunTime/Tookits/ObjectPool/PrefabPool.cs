@@ -51,7 +51,7 @@ namespace Nico
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void Return(GameObject gameObject)
         {
-            gameObject.transform.SetParent(null);
+            gameObject.transform.SetParent(ObjectPoolManager.Instance.transform);
             gameObject.SetActive(false);
             gameObject.name = _prefabName;
             _onRecycle?.Invoke(gameObject);

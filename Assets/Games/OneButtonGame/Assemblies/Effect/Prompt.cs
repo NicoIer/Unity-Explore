@@ -10,16 +10,11 @@ namespace OneButtonGame
     public class Prompt : MonoBehaviour
     {
         public TMP_Text textMeshPro;
-    
+        public float timer;
         private void Awake()
         {
             textMeshPro = GetComponent<TMP_Text>();
         }
-
-        // private void OnDisable()
-        // {
-        //     transform.SetParent(null);
-        // }
 
         private void OnEnable()
         {
@@ -27,15 +22,20 @@ namespace OneButtonGame
             textMeshPro.color = Color.white;
         }
 
+        private void Update()
+        {
+            timer += Time.deltaTime;
+            if (timer >= 0.5f)
+            {
+                ObjectPoolManager.Instance.Return(gameObject);
+            }
+        }
+
         public async void Print(string msg,Color color,float strength = 1.3f)
         {
             textMeshPro.color = color;
             textMeshPro.text = msg;
             textMeshPro.DOScale(strength, 0.5f);
-            await UniTask.Delay(TimeSpan.FromSeconds(0.5f)).ContinueWith(() =>
-            {
-                ObjectPoolManager.Return(gameObject);
-            });
         }
     }
 }

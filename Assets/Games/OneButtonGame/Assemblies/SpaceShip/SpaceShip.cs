@@ -8,23 +8,24 @@ using UnityEngine.Serialization;
 namespace OneButtonGame
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public partial class SpaceShip : SceneSingleton<SpaceShip>, IEventListener<OneButtonDown>,
-        IEventListener<OneButtonUp>, IEventListener<LevelUp>, IEventListener<EnemyHitSpaceShip>
+    public partial class SpaceShip : SceneSingleton<SpaceShip>, IEventListener<LevelUp>,
+        IEventListener<EnemyHitSpaceShip>
     {
-        public float velocityRate = 40;
         public float angelSpeed = 5; //角速度
-        public float slowRate = 0.9f;
         private float _currentAngel;
         public float orbitalRadius = 10;
         public float radius = 0.5f;
+        public float slowTimer;
+        public float slowNeedTime = 4f;
+        public float speedMultiplier =1.5f;
         public Rigidbody2D rb2D { get; private set; }
         public Vector2 velocity => rb2D.velocity;
-        public SpaceRotate spaceRotate;
+        public SpaceRotate spaceRotate { get; private set; }
         private float _pauseTime;
         private SpaceShipStateMachine _stateMachine;
         public SpriteRenderer render { get; private set; }
-
         public Transform maskTransform;
+
 
         protected override void Awake()
         {
@@ -40,44 +41,35 @@ namespace OneButtonGame
 
             _stateMachine.Start<RotateState>();
         }
-        
+
 
         private void OnEnable()
         {
-            EventManager.Register<OneButtonDown>(this);
-            EventManager.Register<OneButtonUp>(this);
-            EventManager.Register<LevelUp>(this);
-            EventManager.Register<EnemyHitSpaceShip>(this);
+            EventManager.Listen<LevelUp>(this);
+            EventManager.Listen<EnemyHitSpaceShip>(this);
         }
 
         private void OnDisable()
         {
-            EventManager.UnListen<OneButtonDown>(this);
-            EventManager.UnListen<OneButtonUp>(this);
             EventManager.UnListen<LevelUp>(this);
             EventManager.UnListen<EnemyHitSpaceShip>(this);
+            _stateMachine = null;
         }
 
         private void Update()
         {
             _stateMachine.OnUpdate();
-        }
-
-
-        public void OnReceiveEvent(OneButtonDown e)
-        {
-            _stateMachine.Change<PauseState>();
-        }
-
-        public void OnReceiveEvent(OneButtonUp e)
-        {
-            _stateMachine.Change<RotateState>();
+            slowTimer += Time.deltaTime;
+            if (slowTimer >slowNeedTime)
+            {
+                rb2D.velocity *= 0.98f;
+            }
         }
 
         public void OnReceiveEvent(LevelUp e)
         {
             angelSpeed += 5f;
-            velocityRate += 5f;
+            speedMultiplier += 0.2f;
         }
 
 
