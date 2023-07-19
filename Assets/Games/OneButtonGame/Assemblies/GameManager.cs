@@ -14,7 +14,6 @@ namespace OneButtonGame
             {
                 ObjectPoolManager.Register(poolObject,poolObject.name);
             }
-            // ModelManager.Register<PlayerModel>();
         }
     }
 }

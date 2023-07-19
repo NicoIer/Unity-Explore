@@ -16,6 +16,11 @@ namespace OneButtonGame
             textMeshPro = GetComponent<TMP_Text>();
         }
 
+        // private void OnDisable()
+        // {
+        //     transform.SetParent(null);
+        // }
+
         private void OnEnable()
         {
             transform.localScale = Vector3.one;

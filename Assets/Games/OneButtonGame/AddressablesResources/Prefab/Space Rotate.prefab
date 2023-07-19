@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5348390068196885814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5348390069673705315}
@@ -4911,12 +4911,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c5cfa2028f44e3af5d19119a4ff349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseTime: 0
-  isPause: 0
+  forceRate: 30
   growRate: 0.02
-  startScale: {x: 0, y: 0, z: 0}
-  particleSystem: {fileID: 0}
-  currentAngel: 0
+  scaleLimit: {x: 8, y: 8, z: 8}
 --- !u!96 &5348390069673705313
 TrailRenderer:
   serializedVersion: 2

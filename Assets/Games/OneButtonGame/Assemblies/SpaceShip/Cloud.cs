@@ -8,27 +8,27 @@ namespace OneButtonGame
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(SpriteRenderer))]
-    [RequireComponent(typeof(Rigidbody2D))]
     public class Cloud : MonoBehaviour
     {
         private SpriteRenderer _renderer;
-        private Rigidbody2D _rb2D;
+        private Vector3 _velocity;
         private float _timer;
         private float _currentTimer;
 
         private void Awake()
         {
             _renderer = GetComponent<SpriteRenderer>();
-            _rb2D = GetComponent<Rigidbody2D>();
         }
 
         public void SetVelocity(Vector2 velocity)
         {
-            // Debug.Log(velocity);
-            _rb2D.velocity = velocity;
+            this._velocity = new Vector3(velocity.x, velocity.y, 0);
         }
-        private void Update()
+
+        private void FixedUpdate()
         {
+            transform.position += _velocity * Time.deltaTime;
+
             _currentTimer -= Time.deltaTime;
             Color color = _renderer.color;
             color.a = _currentTimer / _timer;
@@ -39,9 +39,11 @@ namespace OneButtonGame
             }
         }
 
-        private async void OnEnable()
+        private void OnEnable()
         {
-            _renderer.color = Color.white;
+            Color color = _renderer.color;
+            color.a = 1;
+            _renderer.color = color;
             _currentTimer = _timer = Random.Range(3, 5);
         }
 

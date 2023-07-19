@@ -7,6 +7,7 @@ namespace OneButtonGame
     {
         public int level;
         public float currentExp;
+        public int health = 100;
         public void OnRegister()
         {
             level = 1;

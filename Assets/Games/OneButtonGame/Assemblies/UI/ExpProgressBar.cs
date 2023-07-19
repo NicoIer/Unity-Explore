@@ -2,18 +2,33 @@ using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Nico;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace OneButtonGame
 {
-    public class ExpProgressBar : MonoBehaviour, IEventListener<ExpChange>
+    public class ExpProgressBar : MonoBehaviour, IEventListener<ExpChange>,IEventListener<LevelUp>
     {
-        public Image fillImage;
-
-        private void Awake()
+        public Image bar;
+        public TextMeshProUGUI title;
+        private void OnEnable()
         {
-            EventManager.Listen<ExpChange>(this);
+            EventManager.Register<ExpChange>(this);
+            EventManager.Register<LevelUp>(this);
+
+        }
+
+        private void OnDisable()
+        {
+            EventManager.UnListen<ExpChange>(this);
+            EventManager.UnListen<LevelUp>(this);
+        }
+
+        private void Start()
+        {
+            bar.fillAmount = PlayerModelController.model.currentExp / PlayerModelController.GetLevelNeedExp();
+            title.text = PlayerModelController.model.level.ToString();
         }
 
         public void OnReceiveEvent(ExpChange e)
@@ -23,13 +38,18 @@ namespace OneButtonGame
             float delay = 0.5f;
             if (targetPercent > 1)
             {
-                fillImage.DOFillAmount(1, delay);
-                fillImage.DOFillAmount(targetPercent - 1, delay).SetDelay(delay);
+                bar.DOFillAmount(1, delay);
+                bar.DOFillAmount(targetPercent - 1, delay).SetDelay(delay);
             }
             else
             {
-                fillImage.DOFillAmount(targetPercent, delay);
+                bar.DOFillAmount(targetPercent, delay);
             }
+        }
+
+        public void OnReceiveEvent(LevelUp e)
+        {
+            title.DOText(e.level.ToString(), 0.5f);
         }
     }
 }

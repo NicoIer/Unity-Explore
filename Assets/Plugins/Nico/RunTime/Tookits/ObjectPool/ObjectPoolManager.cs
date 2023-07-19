@@ -29,9 +29,42 @@ namespace Nico
             _pool.Clear();
         }
 
+        // public static void RegisterBehavior<TBehavior>(GameObject prefab) where TBehavior : MonoBehaviour, IPoolObject
+        // {
+        //     if (!prefab.TryGetComponent(out IPoolObject poolObject))
+        //     {
+        //         return;
+        //     }
+        //
+        //     if (MonoBehaviourPools<TBehavior>.pool == null)
+        //     {
+        //         MonoBehaviourPools<TBehavior>.pool = new MonoBehaviourPool<TBehavior>(prefab);
+        //         Application.quitting -= Clear<TBehavior>;
+        //         Application.quitting += Clear<TBehavior>;
+        //         return;
+        //     }
+        //
+        //     Debug.LogWarning($"{typeof(TBehavior)} is already in pool");
+        // }
+        //
+        // public static TBehavior GetBehavior<TBehavior>() where TBehavior : MonoBehaviour, IPoolObject
+        // {
+        //     if (MonoBehaviourPools<TBehavior>.pool == null)
+        //     {
+        //         Debug.LogWarning($"{typeof(TBehavior)} is not in pool");
+        //         return null;
+        //     }
+        //
+        //     return MonoBehaviourPools<TBehavior>.pool.Get();
+        // }
+        //
+        // private static void Clear<TBehavior>() where TBehavior : MonoBehaviour, IPoolObject
+        // {
+        //     MonoBehaviourPools<TBehavior>.pool = null;
+        // }
 
         public static void Register(GameObject prefab, string prefabName = null, OnSpawnDelegate onSpawn = null,
-           OnRecycleDelegate onRecycle = null)
+            OnRecycleDelegate onRecycle = null)
         {
             if (prefab == null)
             {
@@ -69,11 +102,11 @@ namespace Nico
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Return(MonoBehaviour behaviour, string name = null)
         {
-            Return(behaviour.gameObject,name);
+            Return(behaviour.gameObject, name);
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Return(GameObject gameObject,string name=null)
+        public static void Return(GameObject gameObject, string name = null)
         {
             if (name == null)
             {

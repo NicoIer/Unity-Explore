@@ -10,11 +10,13 @@ namespace OneButtonGame
     {
         private float _pauseTime = 0;
         private bool _isPause = false;
+        public float forceRate = 30;
         [SerializeField] private float growRate = 0.02f;
         [SerializeField] private Vector3 scaleLimit = new Vector3(8, 8, 8);
         private Vector3 _startScale;
         private ParticleSystem _particleSystem;
         private float _currentAngel = 0;
+        public float radius;
 
         private void Awake()
         {
@@ -48,7 +50,7 @@ namespace OneButtonGame
 
         public Vector2 GetVelocity(float multiple)
         {
-            return -transform.localPosition.normalized * (multiple * (Time.time - _pauseTime));
+            return -transform.localPosition.normalized * (multiple * (Time.time - _pauseTime) * forceRate);
         }
 
         public void Rotate(float currentAngel, float radius)
@@ -64,27 +66,58 @@ namespace OneButtonGame
             _particleSystem.Stop();
             _particleSystem.Clear();
 
+            ReleaseEffect();
+
+            _isPause = false;
+            transform.DOScale(_startScale, 0.5f);
+            _pauseTime = 0;
+        }
+
+        private void ReleaseEffect()
+        {
             //生成一个云朵
             GameObject cloudObj = ObjectPoolManager.Get(nameof(Cloud));
             cloudObj.transform.position = transform.position;
             Cloud cloud = cloudObj.GetComponent<Cloud>();
-            cloud.SetVelocity(-GetVelocity(Random.Range(3, 5)));
-            
-            _isPause = false;
-            transform.DOScale(_startScale, 0.5f);
-            _pauseTime = 0;
+            cloud.SetVelocity(-GetVelocity(Random.Range(forceRate*0.3f, forceRate * 0.8f)));
         }
 
         public Vector2 GetDir()
         {
             return transform.localPosition.normalized;
         }
+        
 
 #if UNITY_EDITOR
         public void Modify(float radius)
         {
             Vector2 dir = GetDir();
             transform.localPosition = dir * radius;
+        }
+
+        private void OnDrawGizmos()
+        {
+            SpaceShip spaceShip = GetComponentInParent<SpaceShip>();
+            if (spaceShip == null) return;
+            // float roundRadius = spaceShip.orbitalRadius;
+            // //从飞船 向自己 画 radius 长的线
+            // Gizmos.color = Color.red;
+            // Vector3 position = spaceShip.transform.position;
+            // Gizmos.DrawLine(position, position + transform.localPosition.normalized * roundRadius);
+
+            //给自己画圆
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, this.radius);
+        }
+
+        private void OnValidate()
+        {
+            if (_particleSystem == null)
+            {
+                _particleSystem = GetComponentInChildren<ParticleSystem>();
+            }
+
+            _particleSystem.transform.localScale = transform.localScale;
         }
 #endif
     }

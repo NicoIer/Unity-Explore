@@ -7,12 +7,12 @@ namespace OneButtonGame
 {
     public partial class SpaceShip
     {
-        public class RotateState: State<SpaceShip>
+        public class RotateState : State<SpaceShip>
         {
             public RotateState(SpaceShip owner) : base(owner)
             {
             }
-            
+
             public override void OnUpdate()
             {
                 owner._currentAngel += owner.angelSpeed * Time.deltaTime;
@@ -21,15 +21,17 @@ namespace OneButtonGame
                     owner._currentAngel -= 360;
                 }
 
-                owner.spaceRotate.Rotate(owner._currentAngel, owner.radius);
+                owner.spaceRotate.Rotate(owner._currentAngel, owner.orbitalRadius);
+                owner.rb2D.velocity *= owner.slowRate;
             }
         }
-        
-        public class PauseState: State<SpaceShip>
+
+        public class PauseState : State<SpaceShip>
         {
             public PauseState(SpaceShip owner) : base(owner)
             {
             }
+
             public override void OnEnter()
             {
                 owner.spaceRotate.Pause();
@@ -38,13 +40,13 @@ namespace OneButtonGame
 
             public override async void OnExit()
             {
-                Debug.Log("PauseState OnExit");
+                // Debug.Log("PauseState OnExit");
                 //向对应方向施加力
-                owner._rb2D.velocity +=  owner.spaceRotate.GetVelocity( owner.forceRate);
+                owner.rb2D.velocity += owner.spaceRotate.GetVelocity(owner.velocityRate);
                 owner.spaceRotate.Release();
                 await UniTask.Delay(TimeSpan.FromSeconds(UnityEngine.Random.Range(0.3f, 1f)));
 
-                float changeValue = UnityEngine.Random.Range(30, 600) * (Time.time -  owner._pauseTime);
+                float changeValue = UnityEngine.Random.Range(30, 600) * (Time.time - owner._pauseTime);
                 PlayerModelController.ExpUp(changeValue);
             }
         }
