@@ -4,12 +4,6 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Games/OneButtonGame/Scenes/OneButtonGame-GamePlay.unity
-    guid: d78a8aac35531ea4195b4f2912a81626
-  - enabled: 1
-    path: Assets/Games/OneButtonGame/Scenes/OneButtonGame-Home.unity
-    guid: 271bebddeef80a945b8c4af78a3b960d
+  m_Scenes: []
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 7c439c936440c7f4b8ebd06904e9053b, type: 2}
