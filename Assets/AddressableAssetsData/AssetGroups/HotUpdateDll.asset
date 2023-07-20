@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: HotUpdateDll
   m_Data:
     m_SerializedData: []
-  m_GUID: 0e38f7a983c2b5f4db292e06d8328b1c
+  m_GUID: bbe21fe41c70d3049b99d8ef214d99c8
   m_SerializeEntries:
   - m_GUID: c48f915fa0566f94fb9d8d266d4ed918
     m_Address: HotUpdateDll/OneButtonGame.dll

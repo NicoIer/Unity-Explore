@@ -15,10 +15,14 @@ MonoBehaviour:
   m_GroupName: Scenes
   m_Data:
     m_SerializedData: []
-  m_GUID: 3f9ece9a0bbf6d1479743ec2d34ae675
+  m_GUID: 9d828fd03f6e5344c9cefc2955749ddb
   m_SerializeEntries:
   - m_GUID: 2fb5ad7ad0ca8f4478652951dd2fa3e1
     m_Address: Scenes/GameMain
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fbc6c692d85a0ce4596790b7e006b6ee
+    m_Address: Scenes/GamePlay
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

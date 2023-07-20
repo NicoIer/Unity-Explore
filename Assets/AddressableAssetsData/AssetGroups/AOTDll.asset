@@ -15,8 +15,23 @@ MonoBehaviour:
   m_GroupName: AOTDll
   m_Data:
     m_SerializedData: []
-  m_GUID: 723a3ec5e9701054a9d1432b5eb1c5d7
-  m_SerializeEntries: []
+  m_GUID: b79c042ee2c5d5049a2a9e58673b6e20
+  m_SerializeEntries:
+  - m_GUID: 4c78e3dfa1c21a24c8b63e33809dead3
+    m_Address: AOTDll/Nico.Tookits.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
+  - m_GUID: 45f8b79d7df0ef2498f90465e318ee57
+    m_Address: AOTDll/mscorlib.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
+  - m_GUID: be4601d1c1fba3344b17be7525237bdf
+    m_Address: AOTDll/Unity.ResourceManager.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:

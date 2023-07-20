@@ -115,7 +115,8 @@ namespace Nico.Edotor
             _hotUpdateTargetSelect = hotUpdate.Q<DropdownField>("target");
             //获取BuildTarget的所有枚举值
             _hotUpdateTargetSelect.choices = System.Enum.GetNames(typeof(BuildTarget)).ToList();
-            _hotUpdateTargetSelect.value = BuildTarget.StandaloneWindows64.ToString();
+            //拿到当前的BuildTarget
+            _hotUpdateTargetSelect.value = EditorUserBuildSettings.activeBuildTarget.ToString();
         }
 
         private void QueryImportDataTable()

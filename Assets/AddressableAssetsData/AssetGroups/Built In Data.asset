@@ -15,9 +15,10 @@ MonoBehaviour:
   m_GroupName: Built In Data
   m_Data:
     m_SerializedData: []
-  m_GUID: 5cb84bdcd0702be4faece4fc28cdd2ed
+  m_GUID: 2b5939152270f57439afde0f755947d6
   m_SerializeEntries: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:
-    m_Schemas: []
+    m_Schemas:
+    - {fileID: 11400000, guid: 9d1281f4f8eeea249a12f4263c1263ce, type: 2}
