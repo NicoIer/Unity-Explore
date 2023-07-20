@@ -88,7 +88,7 @@ namespace Nico.Edotor
             _configObjectField = initAddressable.Q<ObjectField>();
             _configObjectField.objectType = typeof(AddressAblesUpdateConfig);
             _configObjectField.value = config;
-            _configObjectField.SetEnabled(false);
+            _configObjectField.SetEnabled(true);
         }
 
         private void QueryAddressableUpdate()

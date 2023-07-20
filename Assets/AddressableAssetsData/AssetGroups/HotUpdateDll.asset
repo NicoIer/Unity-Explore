@@ -10,15 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: HotUpdateDll
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: HotUpdateDll
   m_Data:
     m_SerializedData: []
-  m_GUID: 58272047cf30a9045a4ce314339c85ce
-  m_SerializeEntries: []
+  m_GUID: 0e38f7a983c2b5f4db292e06d8328b1c
+  m_SerializeEntries:
+  - m_GUID: c48f915fa0566f94fb9d8d266d4ed918
+    m_Address: HotUpdateDll/OneButtonGame.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - hot_update_dll
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 237356889e708534b85814fe187e4d63, type: 2}
+    - {fileID: 11400000, guid: c41db82b234849540b43b8cda1b0238f, type: 2}
