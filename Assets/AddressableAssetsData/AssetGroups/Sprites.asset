@@ -10,23 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Prefabs
+  m_Name: Sprites
   m_EditorClassIdentifier: 
-  m_GroupName: Prefabs
+  m_GroupName: Sprites
   m_Data:
     m_SerializedData: []
-  m_GUID: e8c6d4398027e7c40aa21eed123a4ac2
-  m_SerializeEntries:
-  - m_GUID: 516d074824fb6c148a5e17feb1ae1e75
-    m_Address: Prefabs/Player
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a746c0dc5da505f46a9962851f3e0a5d
-    m_Address: Prefabs/Weapon
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_GUID: 39d851d0a169c6b4cba7d3fe82bb0c29
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 9c22a8ffc346bda48a78f3c975e5c08d, type: 2}
+    - {fileID: 11400000, guid: d6b072223c4cf45459c9bdf3ea938e01, type: 2}

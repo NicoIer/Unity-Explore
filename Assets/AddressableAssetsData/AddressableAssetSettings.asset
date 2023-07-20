@@ -39,7 +39,7 @@ MonoBehaviour:
     m_Id: 2fa31f1f5c1bac249a2d60ea8de8ae7c
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
-  m_overridePlayerVersion: 
+  m_overridePlayerVersion: 2023.07.20.11.37.11
   m_GroupAssets:
   - {fileID: 11400000, guid: a1e3e7159eb5f624d990c975222b0fcb, type: 2}
   - {fileID: 11400000, guid: e6ef9ee752e007445a1b0ac63b4539dd, type: 2}
@@ -47,6 +47,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 37e5b11812dd95d4daabb5ec51e067f0, type: 2}
   - {fileID: 11400000, guid: 135495f8edcf04049919f922af17082b, type: 2}
   - {fileID: 11400000, guid: 71f298778178e7f419f6c2177bee2775, type: 2}
+  - {fileID: 11400000, guid: c45b7c618327cc946b38b4abd7f623e4, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
