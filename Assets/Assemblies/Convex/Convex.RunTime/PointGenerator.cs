@@ -41,7 +41,7 @@ namespace Convex.RunTime
                 points2D.Add(points[i]);
             }
 
-            endPoints = ConcaveHull.MakeHull(points2D);
+            // endPoints = ConcaveHull.MakeHull(points2D);
         }
 
         [Button]
