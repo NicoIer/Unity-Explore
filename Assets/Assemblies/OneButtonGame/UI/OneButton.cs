@@ -5,35 +5,20 @@ using UnityEngine.UI;
 
 namespace OneButtonGame
 {
-    public class OneButton : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
+    public class OneButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        public static event Action OnButtonDown;
-        public static event Action OnButtonUp;
+        public event Action OnButtonDown;
+        public event Action OnButtonUp;
 
-        private void Awake()
-        {
-            OnButtonDown = null;
-            OnButtonUp = null;
-        }
-        
         public void OnPointerDown(PointerEventData eventData)
         {
             OnButtonDown?.Invoke();
+            Debug.Log("OnPointerDown");
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             OnButtonUp?.Invoke();
         }
-        
-        
-
-        private void OnDestroy()
-        {
-            OnButtonDown = null;
-            OnButtonUp = null;
-        }
-
-
     }
 }

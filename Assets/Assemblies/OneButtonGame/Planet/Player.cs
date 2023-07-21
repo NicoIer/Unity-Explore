@@ -1,26 +1,30 @@
+using Nico;
+using UnityEngine;
+
 namespace OneButtonGame
 {
-    public class Player : PlanetComponent
+    [AddComponentMenu("OneButtonGame/Player")]
+    public class Player : SceneSingleton<Player>
     {
-        public SimplePlanet simplePlanet;
+        public Rigidbody2D rb2D;
+        public float forceRate = 10f;
+        public float maxSpeed = 30f;
+        public float gravity = 10f;
 
-        private void Start()
+        protected override void Awake()
         {
-            OneButton.OnButtonUp += Attack;
+            base.Awake();
+            rb2D = GetComponent<Rigidbody2D>();
         }
 
-        public void Attack()
+        protected void Update()
         {
-            CircleAttackComponent component = PoolGameObjectManager.Instance.Get<CircleAttackComponent>();
-            component.Attack(new CircleAttackInfo
-            {
-                center = simplePlanet.transform,
-                radius = simplePlanet.selfRadius * 1.1f,
-                angelSpeed = 360,
-                startAngel = 0,
-                targetAngel = 360,
-                damage = 1
-            });
+            Vector2 move = InputManager.Instance.move * forceRate;
+            move.y -= gravity;
+            Vector2 velocity = rb2D.velocity;
+            velocity += move;
+            rb2D.velocity = velocity;
+            rb2D.velocity = Vector2.ClampMagnitude(velocity, maxSpeed);
         }
     }
 }

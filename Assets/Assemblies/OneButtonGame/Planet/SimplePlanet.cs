@@ -7,5 +7,8 @@ namespace OneButtonGame
 {
     public class SimplePlanet : PlanetComponent
     {
+        public void Attack()
+        {
+        }
     }
 }

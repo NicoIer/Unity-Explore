@@ -42,6 +42,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - aot_dll
+  - m_GUID: f040012d775f4514912c1a880c86c6b1
+    m_Address: AOTDll/Unity.InputSystem.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:
