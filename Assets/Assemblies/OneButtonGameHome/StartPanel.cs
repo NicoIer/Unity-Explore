@@ -4,23 +4,35 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace OneButtonGame
 {
+    [Serializable]
+    public struct SceneButtonPair
+    {
+        public Button button;
+        public AssetReference sceneRef;
+    }
+
     public class StartPanel : MonoBehaviour
     {
-        public AssetReference gameScene;
-        public Button startButton;
+        public List<SceneButtonPair> sceneButtonPairs;
         private void Start()
         {
-            startButton.onClick.AddListener(OnStartButtonClick);
+            foreach (var sceneButtonPair in sceneButtonPairs)
+            {
+                sceneButtonPair.button.onClick.AddListener(() =>
+                {
+                    OnStartButtonClick(sceneButtonPair.sceneRef);
+                });
+            }
         }
 
-        private async void OnStartButtonClick()
+        private void OnStartButtonClick(AssetReference assetRef)
         {
-            SceneInstance sceneInstance = Addressables.LoadSceneAsync(gameScene).WaitForCompletion();
-            await sceneInstance.ActivateAsync();
+            Addressables.LoadSceneAsync(assetRef).WaitForCompletion();
         }
     }
 }

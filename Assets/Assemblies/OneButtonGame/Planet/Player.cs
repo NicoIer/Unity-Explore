@@ -11,8 +11,7 @@ namespace OneButtonGame
 
         public void Attack()
         {
-            CircleAttackComponent component = ObjectPoolManager.Instance.Get<CircleAttackComponent>();
-            component.transform.localScale = simplePlanet.transform.localScale * 0.6f;
+            CircleAttackComponent component = PoolGameObjectManager.Instance.Get<CircleAttackComponent>();
             component.Attack(new CircleAttackInfo
             {
                 center = simplePlanet.transform,

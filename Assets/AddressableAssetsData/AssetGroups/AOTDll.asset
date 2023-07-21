@@ -37,6 +37,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - aot_dll
+  - m_GUID: 9911c1178cdd4ea5962831db715d228e
+    m_Address: AOTDll/UniTask.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:

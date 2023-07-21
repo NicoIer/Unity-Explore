@@ -25,6 +25,10 @@ MonoBehaviour:
     m_Address: Scenes/GamePlay
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: c3f4e06ae38fdea4d8114ccc504bf0ec
+    m_Address: Scenes/Rain
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:

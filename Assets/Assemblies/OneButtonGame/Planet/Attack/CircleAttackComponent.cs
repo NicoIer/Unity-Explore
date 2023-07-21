@@ -2,11 +2,27 @@ using UnityEngine;
 
 namespace OneButtonGame
 {
-    public class CircleAttackComponent : MonoBehaviour
+    public class CircleAttackComponent : MonoBehaviour, IPoolGameObject
     {
         private bool _isAttack;
         public CircleAttackInfo attackInfo;
         public float currentAngel;
+        PoolObjectState IPoolObject.state { get; set; }
+
+        public void OnSpawn()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public void OnRecycle()
+        {
+            gameObject.SetActive(false);
+            _isAttack = false;
+            transform.position = PositionConst.HidePosition;
+            transform.SetParent(null);
+        }
+
+        public GameObject GetGameObject() => gameObject;
 
         /// <summary>
         /// 围绕center旋转，半径为radius，角度为angle，速度为speed，伤害为damage
@@ -16,6 +32,7 @@ namespace OneButtonGame
             _isAttack = true;
             this.attackInfo = attackInfo;
             this.currentAngel = attackInfo.startAngel;
+            transform.localScale = attackInfo.center.localScale * 0.6f;
             transform.SetParent(this.attackInfo.center);
         }
 
@@ -34,14 +51,8 @@ namespace OneButtonGame
             if (currentAngel >= attackInfo.targetAngel)
             {
                 _isAttack = false;
-                ObjectPoolManager.Instance.Return<CircleAttackComponent>(this);
+                PoolGameObjectManager.Instance.Return(this);
             }
-        }
-
-        private void OnDisable()
-        {
-            _isAttack = false;
-            transform.position = PositionConst.HidePosition;
         }
     }
 }
