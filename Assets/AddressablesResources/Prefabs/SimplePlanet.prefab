@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 6120239352321160036}
   - component: {fileID: 6120239352321160037}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: SimplePlanet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,12 +177,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2171aec8468f41f5a683e5103945d215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.16
-  rotateRadius: 0.77
-  currentAngel: 0
-  angelSpeed: 240
-  isUsing: 0
-  timer: 0
+  orbitTarget: {fileID: 0}
+  currentSelfAngel: 0
+  selfRadius: 0.29
+  rotateSpeed: 60
+  currentOrbitAngel: -7.6138577
+  orbitRadius: 1.38
+  orbitSpeed: 60
 --- !u!212 &6120239352321160037
 SpriteRenderer:
   m_ObjectHideFlags: 0

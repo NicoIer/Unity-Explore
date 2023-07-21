@@ -16,11 +16,6 @@ namespace Nico
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Return<T>(T obj) where T : IPoolObject, new() => ObjectPool<T>.Return(obj);
         
-        protected override void Awake()
-        {
-            base.Awake();
-            _pool.Clear();
-        }
 
         public void Register(GameObject prefab, string prefabName = null, OnSpawnDelegate onSpawn = null,
             OnRecycleDelegate onRecycle = null)

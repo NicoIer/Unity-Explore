@@ -22,7 +22,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: a746c0dc5da505f46a9962851f3e0a5d
-    m_Address: Prefabs/Weapon
+    m_Address: Prefabs/SimplePlanet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 105a13064ba09394bb5abe4577f865a0
+    m_Address: Prefabs/CircleAttackComponent
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

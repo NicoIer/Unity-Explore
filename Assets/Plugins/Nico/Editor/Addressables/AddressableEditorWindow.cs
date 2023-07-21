@@ -237,6 +237,7 @@ namespace Nico.Edotor
             _hotUpdateButton.SetEnabled(false);
             var target = _hotUpdateTargetSelect.value;
             BuildTarget buildTarget = (BuildTarget)System.Enum.Parse(typeof(BuildTarget), target);
+            Debug.Log($"target:{target},buildTarget:{buildTarget}");
             //通知HybirdCLR编译热更程序集
             CompileDllCommand.CompileDll(buildTarget);
             //

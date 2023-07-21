@@ -32,6 +32,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - aot_dll
+  - m_GUID: 62ece189af4b4fba9ca0310b1e0aa247
+    m_Address: AOTDll/UnityEngine.CoreModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:

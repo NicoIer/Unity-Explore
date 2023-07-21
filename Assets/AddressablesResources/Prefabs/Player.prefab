@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6339087615420465426}
+  - {fileID: 222791680393443976}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -98,16 +98,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e5bea942064776bcc2552040239e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.53
+  orbitTarget: {fileID: 0}
+  currentSelfAngel: 0
+  selfRadius: 0.54
+  rotateSpeed: 0
+  currentOrbitAngel: 0
   orbitRadius: 0.77
-  weapon: {fileID: 6339087615420465421}
---- !u!1001 &222791679345635945
+  orbitSpeed: 0
+  simplePlanet: {fileID: 222791680393443991}
+  attackInfo:
+    center: {fileID: 0}
+    radius: 0
+    startAngel: 0
+    targetAngel: 0
+    angelSpeed: 0
+    damage: 0
+  attackComponent: {fileID: 0}
+--- !u!1001 &6339087616536431091
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 6339087616194430464}
     m_Modifications:
+    - target: {fileID: 6120239352321160036, guid: a746c0dc5da505f46a9962851f3e0a5d, type: 3}
+      propertyPath: orbitTarget
+      value: 
+      objectReference: {fileID: 6339087616194430467}
     - target: {fileID: 6120239352321160058, guid: a746c0dc5da505f46a9962851f3e0a5d, type: 3}
       propertyPath: m_Name
       value: Weapon
@@ -118,11 +135,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6120239352321160059, guid: a746c0dc5da505f46a9962851f3e0a5d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.77
+      value: 1.3678333
       objectReference: {fileID: 0}
     - target: {fileID: 6120239352321160059, guid: a746c0dc5da505f46a9962851f3e0a5d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.18284464
       objectReference: {fileID: 0}
     - target: {fileID: 6120239352321160059, guid: a746c0dc5da505f46a9962851f3e0a5d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -134,15 +151,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6120239352321160059, guid: a746c0dc5da505f46a9962851f3e0a5d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6120239352321160059, guid: a746c0dc5da505f46a9962851f3e0a5d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6120239352321160059, guid: a746c0dc5da505f46a9962851f3e0a5d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6120239352321160059, guid: a746c0dc5da505f46a9962851f3e0a5d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -158,10 +175,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a746c0dc5da505f46a9962851f3e0a5d, type: 3}
---- !u!114 &6339087615420465421 stripped
+--- !u!4 &222791680393443976 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6120239352321160059, guid: a746c0dc5da505f46a9962851f3e0a5d, type: 3}
+  m_PrefabInstance: {fileID: 6339087616536431091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &222791680393443991 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6120239352321160036, guid: a746c0dc5da505f46a9962851f3e0a5d, type: 3}
-  m_PrefabInstance: {fileID: 222791679345635945}
+  m_PrefabInstance: {fileID: 6339087616536431091}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -169,8 +191,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2171aec8468f41f5a683e5103945d215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &6339087615420465426 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6120239352321160059, guid: a746c0dc5da505f46a9962851f3e0a5d, type: 3}
-  m_PrefabInstance: {fileID: 222791679345635945}
-  m_PrefabAsset: {fileID: 0}
