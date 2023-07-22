@@ -21,18 +21,6 @@ MonoBehaviour:
     m_Address: Scenes/GameMain
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: fbc6c692d85a0ce4596790b7e006b6ee
-    m_Address: Scenes/Game01
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b09d09fa48abaa64a88e928e8fbf35aa
-    m_Address: Scenes/Game02
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: c857ac7dc2157b9489c1588040096b91
-    m_Address: Scenes/Kingdom
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: cb25a0c50774b044db5d475f63129930
     m_Address: Scenes/Pokemon
     m_ReadOnly: 0

@@ -17,20 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: e09396ec93f844649b95b1b717c3a964
   m_SerializeEntries:
-  - m_GUID: ef725d56e9aaecf438d5ba10703d074a
-    m_Address: UIPrefab/OneButton
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: b01792b2e19322b459ffb73ce5e310d4
     m_Address: UIPrefab/EscButton
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 55f41eba9d198454ca6ae1b810f4ad54
     m_Address: UIPrefab/UICanvas
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 022898768fd49b142be8a2154806f389
-    m_Address: UIPrefab/KingdomInputPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
