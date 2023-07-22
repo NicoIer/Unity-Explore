@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 22259e64c585aeb41aae7ead9e6e287d
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 8404be70184654265930450def6a9037, type: 3}
+  generateWrapperCode: 1
+  wrapperCodePath: Assets/Assemblies/Kingdom/CodeGen/KingdomInputAction.cs
+  wrapperClassName: KingdomInputAction
+  wrapperCodeNamespace: Kingdom

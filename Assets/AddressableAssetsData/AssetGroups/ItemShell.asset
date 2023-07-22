@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: ItemShell
+  m_EditorClassIdentifier: 
+  m_GroupName: ItemShell
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 2b8de69ca8e1b3e47a1ddb4da2bdbc08
+  m_SerializeEntries:
+  - m_GUID: f6ecc4501699fd84b819dadf44511fe7
+    m_Address: ItemShell/icon_poiton_purple
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d14f911f6fd3de243a19dc4cc74b9e4e
+    m_Address: ItemShell/Item
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 584789a131d8ca94aa2d8e22bb21bfbe
+    m_Address: ItemShell/ItemSheel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 839fbf616868a504b8e5aea5eff4128f, type: 2}

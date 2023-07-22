@@ -11,6 +11,7 @@ namespace OneButtonGame
 
         private void Start()
         {
+            Application.targetFrameRate = 60;
             Debug.Log("GlobalManager Start");
         }
 

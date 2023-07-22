@@ -6,7 +6,7 @@ using UnityEngine.AddressableAssets;
 
 namespace OneButtonGame
 {
-    public class InputManager : SceneSingleton<InputManager>
+    public class Game01InputManager : SceneSingleton<Game01InputManager>
     {
         private OneButtonGameInputAction _inputAction;
         [SerializeField] private OneButton right;

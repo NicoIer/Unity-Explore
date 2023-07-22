@@ -10,27 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Prefabs
+  m_Name: KingdomPrefab
   m_EditorClassIdentifier: 
-  m_GroupName: Prefabs
+  m_GroupName: KingdomPrefab
   m_Data:
     m_SerializedData: []
-  m_GUID: e8c6d4398027e7c40aa21eed123a4ac2
+  m_GUID: 8bd55dacd52f33043a70cf9ed42c7c5f
   m_SerializeEntries:
-  - m_GUID: 516d074824fb6c148a5e17feb1ae1e75
-    m_Address: Prefabs/Player
+  - m_GUID: b3c255e99f69e3c4c9a6215c1c59ae65
+    m_Address: KingdomPrefab/King
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: a746c0dc5da505f46a9962851f3e0a5d
-    m_Address: Prefabs/SimplePlanet
+  - m_GUID: 50be4ff2deb4f32489a8b16c2e751fb7
+    m_Address: KingdomPrefab/Campsite Variant
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 105a13064ba09394bb5abe4577f865a0
-    m_Address: Prefabs/CircleAttackComponent
+  - m_GUID: 8becd2bcc9e83574780bb719c051901b
+    m_Address: KingdomPrefab/KingDomObj
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ac2c14424a802704784745fdcd5486a9
+    m_Address: KingdomPrefab/Melee Variant
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 9c22a8ffc346bda48a78f3c975e5c08d, type: 2}
+    - {fileID: 11400000, guid: ac98565fbc8f19b42b432a5b5f2d7131, type: 2}

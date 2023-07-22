@@ -32,11 +32,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - aot_dll
-  - m_GUID: 62ece189af4b4fba9ca0310b1e0aa247
-    m_Address: AOTDll/UnityEngine.CoreModule.dll
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - aot_dll
   - m_GUID: 9911c1178cdd4ea5962831db715d228e
     m_Address: AOTDll/UniTask.dll
     m_ReadOnly: 0
@@ -44,6 +39,11 @@ MonoBehaviour:
     - aot_dll
   - m_GUID: f040012d775f4514912c1a880c86c6b1
     m_Address: AOTDll/Unity.InputSystem.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
+  - m_GUID: 3e9b85195ba04c1396807dca1619dff0
+    m_Address: AOTDll/UnityEngine.CoreModule.dll
     m_ReadOnly: 0
     m_SerializedLabels:
     - aot_dll

@@ -19,7 +19,7 @@ namespace OneButtonGame
 
         protected void Update()
         {
-            Vector2 move = InputManager.Instance.move * forceRate;
+            Vector2 move = Game01InputManager.Instance.move * forceRate;
             move.y -= gravity;
             Vector2 velocity = rb2D.velocity;
             velocity += move;
