@@ -30,7 +30,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 022898768fd49b142be8a2154806f389
-    m_Address: UIPrefab/InputPanel
+    m_Address: UIPrefab/KingdomInputPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

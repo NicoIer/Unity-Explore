@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 4248821740768355086}
   - component: {fileID: 4248821740768355087}
   m_Layer: 5
-  m_Name: InputPanel
+  m_Name: KingdomInputPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
