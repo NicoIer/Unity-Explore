@@ -171,8 +171,12 @@ namespace Nico.Edotor
             string folderPath = AssetDatabase.GUIDToAssetPath(folderGuid);
             //获取文件夹的名字
             string folderName = folderPath.Substring(folderPath.LastIndexOf('/') + 1);
-            //判断组存在不存在
-            // 为这个文件夹创建组
+            //搜集这个文件夹下的资源
+            var paths = SearchAssetsByFolder(folderPath, true);
+            //空文件夹 跳过
+            if(paths.Count == 0) return;
+            
+            //若这个文件夹不存在组 则创建组
             if (!config.groups.TryGetValue(folderName, out var group))
             {
                 group = config.settings.CreateGroup(folderName, false, false, false, null);
@@ -181,8 +185,7 @@ namespace Nico.Edotor
 
             bool hasLabel = config.folderToLabel.TryGetValue(folderName, out var label);
 
-            //遍历资源 添加到组中
-            var paths = SearchAssetsByFolder(folderPath, true);
+
             foreach (var assetPath in paths)
             {
                 // Debug.Log(assetPath);

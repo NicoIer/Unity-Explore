@@ -10,27 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Scenes
+  m_Name: UIPrefab
   m_EditorClassIdentifier: 
-  m_GroupName: Scenes
+  m_GroupName: UIPrefab
   m_Data:
     m_SerializedData: []
-  m_GUID: 9d828fd03f6e5344c9cefc2955749ddb
+  m_GUID: e09396ec93f844649b95b1b717c3a964
   m_SerializeEntries:
-  - m_GUID: 2fb5ad7ad0ca8f4478652951dd2fa3e1
-    m_Address: Scenes/GameMain
+  - m_GUID: ef725d56e9aaecf438d5ba10703d074a
+    m_Address: UIPrefab/OneButton
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: fbc6c692d85a0ce4596790b7e006b6ee
-    m_Address: Scenes/Game01
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b09d09fa48abaa64a88e928e8fbf35aa
-    m_Address: Scenes/Game02
+  - m_GUID: b01792b2e19322b459ffb73ce5e310d4
+    m_Address: UIPrefab/EscButton
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 92a1406d1d6e49d42a7b1d3b406a4881, type: 2}
+    - {fileID: 11400000, guid: 910ef3435ea62014ba3bca5bd71b4fcd, type: 2}
