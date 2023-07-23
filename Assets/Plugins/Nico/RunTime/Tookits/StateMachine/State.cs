@@ -2,11 +2,16 @@
 {
     public abstract class State<T>
     {
-        protected T owner;
+        public T owner { get; private set; }
+        protected StateMachine<T> stateMachine;
 
         public State(T owner)
         {
             this.owner = owner;
+        }
+        internal void SetStateMachine(StateMachine<T> stateMachine)
+        {
+            this.stateMachine = stateMachine;
         }
 
         public virtual void OnEnter()

@@ -4,15 +4,16 @@ using UnityEngine;
 
 namespace Nico
 {
-    public class StateMachine<TOwner>// where TOwner : MonoBehaviour
+    [Serializable]
+    public class StateMachine<TOwner> // where TOwner : MonoBehaviour
     {
-        private TOwner _owner;
-        public State<TOwner> currentState { get; protected set; }
+        public TOwner Owner { get; private set; }
+        [field: SerializeReference] public State<TOwner> currentState { get; protected set; }
         private Dictionary<Type, State<TOwner>> _stateDic = new Dictionary<Type, State<TOwner>>();
 
         public StateMachine(TOwner owner)
         {
-            _owner = owner;
+            Owner = owner;
         }
 
         public bool Get<TState>(out TState state) where TState : State<TOwner>
@@ -33,7 +34,7 @@ namespace Nico
             currentState.OnEnter();
         }
 
-        public void Change<T>() where T : State<TOwner>
+        public virtual void Change<T>() where T : State<TOwner>
         {
             currentState.OnExit();
             currentState = _stateDic[typeof(T)];
@@ -49,9 +50,10 @@ namespace Nico
             }
 
             _stateDic.Add(typeof(T), state);
+            state.SetStateMachine(this);
         }
 
-        public void OnUpdate()
+        public virtual void OnUpdate()
         {
             currentState.OnUpdate();
         }
