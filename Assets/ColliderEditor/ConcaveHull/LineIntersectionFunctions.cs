@@ -3,15 +3,15 @@ using System;
 
 namespace ConcaveHull
 {
-    /* All this class comes from this extremely useful library:
-     * https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
-     */
-
+    /// <summary>
+    /// 线段相交算法, 用于计算凹多边形
+    /// 参考自 https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
+    /// </summary>
     public static class LineIntersectionFunctions
     {
-        // The main function that returns true if line segment 'p1q1' 
-        // and 'p2q2' intersect. 
-        public static Boolean DoIntersect(Node p1, Node q1, Node p2, Node q2) {
+        // 计算p1q1和p2q2两条线段是否相交
+        public static bool DoIntersect(Node p1, Node q1, Node p2, Node q2)
+        {
             // Find the four orientations needed for general and 
             // special cases 
             int o1 = Orientation(p1, q1, p2);
@@ -41,7 +41,8 @@ namespace ConcaveHull
 
         // Given three colinear points p, q, r, the function checks if 
         // point q lies on line segment 'pr' 
-        private static bool OnSegment(Node p, Node q, Node r) {
+        private static bool OnSegment(Node p, Node q, Node r)
+        {
             if (q.x <= Math.Max(p.x, r.x) && q.x >= Math.Min(p.x, r.x) &&
                 q.y <= Math.Max(p.y, r.y) && q.y >= Math.Min(p.y, r.y))
                 return true;
@@ -54,15 +55,16 @@ namespace ConcaveHull
         // 0 --> p, q and r are colinear 
         // 1 --> Clockwise 
         // 2 --> Counterclockwise 
-        private static int Orientation(Node p, Node q, Node r) {
-            // See https://www.geeksforgeeks.org/orientation-3-ordered-points/ 
-            // for details of below formula. 
+        // See https://www.geeksforgeeks.org/orientation-3-ordered-points/ 
+        private static int Orientation(Node p, Node q, Node r)
+        {
+            
             double val = (q.y - p.y) * (r.x - q.x) -
-                    (q.x - p.x) * (r.y - q.y);
+                         (q.x - p.x) * (r.y - q.y);
 
             if (val == 0) return 0; // colinear 
 
-            return (val > 0) ? 1 : 2; // clock or counterclock wise 
+            return val > 0 ? 1 : 2; // clock or counterclock wise 
         }
     }
 }

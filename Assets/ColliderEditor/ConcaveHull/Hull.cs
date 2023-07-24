@@ -5,24 +5,23 @@ namespace ConcaveHull
 {
     public class Hull
     {
-        public readonly List<Node> unUsed;
+        public readonly HashSet<Node> unUsed;
         public readonly List<Line> convexLines;
         public List<Line> concaveLines;
 
 
         public Hull(List<Node> nodes, double concavity, int scaleFactor)
         {
-            unUsed = new List<Node>();
+            unUsed = new HashSet<Node>(nodes);
             convexLines = new List<Line>();
             concaveLines = new List<Line>();
 
-            unUsed.AddRange(nodes);
 
             convexLines.AddRange(MakeConvexHull(nodes));
             foreach (Line line in convexLines)
             {
-                unUsed.RemoveAll(a => a == line.start);
-                unUsed.RemoveAll(a => a == line.end);
+                unUsed.Remove(line.start);
+                unUsed.Remove(line.end);
             }
 
             MakeConvexHull(nodes);
@@ -43,7 +42,7 @@ namespace ConcaveHull
             return exitLines;
         }
 
-        public List<Line> MakeConcaveHull(double concavity, int scaleFactor)
+        public void MakeConcaveHull(double concavity, int scaleFactor)
         {
             /* Run setConvHull before! 
              * Concavity is a value used to restrict the concave angles 
@@ -63,23 +62,19 @@ namespace ConcaveHull
                     List<Node> nearbyPoints = HullFunctions.GetNearbyPoints(line, unUsed, scaleFactor);
                     List<Line> dividedLine =
                         HullFunctions.GetDividedLine(line, nearbyPoints, concaveLines, concavity);
-                    if (dividedLine.Count > 0)
-                    {
-                        // Line divided!
-                        aLineWasDividedInTheIteration = true;
-                        unUsed.Remove(
-                            unUsed.Where(n => n == dividedLine[0].end)
-                                .FirstOrDefault()); // Middlepoint no longer free
-                        concaveLines.AddRange(dividedLine);
-                        concaveLines.RemoveAt(linePositionInHull); // Divided line no longer exists
-                    }
+                    if (dividedLine.Count <= 0) continue;
+                    
+                    // Line divided!
+                    aLineWasDividedInTheIteration = true;
+
+                    unUsed.Remove(dividedLine[0].end);
+
+                    concaveLines.AddRange(dividedLine);
+                    concaveLines.RemoveAt(linePositionInHull); // Divided line no longer exists
                 }
 
-                concaveLines = concaveLines.OrderByDescending(a => a.length)
-                    .ToList();
+                concaveLines = concaveLines.OrderByDescending(a => a.length).ToList();
             } while (aLineWasDividedInTheIteration);
-
-            return concaveLines;
         }
     }
 }
