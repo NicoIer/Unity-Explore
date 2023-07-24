@@ -21,8 +21,8 @@ namespace ConcaveHull
             convexLines.AddRange(MakeConvexHull(nodes));
             foreach (Line line in convexLines)
             {
-                unUsed.RemoveAll(a => a.id == line.start.id);
-                unUsed.RemoveAll(a => a.id == line.end.id);
+                unUsed.RemoveAll(a => a == line.start);
+                unUsed.RemoveAll(a => a == line.end);
             }
 
             MakeConvexHull(nodes);
@@ -68,7 +68,7 @@ namespace ConcaveHull
                         // Line divided!
                         aLineWasDividedInTheIteration = true;
                         unUsed.Remove(
-                            unUsed.Where(n => n.id == dividedLine[0].end.id)
+                            unUsed.Where(n => n == dividedLine[0].end)
                                 .FirstOrDefault()); // Middlepoint no longer free
                         concaveLines.AddRange(dividedLine);
                         concaveLines.RemoveAt(linePositionInHull); // Divided line no longer exists

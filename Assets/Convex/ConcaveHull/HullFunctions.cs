@@ -40,14 +40,14 @@ namespace ConcaveHull
             return dividedLine;
         }
 
-        public static bool LineCollidesWithHull(Line line, List<Line> concave_hull)
+        public static bool LineCollidesWithHull(Line line, List<Line> concaveHull)
         {
-            foreach (Line hullLine in concave_hull)
+            foreach (Line hullLine in concaveHull)
             {
                 // We don't want to check a collision with this point that forms the hull AND the line
-                if (line.start.id != hullLine.start.id && line.start.id != hullLine.end.id
-                                                             && line.end.id != hullLine.start.id &&
-                                                             line.end.id != hullLine.end.id)
+                if (line.start != hullLine.start && line.start != hullLine.end
+                                                             && line.end != hullLine.start &&
+                                                             line.end != hullLine.end)
                 {
                     // Avoid line interesections with the rest of the hull
                     if (LineIntersectionFunctions.DoIntersect(line.start, line.end, hullLine.start,
