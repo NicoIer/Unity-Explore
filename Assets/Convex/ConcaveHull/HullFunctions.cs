@@ -13,29 +13,32 @@ namespace ConcaveHull
             // returns two lines if a valid middlePoint is found
             // returns empty list if the line can't be divided
             List<Line> dividedLine = new List<Line>();
-            List<Node> okMiddlePoints = new List<Node>();
+            List<Tuple<Node, double>> pairs = new List<Tuple<Node, double>>();
+
             foreach (Node middlePoint in nearbyPoints)
             {
-                double _cos = GetCos(line.start, line.end, middlePoint);
-                if (_cos < concavity)
+                double cosValue = GetCos(line.start, line.end, middlePoint);
+
+                //跳过cos值大于凹度的点
+                if (!(cosValue < concavity)) continue;
+
+
+                Line newLineA = new Line(line.start, middlePoint);
+                Line newLineB = new Line(middlePoint, line.end);
+                if (!LineCollidesWithHull(newLineA, concave_hull) && !LineCollidesWithHull(newLineB, concave_hull))
                 {
-                    Line newLineA = new Line(line.start, middlePoint);
-                    Line newLineB = new Line(middlePoint, line.end);
-                    if (!LineCollidesWithHull(newLineA, concave_hull) && !LineCollidesWithHull(newLineB, concave_hull))
-                    {
-                        middlePoint.cos = _cos;
-                        okMiddlePoints.Add(middlePoint);
-                    }
+                    pairs.Add(new Tuple<Node, double>(middlePoint, cosValue));
                 }
             }
 
-            if (okMiddlePoints.Count > 0)
-            {
-                // We want the middlepoint to be the one with the widest angle (smallest cosine)
-                okMiddlePoints = okMiddlePoints.OrderBy(p => p.cos).ToList();
-                dividedLine.Add(new Line(line.start, okMiddlePoints[0]));
-                dividedLine.Add(new Line(okMiddlePoints[0], line.end));
-            }
+
+            if (pairs.Count <= 0) return dividedLine;
+            
+            
+            //希望中点的 cos 值最小
+            pairs = pairs.OrderBy(p => p.Item2).ToList();
+            dividedLine.Add(new Line(line.start, pairs[0].Item1));
+            dividedLine.Add(new Line(pairs[0].Item1, line.end));
 
             return dividedLine;
         }
@@ -46,8 +49,8 @@ namespace ConcaveHull
             {
                 // We don't want to check a collision with this point that forms the hull AND the line
                 if (line.start != hullLine.start && line.start != hullLine.end
-                                                             && line.end != hullLine.start &&
-                                                             line.end != hullLine.end)
+                                                 && line.end != hullLine.start &&
+                                                 line.end != hullLine.end)
                 {
                     // Avoid line interesections with the rest of the hull
                     if (LineIntersectionFunctions.DoIntersect(line.start, line.end, hullLine.start,
