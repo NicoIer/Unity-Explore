@@ -825,7 +825,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477139873}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -19.82, y: -1.94, z: 0}
+  m_LocalPosition: {x: -13.8, y: -1.94, z: 0}
   m_LocalScale: {x: 100, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1393,7 +1393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987785909}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 19.88, y: -3.91, z: 0}
+  m_LocalPosition: {x: 4.7, y: -3.91, z: 0}
   m_LocalScale: {x: 100, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1445,8 +1445,12 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1662528999, guid: 1efc9fb45dee5ab4397e6ee3cd775578, type: 3}
+      propertyPath: config.climeSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662528999, guid: 1efc9fb45dee5ab4397e6ee3cd775578, type: 3}
       propertyPath: config.slideSpeed
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1662528999, guid: 1efc9fb45dee5ab4397e6ee3cd775578, type: 3}
       propertyPath: config.wallJumpLerp

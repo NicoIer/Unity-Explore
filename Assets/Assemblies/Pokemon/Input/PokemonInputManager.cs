@@ -10,7 +10,7 @@ namespace Pokemon
 
         public Vector2 Movement => _inputAction.Player.Move.ReadValue<Vector2>();
         public bool JumpHold => _inputAction.Player.Jump.ReadValue<float>() > 0;
-        public bool Jump => _inputAction.Player.Jump.WasPerformedThisFrame();
+        public bool Jump => _inputAction.Player.Jump.WasPressedThisFrame();
 
         public float JumpHoldTime
         {
@@ -25,7 +25,7 @@ namespace Pokemon
             }
         } 
         private float _jumpStartTime;
-        public bool leftAttack => _inputAction.Player.LeftAttack.WasPerformedThisFrame();
+        public bool leftAttack => _inputAction.Player.LeftAttack.WasPressedThisFrame();
 
 
         protected override void Awake()

@@ -21,6 +21,7 @@ namespace Pokemon
         public float slideSpeed; // = 5f;
         public float wallJumpLerp; // = 0.5f;
         public float dashSpeed; //= 20f;
+        public float climeSpeed;
     }
 
     /// <summary>
@@ -61,11 +62,11 @@ namespace Pokemon
         public void BetterJump()
         {
             if (!config.enableBetterJumping) return;
-            if (rb.velocity.y < 0) //下落的时候 重力逐渐增加
+            if (rb.velocity.y < 0) //下落的时候 重力减少
             {
                 rb.velocity += Vector2.up * (Physics2D.gravity.y * (config.fallMultiplier - 1) * Time.deltaTime);
-            }//上升的时候 根据 jump按钮按的时长 给予补偿
-            else if (rb.velocity.y > 0 && !input.JumpHold) ;// && input.jumpHoldTime > config.jumpHoldThreshold)
+            } //上升的时候 
+            else if (rb.velocity.y > 0 && (!input.JumpHold || input.jumpHoldTime > config.jumpHoldThreshold))
             {
                 rb.velocity += Vector2.up * (Physics2D.gravity.y * (config.lowJumpMultiplier - 1) * Time.deltaTime);
             }
@@ -74,8 +75,7 @@ namespace Pokemon
         private void OnGUI()
         {
             GUI.Label(new Rect(0, 0, 100, 100), $"jumpHoldTime:{input.jumpHoldTime}");
-        }        
+        }
 #endif
-
     }
 }

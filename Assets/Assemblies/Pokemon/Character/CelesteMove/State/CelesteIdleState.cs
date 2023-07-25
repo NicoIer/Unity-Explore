@@ -9,7 +9,7 @@ namespace Pokemon
         {
         }
 
-        public override void OnUpdate()
+        public override void OnEnter()
         {
             owner.rb.velocity = Vector2.zero;
         }

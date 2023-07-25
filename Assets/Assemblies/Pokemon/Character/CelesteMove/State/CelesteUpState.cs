@@ -6,7 +6,7 @@ namespace Pokemon
     /// <summary>
     /// 离开地面 向上移动状态
     /// </summary>
-    public class CelesteUpState: State<CelesteMove>
+    public class CelesteUpState : State<CelesteMove>
     {
         public CelesteUpState(CelesteMove owner) : base(owner)
         {
@@ -14,7 +14,8 @@ namespace Pokemon
 
         public override void OnUpdate()
         {
-            owner.rb.velocity = new Vector2(owner.input.move.x* owner.config.speed, owner.rb.velocity.y);
+            // Debug.Log($"Upping,{owner.input.move.x}");
+            owner.rb.velocity = new Vector2(owner.input.move.x * owner.config.speed, owner.rb.velocity.y);
         }
     }
 }

@@ -5,21 +5,23 @@ namespace Pokemon
 {
     public class CelesteMoveStateMachine : StateMachine<CelesteMove>
     {
+        const double TOLERANCE = 0.01;
+
         public CelesteMoveStateMachine(CelesteMove owner) : base(owner)
         {
             Add(new CelesteIdleState(owner));
             Add(new CelesteWalkState(owner));
-            
+
             Add(new CelesteJumpState(owner));
             Add(new CelesteDoubleJumpState(owner));
             Add(new CelesteWallJumpState(owner));
-            
+
             Add(new CelesteUpState(owner));
             Add(new CelesteDownState(owner));
-            
+
             Add(new CelesteWallGrabState(owner));
             Add(new CelesteWallSlideState(owner));
-            
+
             Add(new CelesteDashState(owner));
         }
 
@@ -27,16 +29,26 @@ namespace Pokemon
         {
             //做一些通用的事情 判断状态的切换 让 各个状态只需要做自己该做的事情 无需关心状态切换
 
+            //在地上 且 按下了移动键 且 没有按下跳跃键 且当前<=0
+            if (Owner.celesteCollider.isGrounded && Owner.input.hasXMovement && !Owner.input.jump &&
+                Owner.rb.velocity.y <= TOLERANCE)
+            {
+                Change<CelesteWalkState>();
+                base.OnUpdate();
+                return;
+            }
+
             //可以冲刺 按下了 冲刺键
-            if (Owner.input.dash && Owner.canDash)
+            if (Owner.input.dash && Owner.canDash) // todo
             {
                 Change<CelesteDashState>();
                 base.OnUpdate();
                 return;
             }
-            
+
             //在地上 且 没有按下移动键 且 没有按下跳跃键 且 没有向上的速度
-            if (Owner.celesteCollider.isGrounded && !Owner.input.hasXMovement && !Owner.input.jump && Owner.rb.velocity.y <= 0)
+            if (Owner.celesteCollider.isGrounded && !Owner.input.hasXMovement && !Owner.input.jump &&
+                Owner.rb.velocity.y <= TOLERANCE)
             {
                 // Debug.Log("idle");
                 Change<CelesteIdleState>();
@@ -52,14 +64,6 @@ namespace Pokemon
                 return;
             }
 
-            //在地上 且 按下了移动键 且 没有按下跳跃键
-            if (Owner.celesteCollider.isGrounded && Owner.input.hasXMovement && !Owner.input.jump)
-            {
-                Change<CelesteWalkState>();
-                base.OnUpdate();
-                return;
-            }
-
             //在空中 且 可以跳 且 没有按下跳跃键 且 跳跃次数=0 
             //这种情况出现在: 1从悬崖掉下去
             if (Owner.inAir && Owner.canJump && Owner.input.jump && Owner.jumpCount == 0)
@@ -69,6 +73,7 @@ namespace Pokemon
                 return;
             }
 
+
             //在空中 且 可以跳 且 按下了跳跃键 且 跳跃次数=1
             if (Owner.inAir && Owner.canJump && Owner.input.jump && Owner.jumpCount == 1)
             {
@@ -77,10 +82,26 @@ namespace Pokemon
                 return;
             }
 
-            //在空中 且 当前在上升 且 没有按下跳跃键
-            if (Owner.inAir && Owner.rb.velocity.y > 0 && !Owner.input.jump)
+            //不在地面上 且 向上的速度>0 且 没有按下跳跃键
+            if (!Owner.celesteCollider.isGrounded && Owner.rb.velocity.y > TOLERANCE && !Owner.input.jump)
             {
                 Change<CelesteUpState>();
+                base.OnUpdate();
+                return;
+            }
+
+            // 不在地面 且 靠墙 且 
+            if (!Owner.celesteCollider.isGrounded && Owner.celesteCollider.isTouchingWall)
+            {
+            }
+
+
+            //不在地面 靠近墙壁 且 按下了跳跃键 且 可以跳跃
+            if (!Owner.celesteCollider.isGrounded && Owner.celesteCollider.isTouchingWall && Owner.input.jump &&
+                Owner.canJump)
+            {
+                Debug.LogWarning("wall jump not implemented");
+                Change<CelesteWallJumpState>();
                 base.OnUpdate();
                 return;
             }
@@ -102,20 +123,11 @@ namespace Pokemon
                 return;
             }
 
-            //不在地面 靠近墙壁 且 没有按下跳跃键 且 没有按下 抓墙键
+            //不在地面 靠近墙壁 且 没有按下跳跃键 且 没有按下 抓墙键 且当前没有向上的速度
             if (!Owner.celesteCollider.isGrounded && Owner.celesteCollider.isTouchingWall && !Owner.input.jump &&
-                !Owner.input.wallGrab)
+                !Owner.input.wallGrab && Owner.rb.velocity.y <= 0)
             {
                 Change<CelesteWallSlideState>();
-                base.OnUpdate();
-                return;
-            }
-
-            //不在地面 靠近墙壁 且 按下了跳跃键 且 可以跳跃
-            if (!Owner.celesteCollider.isGrounded && Owner.celesteCollider.isTouchingWall && Owner.input.jump &&
-                Owner.canJump)
-            {
-                Change<CelesteWallJumpState>();
                 base.OnUpdate();
                 return;
             }
