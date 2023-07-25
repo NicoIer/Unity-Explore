@@ -41,16 +41,7 @@ namespace Pokemon
                 {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
-                    ""id"": ""fa9df665-4181-475b-839e-4963ddaa7b32"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""LeftAttack"",
-                    ""type"": ""Button"",
-                    ""id"": ""b016df1c-3050-4ef9-b789-f3f093bb75e8"",
+                    ""id"": ""94dda0d4-1bf5-406e-9f82-206258d85787"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -58,28 +49,6 @@ namespace Pokemon
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""77ecb480-565b-4ef0-8bb6-954bb748b35c"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Computer"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c567df19-40f1-401c-bb68-4ecea558f965"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Computer"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""2D Vector"",
                     ""id"": ""33c58e72-c3b5-4b7f-bb9b-dbdb3fdb5a29"",
@@ -191,90 +160,24 @@ namespace Pokemon
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""1452ec99-9149-41fd-973e-b0feb36e823d"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""03d8cadf-640f-4a8d-af06-157da84080bb"",
-                    ""path"": ""<Touchscreen>/delta/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mobile"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""67e37ab2-618b-4473-9545-5ee78ab56f37"",
-                    ""path"": ""<Touchscreen>/delta/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mobile"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""fdb1a47d-f64d-4254-8433-2c291abcabbf"",
-                    ""path"": ""<Touchscreen>/delta/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mobile"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""1555707f-6379-4b7d-acfd-ff781167454f"",
-                    ""path"": ""<Touchscreen>/delta/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mobile"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
-                    ""id"": ""23db0659-7ca5-445c-8cf1-d658d2df254b"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""d97cc432-6de1-493f-a4e9-bdfc01b23d8d"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Computer"",
-                    ""action"": ""LeftAttack"",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6acafc84-f2c3-4e0a-a253-5e105b177b68"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""id"": ""a1aa9e13-63eb-4c97-ba8c-b7ac79d345c0"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Computer"",
-                    ""action"": ""LeftAttack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6b9053bc-eec8-4f6f-b7cd-57b0e40a5da8"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Computer"",
-                    ""action"": ""LeftAttack"",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -325,7 +228,6 @@ namespace Pokemon
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-            m_Player_LeftAttack = m_Player.FindAction("LeftAttack", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -387,14 +289,12 @@ namespace Pokemon
         private IPlayerActions m_PlayerActionsCallbackInterface;
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Jump;
-        private readonly InputAction m_Player_LeftAttack;
         public struct PlayerActions
         {
             private @PokemonInputAction m_Wrapper;
             public PlayerActions(@PokemonInputAction wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
-            public InputAction @LeftAttack => m_Wrapper.m_Player_LeftAttack;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -410,9 +310,6 @@ namespace Pokemon
                     @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                    @LeftAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftAttack;
-                    @LeftAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftAttack;
-                    @LeftAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftAttack;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -423,9 +320,6 @@ namespace Pokemon
                     @Jump.started += instance.OnJump;
                     @Jump.performed += instance.OnJump;
                     @Jump.canceled += instance.OnJump;
-                    @LeftAttack.started += instance.OnLeftAttack;
-                    @LeftAttack.performed += instance.OnLeftAttack;
-                    @LeftAttack.canceled += instance.OnLeftAttack;
                 }
             }
         }
@@ -452,7 +346,6 @@ namespace Pokemon
         {
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
-            void OnLeftAttack(InputAction.CallbackContext context);
         }
     }
 }

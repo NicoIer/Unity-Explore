@@ -7,21 +7,10 @@ using UnityEngine.Serialization;
 
 namespace Pokemon
 {
-    [Serializable]
-    public struct CelesteMoveConfig
+    public enum CelesteMoveFacing
     {
-        public bool enableBetterJumping; //= true
-        public float fallMultiplier; // = 2.5f;
-        public float lowJumpMultiplier; // = 2f;
-        public float jumpHoldThreshold; // = 0.2f;
-
-
-        public float speed; // = 7f;
-        public float jumpForce; //= 12f;
-        public float slideSpeed; // = 5f;
-        public float wallJumpLerp; // = 0.5f;
-        public float dashSpeed; //= 20f;
-        public float climeSpeed;
+        Right,
+        Left
     }
 
     /// <summary>
@@ -36,9 +25,9 @@ namespace Pokemon
         public Rigidbody2D rb { get; private set; }
         public CelesteMoveInput input { get; private set; }
         public CelesteMoveConfig config;
-        public bool canJump;
-        public int jumpCount;
-        public bool canDash;
+        public bool canJump = true;
+        public bool canDash = true;
+        public CelesteMoveFacing facing = CelesteMoveFacing.Right;
         public bool inAir => !celesteCollider.isGrounded && !celesteCollider.isTouchingWall;
 
         [field: SerializeReference] public CelesteMoveStateMachine stateMachine { get; private set; }
@@ -51,12 +40,45 @@ namespace Pokemon
 
             stateMachine = new CelesteMoveStateMachine(this);
             stateMachine.Start<CelesteIdleState>();
+
+            rb.gravityScale = config.gravityScale;
         }
 
         private void Update()
         {
+            //更新facing
+            UpdateFacing();
+
             stateMachine.OnUpdate();
             BetterJump();
+        }
+
+        public void UpdateFacing()
+        {
+            if (input.move.x > 0)
+            {
+                facing = CelesteMoveFacing.Right;
+            }
+
+            if (input.move.x < 0)
+            {
+                facing = CelesteMoveFacing.Left;
+            }
+
+            return;
+
+
+            // if (celesteCollider.isTouchingWallLeft)
+            // {
+            //     facing = CelesteMoveFacing.Right;
+            //     return;
+            // }
+            //
+            // if (celesteCollider.isTouchingWallRight)
+            // {
+            //     facing = CelesteMoveFacing.Left;
+            //     return;
+            // }
         }
 
         public void BetterJump()
@@ -71,6 +93,38 @@ namespace Pokemon
                 rb.velocity += Vector2.up * (Physics2D.gravity.y * (config.lowJumpMultiplier - 1) * Time.deltaTime);
             }
         }
+
+        public bool HasInverseXVelocity()
+        {
+            if (facing == CelesteMoveFacing.Right && rb.velocity.x < 0)
+            {
+                return true;
+            }
+
+            if (facing == CelesteMoveFacing.Left && rb.velocity.x > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool HasInverseXInput()
+        {
+            float x = input.move.x;
+            if (facing == CelesteMoveFacing.Right && x < 0)
+            {
+                return true;
+            }
+
+            if (facing == CelesteMoveFacing.Left && x > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
 #if UNITY_EDITOR
         private void OnGUI()
         {

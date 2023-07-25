@@ -15,7 +15,19 @@ namespace Pokemon
         public override void OnUpdate()
         {
             // Debug.Log($"Upping,{owner.input.move.x}");
-            owner.rb.velocity = new Vector2(owner.input.move.x * owner.config.speed, owner.rb.velocity.y);
+
+            Vector2 move = owner.input.move;
+            if (owner.celesteCollider.isTouchingWallLeft && move.x < 0)
+            {
+                move.x = 0;
+            }
+            else if (owner.celesteCollider.isTouchingWallRight && move.x > 0)
+            {
+                move.x = 0;
+            }
+
+
+            owner.rb.velocity = new Vector2(move.x * owner.config.speed, owner.rb.velocity.y);
         }
     }
 }

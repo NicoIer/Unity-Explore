@@ -12,12 +12,6 @@ namespace Pokemon
         public override void OnEnter()
         {
             owner.rb.velocity = new Vector2(owner.rb.velocity.x, owner.config.jumpForce);
-            owner.jumpCount = 1;
-        }
-
-        public override void OnUpdate()
-        {
-            Debug.Log("Jumping");
         }
     }
 }

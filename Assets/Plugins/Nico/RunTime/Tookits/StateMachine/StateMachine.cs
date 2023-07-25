@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Nico
@@ -16,6 +17,7 @@ namespace Nico
             Owner = owner;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool Get<TState>(out TState state) where TState : State<TOwner>
         {
             if (_stateDic.TryGetValue(typeof(TState), out var value))
@@ -28,12 +30,14 @@ namespace Nico
             return false;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Start<T>() where T : State<TOwner>
         {
             currentState = _stateDic[typeof(T)];
             currentState.OnEnter();
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual void Change<T>() where T : State<TOwner>
         {
             currentState.OnExit();
@@ -41,6 +45,7 @@ namespace Nico
             currentState.OnEnter();
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Add<T>(T state) where T : State<TOwner>
         {
             if (_stateDic.ContainsKey(typeof(T)))
@@ -50,9 +55,9 @@ namespace Nico
             }
 
             _stateDic.Add(typeof(T), state);
-            state.SetStateMachine(this);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual void OnUpdate()
         {
             currentState.OnUpdate();
