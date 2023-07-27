@@ -1,3 +1,4 @@
+using Pokemon;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
@@ -10,7 +11,7 @@ namespace OneButtonGame
     {
         public void OnPointerClick(PointerEventData eventData)
         {
-            GlobalManager.Instance.BackToTitle();
+            GlobalManager.Instance.sceneManager.BackToTitle();
         }
     }
 }
