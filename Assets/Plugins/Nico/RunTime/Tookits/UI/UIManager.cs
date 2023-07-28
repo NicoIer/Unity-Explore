@@ -7,9 +7,9 @@ namespace Nico
 {
     public class UIManager : GlobalSingleton<UIManager>
     {
-        public Dictionary<Type, UIPanel> openedUIPanels = new Dictionary<Type, UIPanel>();
-        public Dictionary<Type, UIPanel> closedUIPanels = new Dictionary<Type, UIPanel>();
-        public Dictionary<Type, GameObject> prefabs = new Dictionary<Type, GameObject>();
+        [field: SerializeReference] public Dictionary<Type, UIPanel> openedUIPanels = new Dictionary<Type, UIPanel>();
+        [field: SerializeReference] public Dictionary<Type, UIPanel> closedUIPanels = new Dictionary<Type, UIPanel>();
+        [field: SerializeReference] public Dictionary<Type, GameObject> prefabs = new Dictionary<Type, GameObject>();
         [SerializeField] private Canvas _canvas;
         [SerializeField] private Camera _uiCamera;
         private RectTransform bottomLayer;
@@ -58,15 +58,16 @@ namespace Nico
             if (openedUIPanels.TryGetValue(typeof(T), out UIPanel panel))
             {
                 // panel.OnShow();
+                _layerManagers[panel.Layer()].Push(panel);
                 return panel as T;
             }
 
             //已经关闭了
             if (closedUIPanels.TryGetValue(typeof(T), out UIPanel panel1))
             {
-                // panel1.OnShow();
                 openedUIPanels[typeof(T)] = panel1;
                 closedUIPanels.Remove(typeof(T));
+                _layerManagers[panel1.Layer()].Push(panel1);
                 return panel1 as T;
             }
 
@@ -81,11 +82,12 @@ namespace Nico
             throw new ArgumentException($"UIManager OpenUI<{typeof(T)}> Error");
         }
 
-        public void Close<T>() where T : UIPanel
+        public void CloseUI<T>() where T : UIPanel
         {
             Type type = typeof(T);
             if (openedUIPanels.TryGetValue(type, out var uiPanel))
             {
+                Debug.Log("close ui");
                 _layerManagers[uiPanel.Layer()].Remove(uiPanel);
                 openedUIPanels.Remove(type);
                 closedUIPanels.Add(type, uiPanel);
@@ -147,7 +149,7 @@ namespace Nico
             panel = p as T;
             return ans;
         }
-        
+
         public void Pop(UILayer layer)
         {
             if (_layerManagers[layer].Pop(out UIPanel window))

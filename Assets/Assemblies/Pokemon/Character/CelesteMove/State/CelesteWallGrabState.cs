@@ -20,9 +20,9 @@ namespace Pokemon
             float x = owner.input.move.x;
             float y = owner.input.move.y;
 
-            if (x > math.abs(owner.config.grabMoveXScale))
+            if (x > math.abs(owner.moveParams.grabMoveXScale))
             {
-                x = owner.config.grabMoveXScale;
+                x = owner.moveParams.grabMoveXScale;
             }
             else
             {
@@ -31,13 +31,13 @@ namespace Pokemon
 
             if (y > 0)
             {
-                y = owner.config.climeUpScale;
-                owner.rb.velocity = new Vector2(x, y * owner.config.climbSpeed);
+                y = owner.moveParams.climbUpScale;
+                owner.rb.velocity = new Vector2(x, y * owner.moveParams.climbSpeed);
             }
             else if (y <= 0)
             {
-                y = owner.config.climeDownScale;
-                owner.rb.velocity = new Vector2(x, -y * owner.config.slideSpeed);
+                y = owner.moveParams.climbDownScale;
+                owner.rb.velocity = new Vector2(x, -y * owner.moveParams.slideSpeed);
             }
 
            
@@ -45,7 +45,7 @@ namespace Pokemon
 
         public override void OnExit()
         {
-            owner.rb.gravityScale = owner.config.gravityScale;
+            owner.rb.gravityScale = owner.moveParams.gravityScale;
         }
     }
 }

@@ -16,11 +16,11 @@ namespace Pokemon
 
             if (owner.input.move != Vector2.zero)
             {
-                owner.rb.velocity = owner.input.move * owner.config.dashSpeed;
+                owner.rb.velocity = owner.input.move * owner.moveParams.dashSpeed;
             }
             else if(owner.rb.velocity!= Vector2.zero)
             {
-                owner.rb.velocity = owner.rb.velocity.normalized * owner.config.dashSpeed;
+                owner.rb.velocity = owner.rb.velocity.normalized * owner.moveParams.dashSpeed;
             }
             else
             {
@@ -28,8 +28,8 @@ namespace Pokemon
             }
             
             
-            owner.stateMachine.LockState(owner.config.dashTime);
-            owner.config.enableBetterJumping = false;
+            owner.stateMachine.LockState(owner.moveParams.dashTime);
+            owner.moveParams.enableBetterJumping = false;
             owner.rb.gravityScale = 0;
             
             DOVirtual.Float(14, 0, .8f, v => owner.rb.drag = v);
@@ -39,11 +39,11 @@ namespace Pokemon
         {
             if (owner.input.move != Vector2.zero)
             {
-                owner.rb.velocity = owner.input.move * owner.config.dashSpeed;
+                owner.rb.velocity = owner.input.move * owner.moveParams.dashSpeed;
             }
             else if(owner.rb.velocity!= Vector2.zero)
             {
-                owner.rb.velocity = owner.rb.velocity.normalized * owner.config.dashSpeed;
+                owner.rb.velocity = owner.rb.velocity.normalized * owner.moveParams.dashSpeed;
             }
             else
             {
@@ -53,8 +53,8 @@ namespace Pokemon
 
         public override void OnExit()
         {
-            owner.config.enableBetterJumping = true;
-            owner.rb.gravityScale = owner.config.gravityScale;
+            owner.moveParams.enableBetterJumping = true;
+            owner.rb.gravityScale = owner.moveParams.gravityScale;
         }
     }
 }

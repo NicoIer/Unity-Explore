@@ -11,7 +11,7 @@ namespace Pokemon
 
         public override void OnEnter()
         {
-            owner.rb.velocity = new Vector2(owner.rb.velocity.x, owner.config.jumpForce);
+            owner.rb.velocity = new Vector2(owner.rb.velocity.x, owner.moveParams.jumpForce);
         }
     }
 }

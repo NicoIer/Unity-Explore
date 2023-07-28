@@ -15,6 +15,7 @@ namespace Nico
 
         public UILayerManager(RectTransform transform, RectTransform hide)
         {
+            this._hide = hide;
             _transform = transform;
             _queue = new PriorityQueue<UIPanel>((_1, _2) => _1.Priority() - _2.Priority());
             _tmp = new Stack<UIPanel>();
@@ -44,15 +45,16 @@ namespace Nico
         public void RemoveAll()
         {
             _tmp.Clear();
-            while (_queue.Count>0)
+            while (_queue.Count > 0)
             {
                 UIPanel current = _queue.Dequeue();
                 HidePanel(current);
             }
         }
+
         public void Push(UIPanel panel)
         {
-            panel.gameObject.transform.SetParent(_transform,false);
+            panel.gameObject.transform.SetParent(_transform, false);
             ShowPanel(panel);
             _queue.Enqueue(panel);
             if (panel.Priority() > _queue.Peek().Priority())
@@ -66,7 +68,7 @@ namespace Nico
                 uiPanel.transform.SetAsLastSibling();
             }
         }
-        
+
         public bool Pop(out UIPanel panel)
         {
             panel = default;
@@ -85,7 +87,7 @@ namespace Nico
             panel.gameObject.SetActive(true);
             panel.OnShow();
         }
-        
+
         public void HidePanel(UIPanel panel)
         {
             panel.transform.SetParent(_hide);
@@ -93,7 +95,4 @@ namespace Nico
             panel.OnHide();
         }
     }
-    
-    
-    
 }

@@ -10,7 +10,7 @@ namespace Pokemon
 
         public override void OnUpdate()
         {
-            owner.rb.velocity = new UnityEngine.Vector2(owner.rb.velocity.x, -owner.config.slideSpeed);
+            owner.rb.velocity = new UnityEngine.Vector2(owner.rb.velocity.x, -owner.moveParams.slideSpeed);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace OneButtonGame
@@ -11,11 +12,17 @@ namespace OneButtonGame
     public interface IPoolObject
     {
         public PoolObjectState state { get; internal set; }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         void OnSpawn();
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         void OnRecycle();
     }
-    public interface IPoolGameObject: IPoolObject
+
+    public interface IPoolGameObject : IPoolObject
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public GameObject GetGameObject();
     }
 }

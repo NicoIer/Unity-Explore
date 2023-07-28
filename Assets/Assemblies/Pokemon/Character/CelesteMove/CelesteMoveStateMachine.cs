@@ -35,7 +35,6 @@ namespace Pokemon
 
             if (_lockedState)
             {
-                Debug.Log("Locked");
                 base.OnUpdate();
                 return;
             }
@@ -52,7 +51,6 @@ namespace Pokemon
             //可以冲刺 按下了 冲刺键
             if (Owner.input.dash && Owner.canDash)
             {
-                Debug.Log("dash");
                 Change<CelesteDashState>();
                 base.OnUpdate();
                 return;
@@ -98,7 +96,6 @@ namespace Pokemon
             {
                 Change<CelesteWallJumpState>();
                 base.OnUpdate();
-                LockState(Owner.config.wallJumpLockTime);
                 return;
             }
 
@@ -158,7 +155,6 @@ namespace Pokemon
         {
             await UniTask.Delay(TimeSpan.FromSeconds(timer), cancellationToken: cts.Token);
             _lockedState = false;
-            Debug.Log("unlocked");
         }
 
         public override void Change<T>()

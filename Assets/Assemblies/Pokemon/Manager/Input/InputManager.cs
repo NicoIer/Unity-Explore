@@ -66,7 +66,10 @@ namespace Pokemon
 
         private void OnDisable()
         {
-            _inputAction.Disable();
+            if (_inputAction != null)
+            {
+                _inputAction.Disable();
+            }
         }
 
         private void LateUpdate()

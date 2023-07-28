@@ -24,7 +24,7 @@ namespace Pokemon
         public CelesteCollider celesteCollider { get; private set; }
         public Rigidbody2D rb { get; private set; }
         public CelesteMoveInput input { get; private set; }
-        public CelesteMoveConfig config;
+        public CelesteMoveParams moveParams => ModelManager.Get<PlayerModel>().celesteMoveParams;
         public bool canJump = true;
         public bool canDash = true;
         public CelesteMoveFacing facing = CelesteMoveFacing.Right;
@@ -41,7 +41,7 @@ namespace Pokemon
             stateMachine = new CelesteMoveStateMachine(this);
             stateMachine.Start<CelesteIdleState>();
 
-            rb.gravityScale = config.gravityScale;
+            rb.gravityScale = moveParams.gravityScale;
         }
 
         private void Update()
@@ -83,14 +83,14 @@ namespace Pokemon
 
         public void BetterJump()
         {
-            if (!config.enableBetterJumping) return;
+            if (!moveParams.enableBetterJumping) return;
             if (rb.velocity.y < 0) //下落的时候 重力减少
             {
-                rb.velocity += Vector2.up * (Physics2D.gravity.y * (config.fallMultiplier - 1) * Time.deltaTime);
+                rb.velocity += Vector2.up * (Physics2D.gravity.y * (moveParams.fallMultiplier - 1) * Time.deltaTime);
             } //上升的时候 
-            else if (rb.velocity.y > 0 && (!input.JumpHold || input.jumpHoldTime > config.jumpHoldThreshold))
+            else if (rb.velocity.y > 0 && (!input.JumpHold || input.jumpHoldTime > moveParams.jumpHoldThreshold))
             {
-                rb.velocity += Vector2.up * (Physics2D.gravity.y * (config.lowJumpMultiplier - 1) * Time.deltaTime);
+                rb.velocity += Vector2.up * (Physics2D.gravity.y * (moveParams.lowJumpMultiplier - 1) * Time.deltaTime);
             }
         }
 

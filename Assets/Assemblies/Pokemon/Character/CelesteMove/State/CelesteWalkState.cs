@@ -15,7 +15,7 @@ namespace Pokemon
 
         public override void OnUpdate()
         {
-            owner.rb.velocity = new Vector2(owner.input.move.x * owner.config.speed, 0);
+            owner.rb.velocity = new Vector2(owner.input.move.x * owner.moveParams.speed, 0);
         }
     }
 }

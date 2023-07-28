@@ -27,7 +27,7 @@ namespace Pokemon
             }
 
 
-            owner.rb.velocity = new Vector2(move.x * owner.config.speed, owner.rb.velocity.y);
+            owner.rb.velocity = new Vector2(move.x * owner.moveParams.speed, owner.rb.velocity.y);
         }
     }
 }
