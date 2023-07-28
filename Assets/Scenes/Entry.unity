@@ -462,7 +462,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainScene:
-    m_AssetGUID: 2fb5ad7ad0ca8f4478652951dd2fa3e1
+    m_AssetGUID: 17ec9e78e08c9c648985f45a3cba2584
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

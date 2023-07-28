@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Pokemon
+namespace Nico
 {
     public abstract class UIPanel: MonoBehaviour
     {
@@ -9,12 +9,12 @@ namespace Pokemon
             
         }
 
-        public virtual void OnHide()
+        public virtual void OnShow()
         {
             
         }
 
-        public virtual void OnOpen()
+        public virtual void OnHide()
         {
             
         }

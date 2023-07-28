@@ -9,9 +9,9 @@ namespace OneButtonGame
 {
     public class BackToTitleButton : MonoBehaviour, IPointerClickHandler
     {
-        public void OnPointerClick(PointerEventData eventData)
+        public async void OnPointerClick(PointerEventData eventData)
         {
-            GlobalManager.Instance.sceneManager.BackToTitle();
+            await GlobalManager.Instance.sceneManager.ToTitle();
         }
     }
 }

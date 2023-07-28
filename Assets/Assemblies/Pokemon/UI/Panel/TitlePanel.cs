@@ -1,3 +1,4 @@
+using Nico;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,19 +17,18 @@ namespace Pokemon
             exitButton.onClick.AddListener(OnExitButtonClick);
         }
         
-        private void OnStartButtonClick()
+        private async void OnStartButtonClick()
         {
-            LogManager.LogError("Start Game");
+            UIManager.Instance.Close<TitlePanel>();
+            await GlobalManager.Instance.sceneManager.ToHome();
         }
         
-        private void OnSettingButtonClick()
+        private async void OnSettingButtonClick()
         {
-            LogManager.LogError("Setting");
         }
         
         private void OnExitButtonClick()
         {
-            LogManager.LogError("Exit");
         }
         
     }

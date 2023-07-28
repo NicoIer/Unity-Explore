@@ -1,4 +1,4 @@
-namespace Pokemon
+namespace Nico
 {
     public enum UILayer
     {

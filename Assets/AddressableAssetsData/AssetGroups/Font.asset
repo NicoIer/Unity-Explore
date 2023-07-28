@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Font
   m_Data:
     m_SerializedData: []
-  m_GUID: ba103f194e858f349b193f4fc38e6423
+  m_GUID: 6b80b2626e483224bb0d13e97b4810d8
   m_SerializeEntries:
   - m_GUID: a25c6c13319c79f4da112b058bea0b75
     m_Address: Font/VonwaonBitmap-12px SDF

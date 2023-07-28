@@ -17,12 +17,20 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 9d828fd03f6e5344c9cefc2955749ddb
   m_SerializeEntries:
-  - m_GUID: 2fb5ad7ad0ca8f4478652951dd2fa3e1
-    m_Address: Scenes/GameMain
+  - m_GUID: f5eda76ec6f6d1c4bb0e248cd4a31673
+    m_Address: Scenes/Home
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: cb25a0c50774b044db5d475f63129930
-    m_Address: Scenes/Pokemon
+    m_Address: Scenes/Game
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 357eecbd489a1214cb699b649c3ecf87
+    m_Address: Scenes/Loading
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 17ec9e78e08c9c648985f45a3cba2584
+    m_Address: Scenes/Title
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

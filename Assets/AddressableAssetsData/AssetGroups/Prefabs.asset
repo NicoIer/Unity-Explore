@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: HotUpdateDll
+  m_Name: Prefabs
   m_EditorClassIdentifier: 
-  m_GroupName: HotUpdateDll
+  m_GroupName: Prefabs
   m_Data:
     m_SerializedData: []
-  m_GUID: f0e2510fa5c2fc04296ecb088586d516
+  m_GUID: 0ccdbf116a526364896193166b2005fc
   m_SerializeEntries:
-  - m_GUID: 53fabfa6e9eb45ec9268115876614475
-    m_Address: HotUpdateDll/OneButtonGame.dll
+  - m_GUID: 1efc9fb45dee5ab4397e6ee3cd775578
+    m_Address: Prefabs/Player
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - hot_update_dll
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: c41db82b234849540b43b8cda1b0238f, type: 2}
+    - {fileID: 11400000, guid: 96ccc92259ec27b479f8ba5d81e1b67d, type: 2}

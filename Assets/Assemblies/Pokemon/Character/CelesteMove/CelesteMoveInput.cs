@@ -7,12 +7,12 @@ namespace Pokemon
 {
     public class CelesteMoveInput : MonoBehaviour, ICelesteMoveInput
     {
-        public Vector2 move => PokemonInputManager.Instance.Movement;
+        public Vector2 move => InputManager.Instance.Movement;
         public bool hasXMovement => Mathf.Abs(move.x) > 0;
-        public bool jump => PokemonInputManager.Instance.Jump; // 做一下预输入
-        public float jumpHoldTime => PokemonInputManager.Instance.JumpHoldTime;
-        public bool JumpHold => PokemonInputManager.Instance.JumpHold;
-        public bool wallGrab => PokemonInputManager.Instance.ReadKey(SkillConfig.WallGrab);
-        public bool dash => PokemonInputManager.Instance.ReadKey(SkillConfig.Dash);
+        public bool jump => InputManager.Instance.Jump; // 做一下预输入
+        public float jumpHoldTime => InputManager.Instance.JumpHoldTime;
+        public bool JumpHold => InputManager.Instance.JumpHold;
+        public bool wallGrab => InputManager.Instance.WallGrab;
+        public bool dash => InputManager.Instance.Dash;
     }
 }
