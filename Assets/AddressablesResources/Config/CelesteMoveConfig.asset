@@ -20,10 +20,10 @@ MonoBehaviour:
     speed: 10
     jumpForce: 15
     slideSpeed: 5
-    wallJumpLerp: 10
-    dashSpeed: 20
+    wallJumpLerp: 2
+    dashSpeed: 30
     climbSpeed: 3
-    wallJumpForce: {x: 24, y: 12}
+    wallJumpForce: {x: 18, y: 18}
     wallJumpLockTime: 0.1
     dashTime: 0.2
     gravityScale: 3

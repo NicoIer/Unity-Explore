@@ -15,8 +15,8 @@ namespace Pokemon
         public float speed = 10f;
         public float jumpForce = 15f;
         public float slideSpeed = 5f;
-        public float wallJumpLerp = 10f;
-        public float dashSpeed = 20f;
+        public float wallJumpLerp = 2f;
+        public float dashSpeed = 30;
         public float climbSpeed = 3;
         public Vector2 wallJumpForce = new Vector2(24, 12);
         public float wallJumpLockTime = 0.1f;

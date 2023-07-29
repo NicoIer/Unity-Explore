@@ -25,8 +25,20 @@ namespace Pokemon
         public Rigidbody2D rb { get; private set; }
         public CelesteMoveInput input { get; private set; }
         public CelesteMoveParams moveParams => ModelManager.Get<PlayerModel>().celesteMoveParams;
-        public bool canJump = true;
-        public bool canDash = true;
+        public PlayerModel playerModel => ModelManager.Get<PlayerModel>();
+
+        public bool canJump
+        {
+            get => playerModel.canJump;
+            set => playerModel.canJump = value;
+        }
+
+        public bool canDash
+        {
+            get => playerModel.canDash;
+            set => playerModel.canDash = value;
+        }
+
         public CelesteMoveFacing facing = CelesteMoveFacing.Right;
         public bool inAir => !celesteCollider.isGrounded && !celesteCollider.isTouchingWall;
 
@@ -66,19 +78,6 @@ namespace Pokemon
             }
 
             return;
-
-
-            // if (celesteCollider.isTouchingWallLeft)
-            // {
-            //     facing = CelesteMoveFacing.Right;
-            //     return;
-            // }
-            //
-            // if (celesteCollider.isTouchingWallRight)
-            // {
-            //     facing = CelesteMoveFacing.Left;
-            //     return;
-            // }
         }
 
         public void BetterJump()
@@ -124,12 +123,5 @@ namespace Pokemon
 
             return false;
         }
-
-#if UNITY_EDITOR
-        private void OnGUI()
-        {
-            GUI.Label(new Rect(0, 0, 100, 100), $"jumpHoldTime:{input.jumpHoldTime}");
-        }
-#endif
     }
 }

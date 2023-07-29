@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace Pokemon
 {
@@ -9,6 +11,11 @@ namespace Pokemon
         public bool WaPressedThisFrame => down && !holding;
         private bool holding => holdTime > 0.01f;
         private float _holdTime;
+
+        private void OnEnable()
+        {
+            InputManager.Instance.inputAction.Player.Jump.AddBinding();
+        }
 
         public float holdTime
         {

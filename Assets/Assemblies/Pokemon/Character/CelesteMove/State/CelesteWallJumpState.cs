@@ -11,6 +11,8 @@ namespace Pokemon
 
         public override void OnEnter()
         {
+            Debug.Log("WallJump");
+            owner.stateMachine.LockState(owner.moveParams.wallJumpLockTime);
             if (owner.facing == CelesteMoveFacing.Right)
             {
                 //给左上方的速度
@@ -24,11 +26,12 @@ namespace Pokemon
                 owner.rb.velocity = new Vector2(owner.moveParams.wallJumpForce.x, owner.moveParams.wallJumpForce.y);
                 return;
             }
-            owner.stateMachine.LockState(owner.moveParams.wallJumpLockTime);
+            
         }
 
         public override void OnUpdate()
         {
+            Debug.Log("WallJumping");
             owner.rb.velocity = Vector2.Lerp(owner.rb.velocity, (new Vector2(owner.input.move.x * owner.moveParams.speed, owner.rb.velocity.y)), owner.moveParams.wallJumpLerp * Time.deltaTime);
         }
 

@@ -35,6 +35,7 @@ namespace Pokemon
 
             if (_lockedState)
             {
+                Debug.Log("Locked");
                 base.OnUpdate();
                 return;
             }
@@ -43,6 +44,8 @@ namespace Pokemon
             if (Owner.celesteCollider.isGrounded && Owner.input.hasXMovement && !Owner.input.jump &&
                 Owner.rb.velocity.y <= TOLERANCE && !Owner.input.dash)
             {
+                Owner.canJump = true;
+                Owner.canDash = true;
                 Change<CelesteWalkState>();
                 base.OnUpdate();
                 return;
@@ -51,6 +54,8 @@ namespace Pokemon
             //可以冲刺 按下了 冲刺键
             if (Owner.input.dash && Owner.canDash)
             {
+                Owner.canDash = false;
+                Owner.canJump = false;
                 Change<CelesteDashState>();
                 base.OnUpdate();
                 return;
@@ -60,6 +65,8 @@ namespace Pokemon
             if (Owner.celesteCollider.isGrounded && !Owner.input.hasXMovement && !Owner.input.jump &&
                 Owner.rb.velocity.y <= TOLERANCE)
             {
+                Owner.canJump = true;
+                Owner.canDash = true;
                 Change<CelesteIdleState>();
                 base.OnUpdate();
                 return;
@@ -68,6 +75,7 @@ namespace Pokemon
             //在地上 且 按下了跳跃键 且 可以跳跃
             if (Owner.celesteCollider.isGrounded && Owner.input.jump && Owner.canJump)
             {
+                Owner.canJump = false;
                 Change<CelesteJumpState>();
                 base.OnUpdate();
                 return;
@@ -77,6 +85,7 @@ namespace Pokemon
             //这种情况出现在: 1从悬崖掉下去
             if (Owner.inAir && Owner.canJump && Owner.input.jump)
             {
+                Owner.canJump = false;
                 Change<CelesteJumpState>();
                 base.OnUpdate();
                 return;
@@ -90,10 +99,11 @@ namespace Pokemon
                 return;
             }
 
-            //不在地面 靠近墙壁 且 按下了跳跃键 且 可以跳跃 且 有反墙方向的输入
+            //不在地面 靠近墙壁 且 按下了跳跃键 且 可以跳跃
             if (!Owner.celesteCollider.isGrounded && Owner.celesteCollider.isTouchingWall && Owner.input.jump &&
                 Owner.canJump)
             {
+                Owner.canJump = false;
                 Change<CelesteWallJumpState>();
                 base.OnUpdate();
                 return;
@@ -111,6 +121,7 @@ namespace Pokemon
             if (!Owner.celesteCollider.isGrounded && Owner.celesteCollider.isTouchingWall && Owner.input.wallGrab &&
                 !Owner.input.jump)
             {
+                Owner.canJump = true;
                 Change<CelesteWallGrabState>();
                 base.OnUpdate();
                 return;
@@ -130,6 +141,7 @@ namespace Pokemon
                 !Owner.input.wallGrab && Owner.rb.velocity.y <= 0 && !Owner.HasInverseXVelocity() &&
                 currentState is not CelesteWallSlideState)
             {
+                Owner.canJump = true;
                 Change<CelesteWallSlideState>();
                 base.OnUpdate();
                 return;
@@ -148,7 +160,8 @@ namespace Pokemon
         {
             _lockCts?.Cancel();
             _lockedState = true;
-            _lock_state_task(timer, _lockCts = new CancellationTokenSource()).Forget();
+            _lockCts = new CancellationTokenSource();
+            _lock_state_task(timer, _lockCts).Forget();
         }
 
         private async UniTask _lock_state_task(float timer, CancellationTokenSource cts)
@@ -165,7 +178,8 @@ namespace Pokemon
                 return;
             }
 
-            Debug.Log($"{currentState.GetType().Name}-->{typeof(T).Name}");
+
+            // Debug.Log($"{currentState.GetType().Name}-->{typeof(T).Name}");
             base.Change<T>();
         }
     }

@@ -49,7 +49,13 @@ namespace Nico
         public void Register(GameObject prefab)
         {
             UIPanel panel = prefab.GetComponent<UIPanel>();
+            if (panel == null)
+            {
+                Debug.LogError($"can't find UIPanel in prefab:{prefab.name}");
+                return;                
+            }
             prefabs[panel.GetType()] = prefab;
+
         }
 
         public T OpenUI<T>() where T : UIPanel

@@ -46,6 +46,33 @@ namespace Pokemon
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skill1"",
+                    ""type"": ""Button"",
+                    ""id"": ""05c28118-ce13-4699-a691-869f0a7ab9ea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skill2"",
+                    ""type"": ""Button"",
+                    ""id"": ""aed46990-85e1-497e-9b42-603e93a1c4e2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skill3"",
+                    ""type"": ""Button"",
+                    ""id"": ""750da491-260f-45da-a4fb-18de7a9a4d45"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -180,6 +207,72 @@ namespace Pokemon
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""22f99e77-e12c-4937-80d3-21af74480f6c"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Computer"",
+                    ""action"": ""Skill1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b668182-10e0-49ee-b621-f4e23cc39fa5"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Computer"",
+                    ""action"": ""Skill1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64059f28-609e-44eb-8047-458f9b6a9543"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Computer"",
+                    ""action"": ""Skill2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""269f055d-e4d0-47cb-a02a-9c68335d244d"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Computer"",
+                    ""action"": ""Skill2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90bd804e-0534-4500-b1d0-be45a824d627"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Computer"",
+                    ""action"": ""Skill3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df71aa9c-2dfe-451f-bb32-2445d95817b1"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Computer"",
+                    ""action"": ""Skill3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -228,6 +321,9 @@ namespace Pokemon
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+            m_Player_Skill1 = m_Player.FindAction("Skill1", throwIfNotFound: true);
+            m_Player_Skill2 = m_Player.FindAction("Skill2", throwIfNotFound: true);
+            m_Player_Skill3 = m_Player.FindAction("Skill3", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -289,12 +385,18 @@ namespace Pokemon
         private IPlayerActions m_PlayerActionsCallbackInterface;
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Jump;
+        private readonly InputAction m_Player_Skill1;
+        private readonly InputAction m_Player_Skill2;
+        private readonly InputAction m_Player_Skill3;
         public struct PlayerActions
         {
             private @PokemonInputAction m_Wrapper;
             public PlayerActions(@PokemonInputAction wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
+            public InputAction @Skill1 => m_Wrapper.m_Player_Skill1;
+            public InputAction @Skill2 => m_Wrapper.m_Player_Skill2;
+            public InputAction @Skill3 => m_Wrapper.m_Player_Skill3;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -310,6 +412,15 @@ namespace Pokemon
                     @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                    @Skill1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill1;
+                    @Skill1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill1;
+                    @Skill1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill1;
+                    @Skill2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill2;
+                    @Skill2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill2;
+                    @Skill2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill2;
+                    @Skill3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill3;
+                    @Skill3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill3;
+                    @Skill3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill3;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -320,6 +431,15 @@ namespace Pokemon
                     @Jump.started += instance.OnJump;
                     @Jump.performed += instance.OnJump;
                     @Jump.canceled += instance.OnJump;
+                    @Skill1.started += instance.OnSkill1;
+                    @Skill1.performed += instance.OnSkill1;
+                    @Skill1.canceled += instance.OnSkill1;
+                    @Skill2.started += instance.OnSkill2;
+                    @Skill2.performed += instance.OnSkill2;
+                    @Skill2.canceled += instance.OnSkill2;
+                    @Skill3.started += instance.OnSkill3;
+                    @Skill3.performed += instance.OnSkill3;
+                    @Skill3.canceled += instance.OnSkill3;
                 }
             }
         }
@@ -346,6 +466,9 @@ namespace Pokemon
         {
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+            void OnSkill1(InputAction.CallbackContext context);
+            void OnSkill2(InputAction.CallbackContext context);
+            void OnSkill3(InputAction.CallbackContext context);
         }
     }
 }

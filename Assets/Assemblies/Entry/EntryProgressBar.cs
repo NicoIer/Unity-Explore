@@ -20,7 +20,7 @@ namespace Entry
         private void OnProgressChanged(float obj)
         {
             progressBar.DOFillAmount(obj, 0.5f);
-            progressText.DOText($"{Math.Round(obj * 100)}%", 0.5f, true, ScrambleMode.Numerals, "0123456789");
+            progressText.DOText($"{Math.Round(obj)}%", 0.5f, true, ScrambleMode.Numerals, "0123456789");
         }
 
         private void OnDestroy()

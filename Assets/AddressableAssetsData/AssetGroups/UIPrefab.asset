@@ -16,27 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: e09396ec93f844649b95b1b717c3a964
-  m_SerializeEntries:
-  - m_GUID: b01792b2e19322b459ffb73ce5e310d4
-    m_Address: UIPrefab/EscButton
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 52c8e8222f1c57d488494387a1f56353
-    m_Address: UIPrefab/InputPanel
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 8d3e3d21ad3ea6b4ea7a76a0fad1ad0a
-    m_Address: UIPrefab/JumpButton
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 7d7a6e93c1ff7464bb821dc47a64fe7f
-    m_Address: UIPrefab/SkillButton
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 8897cb60f59a70b48903fb157460999c
-    m_Address: UIPrefab/TitlePanel
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:

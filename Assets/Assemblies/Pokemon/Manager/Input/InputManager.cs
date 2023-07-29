@@ -8,18 +8,28 @@ namespace Pokemon
 {
     public class InputManager : GlobalSingleton<InputManager>
     {
-        private PokemonInputAction _inputAction;
+        public PokemonInputAction inputAction { get; private set; }
 
-        public Vector2 Movement
+        public Vector2 Movement => inputAction.Player.Move.ReadValue<Vector2>();
+
+        public bool Dash
         {
-            get { return (_inputAction.Player.Move.ReadValue<Vector2>()); }
+            get
+            {
+                return inputAction.Player.Skill1.WasPerformedThisFrame();
+            }
         }
 
-        public bool Dash => ReadKey<bool>(InputConst.Dash);
-        public bool WallGrab => ReadKey<bool>(InputConst.WallGrab);
+        public bool WallGrab
+        {
+            get
+            {
+                return false;
+            }
+        }
 
-        public bool JumpHold => _inputAction.Player.Jump.ReadValue<float>() > 0; //|| jumpButton.down;
-        public bool Jump => _inputAction.Player.Jump.WasPressedThisFrame(); //|| jumpButton.WaPressedThisFrame;
+        public bool JumpHold => inputAction.Player.Jump.ReadValue<float>() > 0; //|| jumpButton.down;
+        public bool Jump => inputAction.Player.Jump.WasPressedThisFrame(); //|| jumpButton.WaPressedThisFrame;
         private float _jumpStartTime;
 
         public float JumpHoldTime
@@ -27,7 +37,7 @@ namespace Pokemon
             get
             {
                 float time = 0;
-                if (_inputAction.Player.Jump.ReadValue<float>() > 0)
+                if (inputAction.Player.Jump.ReadValue<float>() > 0)
                 {
                     time += Time.time - _jumpStartTime;
                 }
@@ -36,45 +46,26 @@ namespace Pokemon
             }
         }
 
-        private Dictionary<int,object> _keys = new Dictionary<int, object>();
+
         protected override void Awake()
         {
             base.Awake();
-            _inputAction = new PokemonInputAction();
-            _inputAction.Player.Jump.performed += ctx => { _jumpStartTime = Time.time; };
+            inputAction = new PokemonInputAction();
+            inputAction.Player.Jump.performed += ctx => { _jumpStartTime = Time.time; };
         }
-
-
-        public T ReadKey<T>(int key)
-        {
-            if(_keys.TryGetValue(key,out object value))
-                return (T) value;
-            return default;
-        }
-
-        public void SetKey<T>(int key, T value)
-        {
-            _keys[key] = value;
-        }
-        
 
 
         private void OnEnable()
         {
-            _inputAction.Enable();
+            inputAction.Enable();
         }
 
         private void OnDisable()
         {
-            if (_inputAction != null)
+            if (inputAction != null)
             {
-                _inputAction.Disable();
+                inputAction.Disable();
             }
-        }
-
-        private void LateUpdate()
-        {
-            _keys.Clear();
         }
     }
 }
