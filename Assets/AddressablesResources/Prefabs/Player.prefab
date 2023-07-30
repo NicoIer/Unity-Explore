@@ -489,6 +489,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2443217268327368527}
     m_Modifications:
     - target: {fileID: 5490399577666845024, guid: 4349b923f6864b74fa8490103668540a, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490399577666845024, guid: 4349b923f6864b74fa8490103668540a, type: 3}
       propertyPath: InitialModule.startRotationX.scalar
       value: 3.1415925
       objectReference: {fileID: 0}

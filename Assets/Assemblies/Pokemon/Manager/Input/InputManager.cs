@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using Nico;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Pokemon
 {
@@ -10,36 +7,24 @@ namespace Pokemon
     {
         public PokemonInputAction inputAction { get; private set; }
 
-        public Vector2 Movement => inputAction.Player.Move.ReadValue<Vector2>();
+        public Vector2 LeftStick => inputAction.Player.Move.ReadValue<Vector2>();
 
-        public bool Dash
-        {
-            get
-            {
-                return inputAction.Player.Skill1.WasPerformedThisFrame();
-            }
-        }
+        public bool B => inputAction.Player.B.WasPerformedThisFrame();
 
-        public bool WallGrab
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public bool WallGrab => false;
 
-        public bool JumpHold => inputAction.Player.Jump.ReadValue<float>() > 0; //|| jumpButton.down;
-        public bool Jump => inputAction.Player.Jump.WasPressedThisFrame(); //|| jumpButton.WaPressedThisFrame;
-        private float _jumpStartTime;
+        public bool AHold => inputAction.Player.A.ReadValue<float>() > 0; //|| jumpButton.down;
+        public bool A => inputAction.Player.A.WasPressedThisFrame(); //|| jumpButton.WaPressedThisFrame;
+        private float aStartTime;
 
-        public float JumpHoldTime
+        public float AHoldTime
         {
             get
             {
                 float time = 0;
-                if (inputAction.Player.Jump.ReadValue<float>() > 0)
+                if (inputAction.Player.A.ReadValue<float>() > 0)
                 {
-                    time += Time.time - _jumpStartTime;
+                    time += Time.time - aStartTime;
                 }
 
                 return time;
@@ -51,7 +36,7 @@ namespace Pokemon
         {
             base.Awake();
             inputAction = new PokemonInputAction();
-            inputAction.Player.Jump.performed += ctx => { _jumpStartTime = Time.time; };
+            inputAction.Player.A.performed += ctx => { aStartTime = Time.time; };
         }
 
 
