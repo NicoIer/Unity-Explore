@@ -9,7 +9,7 @@ namespace Pokemon
 {
     public class Player : SceneSingleton<Player>
     {
-        private CinemachineVirtualCamera _camera;
+        [SerializeField]private CinemachineVirtualCamera _camera;
         private CelesteMove celesteMove;
         private SpriteRenderer spriteRenderer;
         public CelesteMoveFacing facing => celesteMove.facing;
@@ -24,8 +24,8 @@ namespace Pokemon
             base.Awake();
             celesteMove = GetComponent<CelesteMove>();
             // 修改相机的以跟随玩家
-            _camera = GetComponentInChildren<CinemachineVirtualCamera>();
             _camera.Follow = transform;
+            
             UIManager.Instance.OpenUI<InputPanel>();
         }
 
