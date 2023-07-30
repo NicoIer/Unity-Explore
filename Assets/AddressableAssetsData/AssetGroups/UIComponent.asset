@@ -21,10 +21,6 @@ MonoBehaviour:
     m_Address: UIComponent/EscButton
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 8d3e3d21ad3ea6b4ea7a76a0fad1ad0a
-    m_Address: UIComponent/JumpButton
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 4da74a72adb0fc343a88c28b2f5bdf58
     m_Address: UIComponent/LeftStick
     m_ReadOnly: 0
