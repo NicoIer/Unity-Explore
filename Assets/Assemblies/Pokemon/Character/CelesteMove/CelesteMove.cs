@@ -60,6 +60,11 @@ namespace Pokemon
 
         public void UpdateFacing()
         {
+            if (stateMachine.currentState is CelesteWallJumpState)
+            {
+                return;
+            }
+            
             CelesteMoveFacing pre = facing;
             if (input.move.x > 0)
             {
@@ -77,6 +82,16 @@ namespace Pokemon
             }
 
             return;
+        }
+
+        public void SetFacing(CelesteMoveFacing tar)
+        {
+            CelesteMoveFacing pre = facing;
+            facing = tar;
+            if (facing != pre)
+            {
+                OnFacingChange?.Invoke(facing);
+            }
         }
 
         public void BetterJump()

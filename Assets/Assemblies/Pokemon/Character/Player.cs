@@ -72,7 +72,10 @@ namespace Pokemon
         private void OnGUI()
         {
             //左上角绘制当前状态
-            GUI.Label(new Rect(100, 100, 200, 40), celesteMove.stateMachine.currentState.GetType().Name);
+            GUI.Label(new Rect(40, 30, 200, 40), celesteMove.stateMachine.currentState.GetType().Name);
+            //绘制提示信息
+            GUI.Label(new Rect(40, 60, 200, 40), "A->跳跃");
+            GUI.Label(new Rect(40, 90, 200, 40), "B->冲刺");
         }
     }
 }

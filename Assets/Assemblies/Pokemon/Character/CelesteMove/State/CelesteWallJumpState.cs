@@ -11,30 +11,34 @@ namespace Pokemon
 
         public override void OnEnter()
         {
-            Debug.Log("WallJump");
             owner.stateMachine.LockState(owner.moveParams.wallJumpLockTime);
             if (owner.facing == CelesteMoveFacing.Right)
             {
                 //给左上方的速度
                 owner.rb.velocity = new Vector2(-owner.moveParams.wallJumpForce.x, owner.moveParams.wallJumpForce.y);
-                owner.rb.velocity = Vector2.Lerp(owner.rb.velocity, (new Vector2(owner.input.move.x * owner.moveParams.speed, owner.rb.velocity.y)), owner.moveParams.wallJumpLerp * Time.deltaTime);
+                owner.rb.velocity = Vector2.Lerp(owner.rb.velocity,
+                    (new Vector2(owner.input.move.x * owner.moveParams.speed, owner.rb.velocity.y)),
+                    owner.moveParams.wallJumpLerp * Time.deltaTime);
+                owner.SetFacing(CelesteMoveFacing.Left);
             }
-
-            if (owner.facing == CelesteMoveFacing.Left)
+            else if (owner.facing == CelesteMoveFacing.Left)
             {
                 //给右上方的速度
                 owner.rb.velocity = new Vector2(owner.moveParams.wallJumpForce.x, owner.moveParams.wallJumpForce.y);
-                owner.rb.velocity = Vector2.Lerp(owner.rb.velocity, (new Vector2(owner.input.move.x * owner.moveParams.speed, owner.rb.velocity.y)), owner.moveParams.wallJumpLerp * Time.deltaTime);
+                owner.rb.velocity = Vector2.Lerp(owner.rb.velocity,
+                    (new Vector2(owner.input.move.x * owner.moveParams.speed, owner.rb.velocity.y)),
+                    owner.moveParams.wallJumpLerp * Time.deltaTime);
+                owner.SetFacing(CelesteMoveFacing.Right);
             }
-            
+
             owner.animator.WallJump();
-            
         }
 
         public override void OnUpdate()
         {
-            Debug.Log("WallJumping");
-            owner.rb.velocity = Vector2.Lerp(owner.rb.velocity, (new Vector2(owner.input.move.x * owner.moveParams.speed, owner.rb.velocity.y)), owner.moveParams.wallJumpLerp * Time.deltaTime);
+            // owner.rb.velocity = Vector2.Lerp(owner.rb.velocity,
+            //     (new Vector2(owner.rb.velocity.x , owner.rb.velocity.y)),
+            //     owner.moveParams.wallJumpLerp * Time.deltaTime);
         }
 
         public override void OnExit()

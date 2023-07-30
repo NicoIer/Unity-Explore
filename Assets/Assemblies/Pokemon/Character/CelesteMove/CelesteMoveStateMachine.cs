@@ -9,8 +9,10 @@ namespace Pokemon
     public class CelesteMoveStateMachine : StateMachine<CelesteMove>
     {
         const double TOLERANCE = 0.01;
-        private bool _lockedState = false;
+        private bool _lockedState;
         private CancellationTokenSource _lockCts;
+        private CancellationTokenSource _wallJumpCooldownCts;
+        private bool canWallJump;
         public event Action<State<CelesteMove>, State<CelesteMove>> OnStateChanged;
 
         public CelesteMoveStateMachine(CelesteMove owner) : base(owner)
@@ -28,15 +30,15 @@ namespace Pokemon
             Add(new CelesteWallSlideState(owner));
 
             Add(new CelesteDashState(owner));
+            canWallJump = true;
+            _lockedState = false;
         }
 
         public override void OnUpdate()
         {
             //做一些通用的事情 判断状态的切换 让 各个状态只需要做自己该做的事情 无需关心状态切换
-
             if (_lockedState)
             {
-                Debug.Log("Locked");
                 base.OnUpdate();
                 return;
             }
@@ -102,9 +104,10 @@ namespace Pokemon
 
             //不在地面 靠近墙壁 且 按下了跳跃键 且 可以跳跃
             if (!Owner.celesteCollider.isGrounded && Owner.celesteCollider.isTouchingWall && Owner.input.jump &&
-                Owner.canJump)
+                canWallJump)
             {
-                Owner.canJump = false;
+                WallJumpCoolDown();
+                //保证cool down 结束后才能再次墙跳,防止连续墙跳,直接登出去了
                 Change<CelesteWallJumpState>();
                 base.OnUpdate();
                 return;
@@ -122,27 +125,17 @@ namespace Pokemon
             if (!Owner.celesteCollider.isGrounded && Owner.celesteCollider.isTouchingWall && Owner.input.wallGrab &&
                 !Owner.input.jump)
             {
-                Owner.canJump = true;
                 Change<CelesteWallGrabState>();
                 base.OnUpdate();
                 return;
             }
 
-            //靠墙 有反墙方向的输入 且 没有按下跳跃键 且 没有按下 抓墙键 且当前没有向上的速度
-            if (Owner.celesteCollider.isTouchingWall && Owner.HasInverseXInput() && !Owner.input.jump &&
-                !Owner.input.wallGrab && Owner.rb.velocity.y <= 0)
-            {
-                Change<CelesteDownState>();
-                base.OnUpdate();
-                return;
-            }
 
             //不在地面 靠近墙壁 且 没有按下跳跃键 且 没有按下 抓墙键 且当前没有向上的速度
             if (!Owner.celesteCollider.isGrounded && Owner.celesteCollider.isTouchingWall && !Owner.input.jump &&
-                !Owner.input.wallGrab && Owner.rb.velocity.y <= 0 && !Owner.HasInverseXVelocity() &&
+                !Owner.input.wallGrab && Owner.rb.velocity.y <= 0 &&
                 currentState is not CelesteWallSlideState)
             {
-                Owner.canJump = true;
                 Change<CelesteWallSlideState>();
                 base.OnUpdate();
                 return;
@@ -154,6 +147,20 @@ namespace Pokemon
                 base.OnUpdate();
                 return;
             }
+        }
+
+        private void WallJumpCoolDown()
+        {
+            canWallJump = false;
+            _wallJumpCooldownCts?.Cancel();
+            _wallJumpCooldownCts = new CancellationTokenSource();
+            _wall_jump_cool_down_task(Owner.moveParams.wallJumpCoolDown, _wallJumpCooldownCts).Forget();
+        }
+
+        private async UniTask _wall_jump_cool_down_task(float timer, CancellationTokenSource cts)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(timer), cancellationToken: cts.Token);
+            canWallJump = true;
         }
 
         //锁定某个状态 在时间结束前 不更新

@@ -18,13 +18,14 @@ namespace Pokemon
         public float wallJumpLerp = 2f;
         public float dashSpeed = 30;
         public float climbSpeed = 3;
-        public Vector2 wallJumpForce = new Vector2(24, 12);
+        public Vector2 wallJumpForce = new Vector2(8, 12);
         public float wallJumpLockTime = 0.1f;
         public float dashTime = 0.2f;
         public float gravityScale = 3f;
         public float grabMoveXScale = 0.2f;
         public float climbUpScale = 0.5f;
         public float climbDownScale = 1;
+        public float wallJumpCoolDown= 0.6f;
     }
 
     [CreateAssetMenu(fileName = "CelesteMoveConfig", menuName = "Pokemon/Config/CelesteMoveConfig")]

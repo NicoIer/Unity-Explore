@@ -16,17 +16,18 @@ MonoBehaviour:
     enableBetterJumping: 1
     fallMultiplier: 2.5
     lowJumpMultiplier: 7
-    jumpHoldThreshold: 0.23
+    jumpHoldThreshold: 0.3
     speed: 10
     jumpForce: 15
     slideSpeed: 5
     wallJumpLerp: 2
     dashSpeed: 30
     climbSpeed: 3
-    wallJumpForce: {x: 24, y: 12}
-    wallJumpLockTime: 0.1
+    wallJumpForce: {x: 8, y: 12}
+    wallJumpLockTime: 0.3
     dashTime: 0.2
     gravityScale: 3
     grabMoveXScale: 0.2
     climbUpScale: 0.5
     climbDownScale: 1
+    wallJumpCoolDown: 0.6
