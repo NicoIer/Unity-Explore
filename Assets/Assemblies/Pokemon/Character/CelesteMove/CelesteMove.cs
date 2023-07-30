@@ -21,9 +21,9 @@ namespace Pokemon
     [RequireComponent(typeof(CelesteMoveInput))]
     public class CelesteMove : MonoBehaviour
     {
-        public CelesteCollider celesteCollider { get; private set; }
+        public ICelesteCollider celesteCollider { get; private set; }
         public Rigidbody2D rb { get; private set; }
-        public CelesteMoveInput input { get; private set; }
+        public ICelesteMoveInput input { get; private set; }
         public CelesteMoveParams moveParams => ModelManager.Get<PlayerModel>().celesteMoveParams;
         public PlayerModel playerModel => ModelManager.Get<PlayerModel>();
 
@@ -47,12 +47,13 @@ namespace Pokemon
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
-            celesteCollider = GetComponent<CelesteCollider>();
-            input = GetComponent<CelesteMoveInput>();
+            celesteCollider = GetComponent<ICelesteCollider>();
+            input = GetComponent<ICelesteMoveInput>();
 
             stateMachine = new CelesteMoveStateMachine(this);
             stateMachine.Start<CelesteIdleState>();
-
+            // Debug.Log(rb);
+            // Debug.Log(moveParams);
             rb.gravityScale = moveParams.gravityScale;
         }
 

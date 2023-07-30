@@ -11,6 +11,7 @@ namespace Pokemon
         const double TOLERANCE = 0.01;
         private bool _lockedState = false;
         private CancellationTokenSource _lockCts;
+        public event Action<State<CelesteMove>, State<CelesteMove>> OnStateChanged;
 
         public CelesteMoveStateMachine(CelesteMove owner) : base(owner)
         {
@@ -39,7 +40,7 @@ namespace Pokemon
                 base.OnUpdate();
                 return;
             }
-            
+
             //在地上 且 按下了移动键 且 没有按下跳跃键 且当前<=0
             if (Owner.celesteCollider.isGrounded && Owner.input.hasXMovement && !Owner.input.jump &&
                 Owner.rb.velocity.y <= TOLERANCE && !Owner.input.dash)
@@ -60,7 +61,7 @@ namespace Pokemon
                 base.OnUpdate();
                 return;
             }
-            
+
             //在地上 且 没有按下移动键 且 没有按下跳跃键 且 没有向上的速度
             if (Owner.celesteCollider.isGrounded && !Owner.input.hasXMovement && !Owner.input.jump &&
                 Owner.rb.velocity.y <= TOLERANCE)
@@ -178,9 +179,9 @@ namespace Pokemon
                 return;
             }
 
-
-            // Debug.Log($"{currentState.GetType().Name}-->{typeof(T).Name}");
+            State<CelesteMove> preState = currentState;
             base.Change<T>();
+            OnStateChanged?.Invoke(preState, stateDic[typeof(T)]);
         }
     }
 }

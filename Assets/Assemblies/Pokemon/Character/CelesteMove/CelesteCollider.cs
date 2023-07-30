@@ -3,13 +3,20 @@ using UnityEngine;
 
 namespace Pokemon
 {
-    public class CelesteCollider : MonoBehaviour
+    public interface ICelesteCollider
     {
-        public bool isGrounded;
-        public bool isTouchingWall;
-        public bool isTouchingWallRight;
-        public bool isTouchingWallLeft;
-        
+        public bool isGrounded { get; }
+        public bool isTouchingWall { get; }
+        public bool isTouchingWallRight { get; }
+        public bool isTouchingWallLeft { get; }
+    }
+
+    public class CelesteCollider : MonoBehaviour, ICelesteCollider
+    {
+        public bool isGrounded { get; set; }
+        public bool isTouchingWall { get; set; }
+        public bool isTouchingWallRight { get; set; }
+        public bool isTouchingWallLeft { get; set; }
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private LayerMask wallLayer;
         [SerializeField] private Vector3 footOffset;

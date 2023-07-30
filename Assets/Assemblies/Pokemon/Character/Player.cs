@@ -3,13 +3,19 @@ using Cinemachine;
 using Nico;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.VFX;
 
 namespace Pokemon
 {
-    public class Player: SceneSingleton<Player>
+    public class Player : SceneSingleton<Player>
     {
         private CinemachineVirtualCamera _camera;
         private CelesteMove celesteMove;
+         
+        //后面替换出去
+        public ParticleSystem dust;
+        public VisualEffect snow;
+
         protected override void Awake()
         {
             base.Awake();
@@ -18,8 +24,23 @@ namespace Pokemon
             _camera = GetComponentInChildren<CinemachineVirtualCamera>();
             _camera.Follow = transform;
             UIManager.Instance.OpenUI<InputPanel>();
+            celesteMove.stateMachine.OnStateChanged += OnStateChanged;
+            
+            snow.Play();
         }
 
+        private void OnStateChanged(State<CelesteMove> pre, State<CelesteMove> now)
+        {
+            if (now is CelesteJumpState)
+            {
+                dust.Play();
+            }
+
+            if (pre is CelesteDownState && (now is CelesteIdleState || now is CelesteWalkState))
+            {
+                dust.Play();
+            }
+        }
 
         private void OnGUI()
         {
