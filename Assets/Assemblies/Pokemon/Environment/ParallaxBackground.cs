@@ -31,7 +31,7 @@ namespace Pokemon
             previousCameraPosition = _cameraTransform.position;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             Vector3 deltaMovement = _mainCamera.transform.position - previousCameraPosition;
             

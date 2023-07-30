@@ -10,20 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: HotUpdateDll
+  m_Name: Effect
   m_EditorClassIdentifier: 
-  m_GroupName: HotUpdateDll
+  m_GroupName: Effect
   m_Data:
     m_SerializedData: []
-  m_GUID: f0e2510fa5c2fc04296ecb088586d516
+  m_GUID: 50fa188b7fca6d34bb7864aeb00a0acb
   m_SerializeEntries:
-  - m_GUID: 5139af21389aec448b2f188f440ce83e
-    m_Address: HotUpdateDll/Pokemon.dll
+  - m_GUID: 4349b923f6864b74fa8490103668540a
+    m_Address: Effect/Dash Particle System
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - hot_update_dll
+    m_SerializedLabels: []
+  - m_GUID: 841f15f2f329d014dab8a8ad6a3aeb5e
+    m_Address: Effect/EnvironmentSnow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5bc44480d0d1ade47bff27d67edcfc7b
+    m_Address: Effect/Jump Dust Particle System
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: c41db82b234849540b43b8cda1b0238f, type: 2}
+    - {fileID: 11400000, guid: 752d9756db2212c4bb9326caf820819a, type: 2}

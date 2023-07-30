@@ -21,6 +21,14 @@ MonoBehaviour:
     m_Address: Prefabs/Player
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 43968583637b94247984cd327eb97867
+    m_Address: Prefabs/Lamp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2706abb60759e4c458dd988b4186889a
+    m_Address: Prefabs/Shop
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:
