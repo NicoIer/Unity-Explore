@@ -13,6 +13,7 @@ namespace Pokemon
         public override void OnEnter()
         {
             owner.rb.gravityScale = 0;
+            owner.animator.Climb();
         }
 
         public override void OnUpdate()

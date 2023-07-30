@@ -1,31 +1,22 @@
 using System;
 using Nico;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Pokemon
 {
-    public enum CelesteMoveFacing
-    {
-        Right,
-        Left
-    }
-
     /// <summary>
     /// 模仿蔚蓝手感 的 移动组件
     /// </summary>
-    [RequireComponent(typeof(CelesteCollider))]
     [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(CelesteMoveInput))]
     public class CelesteMove : MonoBehaviour
     {
         public ICelesteCollider celesteCollider { get; private set; }
-        public Rigidbody2D rb { get; private set; }
+        public ICelesteMoveAnimator animator { get; private set; }
         public ICelesteMoveInput input { get; private set; }
+        public Rigidbody2D rb { get; private set; }
         public CelesteMoveParams moveParams => ModelManager.Get<PlayerModel>().celesteMoveParams;
         public PlayerModel playerModel => ModelManager.Get<PlayerModel>();
+
 
         public bool canJump
         {
@@ -40,20 +31,21 @@ namespace Pokemon
         }
 
         public CelesteMoveFacing facing = CelesteMoveFacing.Right;
+        public event Action<CelesteMoveFacing> OnFacingChange; 
         public bool inAir => !celesteCollider.isGrounded && !celesteCollider.isTouchingWall;
 
         [field: SerializeReference] public CelesteMoveStateMachine stateMachine { get; private set; }
 
         private void Awake()
         {
-            rb = GetComponent<Rigidbody2D>();
+            
             celesteCollider = GetComponent<ICelesteCollider>();
-            input = GetComponent<ICelesteMoveInput>();
-
+            input = GetComponent<ICelesteMoveInput>();  
+            animator = GetComponent<ICelesteMoveAnimator>();
+            
+            rb = GetComponent<Rigidbody2D>();
             stateMachine = new CelesteMoveStateMachine(this);
             stateMachine.Start<CelesteIdleState>();
-            // Debug.Log(rb);
-            // Debug.Log(moveParams);
             rb.gravityScale = moveParams.gravityScale;
         }
 
@@ -68,6 +60,7 @@ namespace Pokemon
 
         public void UpdateFacing()
         {
+            CelesteMoveFacing pre = facing;
             if (input.move.x > 0)
             {
                 facing = CelesteMoveFacing.Right;
@@ -76,6 +69,11 @@ namespace Pokemon
             if (input.move.x < 0)
             {
                 facing = CelesteMoveFacing.Left;
+            }
+
+            if (facing != pre)
+            {
+                OnFacingChange?.Invoke(facing);
             }
 
             return;

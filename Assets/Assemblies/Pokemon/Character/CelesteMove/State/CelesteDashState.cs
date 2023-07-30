@@ -40,6 +40,8 @@ namespace Pokemon
             owner.rb.gravityScale = 0;
 
             DOVirtual.Float(14, 0, .8f, v => owner.rb.drag = v);
+            
+            owner.animator.Dash();
         }
 
         public override void OnUpdate()

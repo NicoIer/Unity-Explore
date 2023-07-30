@@ -13,6 +13,7 @@ namespace Pokemon
         protected override void Awake()
         {
             base.Awake();
+            Application.targetFrameRate = 60;
             sceneManager = GetComponentInChildren<SceneManager>();
 
 

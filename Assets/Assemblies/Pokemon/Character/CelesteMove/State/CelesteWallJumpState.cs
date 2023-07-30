@@ -18,7 +18,6 @@ namespace Pokemon
                 //给左上方的速度
                 owner.rb.velocity = new Vector2(-owner.moveParams.wallJumpForce.x, owner.moveParams.wallJumpForce.y);
                 owner.rb.velocity = Vector2.Lerp(owner.rb.velocity, (new Vector2(owner.input.move.x * owner.moveParams.speed, owner.rb.velocity.y)), owner.moveParams.wallJumpLerp * Time.deltaTime);
-                return;
             }
 
             if (owner.facing == CelesteMoveFacing.Left)
@@ -26,8 +25,9 @@ namespace Pokemon
                 //给右上方的速度
                 owner.rb.velocity = new Vector2(owner.moveParams.wallJumpForce.x, owner.moveParams.wallJumpForce.y);
                 owner.rb.velocity = Vector2.Lerp(owner.rb.velocity, (new Vector2(owner.input.move.x * owner.moveParams.speed, owner.rb.velocity.y)), owner.moveParams.wallJumpLerp * Time.deltaTime);
-                return;
             }
+            
+            owner.animator.WallJump();
             
         }
 

@@ -13,6 +13,11 @@ namespace Pokemon
         {
         }
 
+        public override void OnEnter()
+        {
+            owner.animator.Walk();
+        }
+
         public override void OnUpdate()
         {
             owner.rb.velocity = new Vector2(owner.input.move.x * owner.moveParams.speed, 0);

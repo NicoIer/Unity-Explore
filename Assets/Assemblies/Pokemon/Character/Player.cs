@@ -11,10 +11,13 @@ namespace Pokemon
     {
         private CinemachineVirtualCamera _camera;
         private CelesteMove celesteMove;
-         
+        private SpriteRenderer spriteRenderer;
+        public CelesteMoveFacing facing => celesteMove.facing;
+
         //后面替换出去
         public ParticleSystem dust;
         public VisualEffect snow;
+        public DashEffect dashEffect;
 
         protected override void Awake()
         {
@@ -24,9 +27,22 @@ namespace Pokemon
             _camera = GetComponentInChildren<CinemachineVirtualCamera>();
             _camera.Follow = transform;
             UIManager.Instance.OpenUI<InputPanel>();
+        }
+
+        private void Start()
+        {
             celesteMove.stateMachine.OnStateChanged += OnStateChanged;
-            
+            celesteMove.OnFacingChange += OnFacingChange;
+            // anim
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            // Effects 
             snow.Play();
+            dashEffect.SetTarget(spriteRenderer);
+        }
+
+        private void OnFacingChange(CelesteMoveFacing obj)
+        {
+            spriteRenderer.flipX = obj == CelesteMoveFacing.Left;
         }
 
         private void OnStateChanged(State<CelesteMove> pre, State<CelesteMove> now)
@@ -39,6 +55,17 @@ namespace Pokemon
             if (pre is CelesteDownState && (now is CelesteIdleState || now is CelesteWalkState))
             {
                 dust.Play();
+            }
+
+            // 冲刺
+            if (now is CelesteDashState)
+            {
+                dashEffect.Play();
+            }
+
+            if (pre is CelesteDashState)
+            {
+                dashEffect.Stop();
             }
         }
 

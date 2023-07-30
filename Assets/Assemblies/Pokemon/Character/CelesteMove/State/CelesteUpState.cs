@@ -12,6 +12,11 @@ namespace Pokemon
         {
         }
 
+        public override void OnEnter()
+        {
+            owner.animator.Up();
+        }
+
         public override void OnUpdate()
         {
             // Debug.Log($"Upping,{owner.input.move.x}");
