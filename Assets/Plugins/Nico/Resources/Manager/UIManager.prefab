@@ -287,7 +287,11 @@ MonoBehaviour:
   bottomLayer: {fileID: 4334155900758949597}
   middleLayer: {fileID: 4334155900820806412}
   topLayer: {fileID: 4334155901254705995}
-  _hiddenLayer: {fileID: 4334155900722526789}
+  uiLayerMask:
+    serializedVersion: 2
+    m_Bits: 32
+  panelLayerName: UI
+  hiddenLayerName: HiddenUI
 --- !u!1 &4334155901254706004
 GameObject:
   m_ObjectHideFlags: 0

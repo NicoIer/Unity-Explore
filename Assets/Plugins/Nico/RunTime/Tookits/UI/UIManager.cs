@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Nico;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Nico
 {
@@ -11,33 +13,34 @@ namespace Nico
         [field: SerializeReference] private Dictionary<Type, UIPanel> closedUIPanels = new Dictionary<Type, UIPanel>();
         [field: SerializeReference] private Dictionary<Type, GameObject> prefabs = new Dictionary<Type, GameObject>();
 
-        [SerializeField] private Camera _uiCamera;
+        [SerializeField] private Camera uiCamera;
         [SerializeField] private RectTransform bottomLayer;
         [SerializeField] private RectTransform middleLayer;
         [SerializeField] private RectTransform topLayer;
-        [SerializeField] private RectTransform _hiddenLayer;
-        private LayerMask uiLayerMask;
+
+        [SerializeField] private LayerMask uiLayerMask;
+
+        // [SerializeField] private string panelLayerName = "UI";
+        // [SerializeField] private string hiddenLayerName="HiddenUI";
         private Dictionary<UILayer, UILayerManager> _layerManagers;
 
         protected override void Awake()
         {
             base.Awake();
-            uiLayerMask = LayerMask.NameToLayer("UI");
-            _layerManagers = new Dictionary<UILayer, UILayerManager>();
-            // bottomLayer = transform.Find("Canvas/BottomLayer").GetComponent<RectTransform>();
-            // middleLayer = transform.Find("Canvas/MiddleLayer").GetComponent<RectTransform>();
-            // topLayer = transform.Find("Canvas/TopLayer").GetComponent<RectTransform>();
-            // _hiddenLayer = transform.Find("Canvas/HiddenLayer").GetComponent<RectTransform>();
 
-            _layerManagers[UILayer.Bottom] = new UILayerManager(bottomLayer, _hiddenLayer);
-            _layerManagers[UILayer.Middle] = new UILayerManager(middleLayer, _hiddenLayer);
-            _layerManagers[UILayer.Top] = new UILayerManager(topLayer, _hiddenLayer);
+            // int panelLayer = LayerMask.NameToLayer(panelLayerName);
+            // int hiddenLayer = LayerMask.NameToLayer(hiddenLayerName);
+
+            _layerManagers = new Dictionary<UILayer, UILayerManager>();
+            _layerManagers[UILayer.Bottom] = new UILayerManager(bottomLayer); //,  panelLayer, hiddenLayer);
+            _layerManagers[UILayer.Middle] = new UILayerManager(middleLayer); //,  panelLayer, hiddenLayer);
+            _layerManagers[UILayer.Top] = new UILayerManager(topLayer); //,  panelLayer,  hiddenLayer);
 
             openedUIPanels = new Dictionary<Type, UIPanel>();
             closedUIPanels = new Dictionary<Type, UIPanel>();
 
             // _uiCamera = transform.Find("UICamera").GetComponent<Camera>();
-            _uiCamera.cullingMask = 1 << uiLayerMask;
+            uiCamera.cullingMask = uiLayerMask;
         }
 
         public void Register<T>(GameObject prefab) where T : UIPanel
@@ -71,6 +74,7 @@ namespace Nico
             //已经关闭了
             if (closedUIPanels.TryGetValue(typeof(T), out UIPanel panel1))
             {
+                Debug.Log("reopen ui");
                 openedUIPanels[typeof(T)] = panel1;
                 closedUIPanels.Remove(typeof(T));
                 _layerManagers[panel1.Layer()].Push(panel1);
@@ -106,7 +110,24 @@ namespace Nico
         private bool Create<T>(out T panel) where T : UIPanel
         {
             GameObject prefab = prefabs[typeof(T)];
-            GameObject uiObj = GameObject.Instantiate(prefab, null);
+            UILayer layer = prefab.GetComponent<T>().Layer();
+            Transform tar = null;
+            switch (layer)
+            {
+                case UILayer.Top:
+                    tar = topLayer;
+                    break;
+                case UILayer.Middle:
+                    tar = middleLayer;
+                    break;
+                case UILayer.Bottom:
+                    tar = bottomLayer;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            GameObject uiObj = GameObject.Instantiate(prefab, tar, false); //UILayer layer
             panel = uiObj.GetComponent<T>();
             panel.OnCreate();
             return true;
@@ -169,6 +190,19 @@ namespace Nico
         }
 
         public void CloseAll()
+        {
+            _layerManagers[UILayer.Bottom].RemoveAll();
+            _layerManagers[UILayer.Middle].RemoveAll();
+            _layerManagers[UILayer.Top].RemoveAll();
+            foreach (var kvp in openedUIPanels)
+            {
+                closedUIPanels.Add(kvp.Key, kvp.Value);
+            }
+
+            openedUIPanels.Clear();
+        }
+
+        public void DestroyAll()
         {
             _layerManagers[UILayer.Bottom].RemoveAll();
             _layerManagers[UILayer.Middle].RemoveAll();

@@ -526,6 +526,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4334155901044114146, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
+      propertyPath: uiCamera
+      value: 
+      objectReference: {fileID: 1867016413}
     - target: {fileID: 4334155901044114147, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
       propertyPath: m_RootOrder
       value: 0

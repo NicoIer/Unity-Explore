@@ -7,16 +7,17 @@ namespace Nico
 {
     public class UILayerManager
     {
-        private Transform _transform;
-        private Transform _hide;
+        // private readonly int _uiLayerMask;
+        // private readonly int _hiddenLayerMask;
         private PriorityQueue<UIPanel> _queue;
         public bool HasItem => _queue.Count > 0;
         private Stack<UIPanel> _tmp;
-
-        public UILayerManager(RectTransform transform, RectTransform hide)
+        private Transform rectTransform;
+        public UILayerManager(RectTransform transform)//,int uiLayerMask, int hiddenLayerMask)
         {
-            this._hide = hide;
-            _transform = transform;
+            this.rectTransform = transform;
+            // this._uiLayerMask = uiLayerMask;
+            // this._hiddenLayerMask = hiddenLayerMask;
             _queue = new PriorityQueue<UIPanel>((_1, _2) => _1.Priority() - _2.Priority());
             _tmp = new Stack<UIPanel>();
         }
@@ -54,7 +55,6 @@ namespace Nico
 
         public void Push(UIPanel panel)
         {
-            panel.gameObject.transform.SetParent(_transform, false);
             ShowPanel(panel);
             _queue.Enqueue(panel);
             if (panel.Priority() > _queue.Peek().Priority())
@@ -85,12 +85,13 @@ namespace Nico
         public void ShowPanel(UIPanel panel)
         {
             panel.gameObject.SetActive(true);
+            // panel.gameObject.layer = _hiddenLayerMask;
             panel.OnShow();
         }
 
         public void HidePanel(UIPanel panel)
         {
-            panel.transform.SetParent(_hide);
+            // panel.gameObject.layer = _uiLayerMask;
             panel.gameObject.SetActive(false);
             panel.OnHide();
         }
