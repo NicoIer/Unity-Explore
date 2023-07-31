@@ -7,15 +7,15 @@ namespace Nico
 {
     public class UIManager : GlobalSingleton<UIManager>
     {
-        [field: SerializeReference] public Dictionary<Type, UIPanel> openedUIPanels = new Dictionary<Type, UIPanel>();
-        [field: SerializeReference] public Dictionary<Type, UIPanel> closedUIPanels = new Dictionary<Type, UIPanel>();
-        [field: SerializeReference] public Dictionary<Type, GameObject> prefabs = new Dictionary<Type, GameObject>();
-        [SerializeField] private Canvas _canvas;
+        [field: SerializeReference] private Dictionary<Type, UIPanel> openedUIPanels = new Dictionary<Type, UIPanel>();
+        [field: SerializeReference] private Dictionary<Type, UIPanel> closedUIPanels = new Dictionary<Type, UIPanel>();
+        [field: SerializeReference] private Dictionary<Type, GameObject> prefabs = new Dictionary<Type, GameObject>();
+
         [SerializeField] private Camera _uiCamera;
-        private RectTransform bottomLayer;
-        private RectTransform middleLayer;
-        private RectTransform topLayer;
-        private RectTransform _hiddenLayer;
+        [SerializeField] private RectTransform bottomLayer;
+        [SerializeField] private RectTransform middleLayer;
+        [SerializeField] private RectTransform topLayer;
+        [SerializeField] private RectTransform _hiddenLayer;
         private LayerMask uiLayerMask;
         private Dictionary<UILayer, UILayerManager> _layerManagers;
 
@@ -24,10 +24,10 @@ namespace Nico
             base.Awake();
             uiLayerMask = LayerMask.NameToLayer("UI");
             _layerManagers = new Dictionary<UILayer, UILayerManager>();
-            bottomLayer = transform.Find("Canvas/BottomLayer").GetComponent<RectTransform>();
-            middleLayer = transform.Find("Canvas/MiddleLayer").GetComponent<RectTransform>();
-            topLayer = transform.Find("Canvas/TopLayer").GetComponent<RectTransform>();
-            _hiddenLayer = transform.Find("Canvas/HiddenLayer").GetComponent<RectTransform>();
+            // bottomLayer = transform.Find("Canvas/BottomLayer").GetComponent<RectTransform>();
+            // middleLayer = transform.Find("Canvas/MiddleLayer").GetComponent<RectTransform>();
+            // topLayer = transform.Find("Canvas/TopLayer").GetComponent<RectTransform>();
+            // _hiddenLayer = transform.Find("Canvas/HiddenLayer").GetComponent<RectTransform>();
 
             _layerManagers[UILayer.Bottom] = new UILayerManager(bottomLayer, _hiddenLayer);
             _layerManagers[UILayer.Middle] = new UILayerManager(middleLayer, _hiddenLayer);
@@ -36,7 +36,7 @@ namespace Nico
             openedUIPanels = new Dictionary<Type, UIPanel>();
             closedUIPanels = new Dictionary<Type, UIPanel>();
 
-            _uiCamera = transform.Find("UICamera").GetComponent<Camera>();
+            // _uiCamera = transform.Find("UICamera").GetComponent<Camera>();
             _uiCamera.cullingMask = 1 << uiLayerMask;
         }
 
@@ -52,10 +52,10 @@ namespace Nico
             if (panel == null)
             {
                 Debug.LogError($"can't find UIPanel in prefab:{prefab.name}");
-                return;                
+                return;
             }
-            prefabs[panel.GetType()] = prefab;
 
+            prefabs[panel.GetType()] = prefab;
         }
 
         public T OpenUI<T>() where T : UIPanel
@@ -106,7 +106,7 @@ namespace Nico
         private bool Create<T>(out T panel) where T : UIPanel
         {
             GameObject prefab = prefabs[typeof(T)];
-            GameObject uiObj = GameObject.Instantiate(prefab, _canvas.transform);
+            GameObject uiObj = GameObject.Instantiate(prefab, null);
             panel = uiObj.GetComponent<T>();
             panel.OnCreate();
             return true;
