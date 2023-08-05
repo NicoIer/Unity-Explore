@@ -9,26 +9,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Script: {fileID: 0}
   m_Name: Prefabs
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Unity.Addressables.Editor:UnityEditor.AddressableAssets.Settings:AddressableAssetGroup
   m_GroupName: Prefabs
   m_Data:
     m_SerializedData: []
-  m_GUID: 0ccdbf116a526364896193166b2005fc
+  m_GUID: 1014ffb5a86c34ce2997770b42790be1
   m_SerializeEntries:
-  - m_GUID: 1efc9fb45dee5ab4397e6ee3cd775578
-    m_Address: Prefabs/Player
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 43968583637b94247984cd327eb97867
     m_Address: Prefabs/Lamp
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1efc9fb45dee5ab4397e6ee3cd775578
+    m_Address: Prefabs/Player
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2706abb60759e4c458dd988b4186889a
     m_Address: Prefabs/Shop
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:
