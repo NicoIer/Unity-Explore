@@ -1,0 +1,15 @@
+using System;
+using UnityEngine;
+
+namespace {Namespace}
+{
+    public partial class {ClassName}
+    {
+        {ComponentFields}
+        
+        protected override void OnPartialBind()
+        {
+            {ComponentBindings}    
+        }
+    }
+}

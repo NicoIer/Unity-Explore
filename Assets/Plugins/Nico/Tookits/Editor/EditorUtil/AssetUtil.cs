@@ -59,6 +59,14 @@ namespace Nico.Editor
             }
             AssetDatabase.CreateAsset(so, path);
         }
+
+        // 拿到T类型MonoBehavior的文件定义位置
+        public static string GetScriptsPath<T>() where T : MonoBehaviour
+        {
+            //找到这个类的定义文件的位置
+            string path = AssetDatabase.GetAssetPath(MonoScript.FromMonoBehaviour(default(T)));
+            return path;
+        }
     }
 }
 #endif

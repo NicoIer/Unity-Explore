@@ -30,14 +30,14 @@ namespace Nico
             EventCenters<TEvent>.center.AddListener(listener);
         }
 
-        // [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void ClearEventCenter<T>() where T : IEvent
         {
             // Debug.Log($"ClearEventCenter<{typeof(T)}>");
             EventCenters<T>.center = null;
         }
 
-        // [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void UnListen<TEvent>(IEventListener<TEvent> listener) where TEvent : IEvent
         {
             if (!Application.isPlaying)
@@ -55,7 +55,7 @@ namespace Nico
             EventCenters<TEvent>.center.RemoveListener(listener);
         }
 
-        // [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Send<TEvent>() where TEvent : struct, IEvent
         {
             if (!Application.isPlaying)
@@ -67,7 +67,7 @@ namespace Nico
             Send<TEvent>(default(TEvent));
         }
 
-        // [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Send<TEvent>(TEvent e) where TEvent : IEvent
         {
             if (!Application.isPlaying)
@@ -84,5 +84,7 @@ namespace Nico
 
             EventCenters<TEvent>.center.Trigger(e);
         }
+        
+        //TODO 将不需要需要基于泛型 的 事件监听也弄上
     }
 }

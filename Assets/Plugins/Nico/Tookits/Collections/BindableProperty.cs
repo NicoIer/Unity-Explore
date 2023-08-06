@@ -2,7 +2,7 @@ using System;
 
 namespace Nico
 {
-    public class BindableProperty<T>
+    public class BindableProperty<T> where T : new()
     {
         private T _value;
 
@@ -38,10 +38,16 @@ namespace Nico
 
         public event Action<T, T> OnValueChanged;
 
-        public BindableProperty(T value = default)
+        public BindableProperty(T value)
         {
             _value = value;
         }
+
+        public BindableProperty()
+        {
+            _value = new T();
+        }
+        
 
         public override string ToString()
         {
