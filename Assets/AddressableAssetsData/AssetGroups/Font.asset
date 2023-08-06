@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Font
   m_Data:
     m_SerializedData: []
-  m_GUID: d8372ca5a95d54264ad0af5a4b4da315
+  m_GUID: 9ed6f4d9af86c44e1bac42a81951ffa1
   m_SerializeEntries:
   - m_GUID: cbab942c727649a429414af36e7f2831
     m_Address: "Font/\u4E2D\u6613\u5B8B\u4F53 SDF"

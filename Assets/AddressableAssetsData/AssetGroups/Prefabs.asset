@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Prefabs
   m_Data:
     m_SerializedData: []
-  m_GUID: 1014ffb5a86c34ce2997770b42790be1
+  m_GUID: 13c9799c2246c450ba3997591458b5b5
   m_SerializeEntries:
   - m_GUID: 43968583637b94247984cd327eb97867
     m_Address: Prefabs/Lamp

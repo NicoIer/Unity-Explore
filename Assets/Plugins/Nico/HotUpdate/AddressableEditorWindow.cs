@@ -14,7 +14,7 @@ using UnityEditor.UIElements;
 
 namespace Nico.Edotor
 {
-    public partial class AddressableEditorWindow : EditorWindow
+    public  class AddressableEditorWindow : EditorWindow
     {
         [SerializeField] private AddressAblesUpdateConfig config;
 
@@ -142,6 +142,7 @@ namespace Nico.Edotor
             //遍历所有文件夹
             foreach (string folderGuid in folders)
             {
+                Debug.Log(folderGuid);
                 //获取文件夹的路径
                 UpdateFolder(folderGuid);
                 _updateAddressableProgressBar.value += 1f / folders.Length * 100;

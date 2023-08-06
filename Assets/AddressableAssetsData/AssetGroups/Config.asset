@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Config
   m_Data:
     m_SerializedData: []
-  m_GUID: bff2897e45ec6490f94da83ef245882f
+  m_GUID: c4a795522a2ed4e72a1e2b1439c7b185
   m_SerializeEntries:
   - m_GUID: 547a71ec3450cde498f91d1e35977c83
     m_Address: Config/CelesteMoveConfig

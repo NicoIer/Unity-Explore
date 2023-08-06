@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: AOTDll
   m_Data:
     m_SerializedData: []
-  m_GUID: 4a7016f518813404babb400c5dbe97bc
+  m_GUID: 362a91b0f92f347a1abb1a3445c722b6
   m_SerializeEntries:
   - m_GUID: f8c3e9a6446937f43b7b13dd718e45d1
     m_Address: AOTDll/DOTween.dll

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Title
   m_Data:
     m_SerializedData: []
-  m_GUID: 35927f6327dae40b68248547993302dc
+  m_GUID: 644b6f248ba604396b018f66c1ebcfc7
   m_SerializeEntries:
   - m_GUID: 043410e54aece9740b50aab6dc681721
     m_Address: Title/Global Volume Profile

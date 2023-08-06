@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: UIComponent
   m_Data:
     m_SerializedData: []
-  m_GUID: 2323162729d004ba797c0d550b23df57
+  m_GUID: 62b2038236e69404aae34337eba80c20
   m_SerializeEntries:
   - m_GUID: c8caa2a707bfc0b4babc3747123aa3fd
     m_Address: UIComponent/DebugButton

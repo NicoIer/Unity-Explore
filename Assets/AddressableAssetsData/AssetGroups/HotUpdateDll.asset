@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: HotUpdateDll
   m_Data:
     m_SerializedData: []
-  m_GUID: a9839636a90cc4399b8ab5eed6e3dde5
+  m_GUID: 91420a23f47584c2e91e32e574b38085
   m_SerializeEntries:
   - m_GUID: 5139af21389aec448b2f188f440ce83e
     m_Address: HotUpdateDll/Pokemon.dll

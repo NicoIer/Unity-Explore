@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!224 &8567512 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4334155901254705995, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
+  m_PrefabInstance: {fileID: 4334155901121806075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &261159883
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +381,16 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!224 &971098554 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4334155900820806412, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
+  m_PrefabInstance: {fileID: 4334155901121806075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1456168926 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4334155900758949597, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
+  m_PrefabInstance: {fileID: 4334155901121806075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1706637731
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,13 +517,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2789020306407504451, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
-      propertyPath: m_VertexColorAlwaysGammaSpace
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2874021168585255276, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
-      propertyPath: m_VertexColorAlwaysGammaSpace
-      value: 0
+    - target: {fileID: 4334155901044114146, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
+      propertyPath: topLayer
+      value: 
+      objectReference: {fileID: 8567512}
+    - target: {fileID: 4334155901044114146, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
+      propertyPath: uiCamera
+      value: 
+      objectReference: {fileID: 1867016413}
+    - target: {fileID: 4334155901044114146, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
+      propertyPath: bottomLayer
+      value: 
+      objectReference: {fileID: 1456168926}
+    - target: {fileID: 4334155901044114146, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
+      propertyPath: middleLayer
+      value: 
+      objectReference: {fileID: 971098554}
+    - target: {fileID: 4334155901044114146, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
+      propertyPath: uiLayerMask.m_Bits
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4334155901044114147, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -553,10 +580,6 @@ PrefabInstance:
     - target: {fileID: 4334155901044114156, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
       propertyPath: m_Name
       value: UIManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8810198792769173634, guid: 47a288b914058c043b4afdb9ab11624d, type: 3}
-      propertyPath: m_VertexColorAlwaysGammaSpace
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

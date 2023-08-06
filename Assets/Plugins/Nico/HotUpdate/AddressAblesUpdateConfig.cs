@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 
 namespace Nico.Editor
 {
-    [CreateAssetMenu(fileName = "AddressablesUpdateConfig", menuName = "Config/AddressablesUpdateConfig", order = 0)]
+    [CreateAssetMenu(fileName = "AddressAblesUpdateConfig", menuName = "Config/AddressAblesUpdateConfig", order = 0)]
     public class AddressAblesUpdateConfig : ScriptableObject
     {
         private static readonly Dictionary<string, string> DefaultFolderToLabel = new Dictionary<string, string>()

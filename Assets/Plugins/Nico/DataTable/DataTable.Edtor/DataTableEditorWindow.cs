@@ -21,6 +21,7 @@ namespace Nico.Editor
         [MenuItem("Tools/Nico/DataTable")]
         public static void ShowExample()
         {
+            
             DataTableEditorWindow wnd = GetWindow<DataTableEditorWindow>();
             wnd.titleContent = new GUIContent("DataTableEditorWindow");
         }
@@ -28,6 +29,10 @@ namespace Nico.Editor
         public void CreateGUI()
         {
             VisualElement root = rootVisualElement;
+            if (uxml == null)
+            {
+                uxml = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Plugins/Nico/DataTable/DataTable.Edtor/DataTableEditorWindow.uxml");
+            }
             VisualElement labelFromUxml = uxml.Instantiate();
             labelFromUxml.styleSheets.Add(uss);
             root.Add(labelFromUxml);

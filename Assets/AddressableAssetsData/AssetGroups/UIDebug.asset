@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: UIDebug
   m_Data:
     m_SerializedData: []
-  m_GUID: 187526c22839f4136813286c9419ab92
+  m_GUID: a2089c16e83e4432baa7ae995322ce7c
   m_SerializeEntries:
   - m_GUID: 69a575d50c365f343a96f46a0b2eaa05
     m_Address: UIDebug/DebugPanel

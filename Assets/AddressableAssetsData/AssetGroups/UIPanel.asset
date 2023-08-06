@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: UIPanel
   m_Data:
     m_SerializedData: []
-  m_GUID: 8a895a7ff86a94818bd97fcabc0d27a9
+  m_GUID: aa52bd6fdf4384831842bee4b4c046a6
   m_SerializeEntries:
   - m_GUID: 52c8e8222f1c57d488494387a1f56353
     m_Address: UIPanel/InputPanel

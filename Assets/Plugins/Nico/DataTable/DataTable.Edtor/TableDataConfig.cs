@@ -15,6 +15,7 @@ namespace Nico.Editor
         [SerializeField] public string codeSavePath = "Assets/DataTable/";
 
         public string DataTableTemplate => tDataTableTemplate.text;
+        
         public string TEnumTemplate => tEnumTemplate.text;
         public string TClassTemplate => tClassTemplate.text;
         public string TStructTemplate => tStructTemplate.text;
