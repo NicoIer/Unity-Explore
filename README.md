@@ -5,7 +5,7 @@
 
 项目以文件夹划分内容，具体开发时会单独开分支。main分支中能够看到所有内容，没有采用submodule
 
-
+部分内容引用了另一个项目 [NicoIer/Unity-Tookit: Unity's development tools (github.com)](https://github.com/NicoIer/Unity-Tookit)
 
 ## 游戏探索:game_die:
 
@@ -21,7 +21,7 @@
 | 宝可梦 |  | :black_square_button:回合制:black_square_button:宝可梦培养 |  |
 |  |  | :black_square_button: |  |
 
-## 技术探索
+## 技术探索:telescope:
 
 | 内容                            | 状态                    | Link                                                         |
 | ------------------------------- | ----------------------- | ------------------------------------------------------------ |
