@@ -5,19 +5,21 @@
 
 项目以文件夹划分内容，具体开发时会单独开分支。main分支中能够看到所有内容，没有采用submodule
 
+
+
 ## 游戏探索:game_die:
 
-| 游戏 | 位置        | 目标 |
-| ---- | -------------- | ---- |
-| 原神 | Games/GenshinImpact |  :black_square_button:可编程渲染管线做风格化渲染  |
-| 吸血鬼 |  | :black_square_button:开宝箱动画 |
-| 双人成形 |  | :black_square_button:分屏 |
-| 蔚蓝 |  | :black_square_button:横版移动和跳跃 |
-| CS GO |  | :black_square_button:第一人称射击 |
-| 保卫萝卜 |  | :black_square_button:塔防玩法 |
-| 开心农场 |  | :black_square_button:种田玩法 |
-| 宝可梦 |  | :black_square_button:回合制:black_square_button:宝可梦培养 |
-|  |  | :black_square_button: |
+| 游戏 | 位置        | 目标 | 参考 |
+| ---- | -------------- | ---- | ---- |
+| 原神 | Games/GenshinImpact |  :black_square_button:可编程渲染管线做风格化渲染  |  |
+| 吸血鬼 |  | :black_square_button:开宝箱动画 |  |
+| 双人成形 |  | :black_square_button:分屏 |  |
+| 蔚蓝 |  | :black_square_button:横版移动和跳跃 | [link](https://github.com/mixandjam/Celeste-Movement) |
+| CS GO |  | :black_square_button:第一人称射击 |  |
+| 保卫萝卜 |  | :black_square_button:塔防玩法 |  |
+| 开心农场 |  | :black_square_button:种田玩法 |  |
+| 宝可梦 |  | :black_square_button:回合制:black_square_button:宝可梦培养 |  |
+|  |  | :black_square_button: |  |
 
 ## 技术探索
 
