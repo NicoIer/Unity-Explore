@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: AOTDll
+  m_EditorClassIdentifier: 
+  m_GroupName: AOTDll
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 5c7ed75bfb908a24eb73f1380d863b67
+  m_SerializeEntries:
+  - m_GUID: 45f8b79d7df0ef2498f90465e318ee57
+    m_Address: AOTDll/mscorlib.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
+  - m_GUID: 4c78e3dfa1c21a24c8b63e33809dead3
+    m_Address: AOTDll/Nico.Tookits.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
+  - m_GUID: 9911c1178cdd4ea5962831db715d228e
+    m_Address: AOTDll/UniTask.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
+  - m_GUID: f8c3e9a6446937f43b7b13dd718e45d1
+    m_Address: AOTDll/DOTween.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
+  - m_GUID: 29be3555c9613c948998d009858d86ef
+    m_Address: AOTDll/UniTask.Addressables.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
+  - m_GUID: 3e9b85195ba04c1396807dca1619dff0
+    m_Address: AOTDll/UnityEngine.CoreModule.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
+  - m_GUID: f040012d775f4514912c1a880c86c6b1
+    m_Address: AOTDll/Unity.InputSystem.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
+  - m_GUID: be4601d1c1fba3344b17be7525237bdf
+    m_Address: AOTDll/Unity.ResourceManager.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - aot_dll
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b73c0131fbb2fbb4e8ec3bf5af76f659, type: 2}

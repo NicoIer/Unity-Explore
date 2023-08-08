@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UIComponent
+  m_EditorClassIdentifier: 
+  m_GroupName: UIComponent
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 1f05f6abc180f6f40bb1f9726b2478dd
+  m_SerializeEntries:
+  - m_GUID: b01792b2e19322b459ffb73ce5e310d4
+    m_Address: UIComponent/EscButton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4da74a72adb0fc343a88c28b2f5bdf58
+    m_Address: UIComponent/LeftStick
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a7cc67cd97a60304685a348642ccb694
+    m_Address: UIComponent/XBoxButton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c8caa2a707bfc0b4babc3747123aa3fd
+    m_Address: UIComponent/DebugButton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a63030d4a2ad45943a7241a8aae52043
+    m_Address: UIComponent/Right_Control_Buttons
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c3a811fb0a39b914fb4f8c9c83db219b, type: 2}

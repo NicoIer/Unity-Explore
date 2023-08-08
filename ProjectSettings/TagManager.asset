@@ -12,8 +12,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Collision
+  - HiddenUI
   - 
   - 
   - 
@@ -41,4 +41,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Env
+    uniqueID: 725756769
+    locked: 0
+  - name: Character
+    uniqueID: 2950174573
+    locked: 0
+  - name: Player
+    uniqueID: 2811196173
+    locked: 0
+  - name: WorldUI
+    uniqueID: 3205711291
     locked: 0
