@@ -1,30 +1,35 @@
-# 探索Unity
-复刻已有游戏中的各种游戏效果，在不同分支上实现。
+# 探索Unity:sob:
+这个项目实际上是个人探索学习项目，只有不断学习进步，才不会被淘汰 :sun_behind_rain_cloud:
 
-## 计划中的探索
+项目分为两个部分，第一个部分是探索各游戏中有趣的 **画面渲染/游戏机制**，第二个部分探索实际工程中经常会用到的技术。
 
-| 游戏 | 分支           | 目标 |
+项目以文件夹划分内容，具体开发时会单独开分支。main分支中能够看到所有内容，没有采用submodule
+
+## 游戏探索:game_die:
+
+| 游戏 | 位置        | 目标 |
 | ---- | -------------- | ---- |
-| 原神 | Genshin Impact |  :black_square_button:可编程渲染管线做风格化渲染  |
+| 原神 | Games/GenshinImpact |  :black_square_button:可编程渲染管线做风格化渲染  |
 | 吸血鬼 |  | :black_square_button:开宝箱动画 |
 | 双人成形 |  | :black_square_button:分屏 |
 | 蔚蓝 |  | :black_square_button:横版移动和跳跃 |
 | CS GO |  | :black_square_button:第一人称射击 |
 | 保卫萝卜 |  | :black_square_button:塔防玩法 |
 | 开心农场 |  | :black_square_button:种田玩法 |
-| 宝可梦 |  | :black_square_button:回合制:black_square_button: |
+| 宝可梦 |  | :black_square_button:回合制:black_square_button:宝可梦培养 |
 |  |  | :black_square_button: |
 
-### CS GO
+## 技术探索
 
-- [ ] 第一人称视角跟随
-- [ ] 枪械射击
+| 内容                            | 状态                    | Link                                                         |
+| ------------------------------- | ----------------------- | ------------------------------------------------------------ |
+| Hybrid CLR + Addressables热更新 | :ballot_box_with_check: | [NicoIer/Unity-Tookit: Unity's development tools (github.com)](https://github.com/NicoIer/Unity-Tookit) |
+| UGUI毛玻璃效果                  | :black_square_button:   |                                                              |
+| UGUIManager                     | :ballot_box_with_check: | [NicoIer/Unity-Tookit: Unity's development tools (github.com)](https://github.com/NicoIer/Unity-Tookit) |
+|                                 |                         |                                                              |
+|                                 |                         |                                                              |
+|                                 |                         |                                                              |
+|                                 |                         |                                                              |
+|                                 |                         |                                                              |
+|                                 |                         |                                                              |
 
-### 保卫萝卜
-
-- [ ] 塔防的玩法
-
-### 宝可梦
-
-- [ ] 回合制战斗
-- [ ] 宝可梦培养
