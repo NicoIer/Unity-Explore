@@ -9,26 +9,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Script: {fileID: 0}
   m_Name: Effect
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Unity.Addressables.Editor:UnityEditor.AddressableAssets.Settings:AddressableAssetGroup
   m_GroupName: Effect
   m_Data:
     m_SerializedData: []
-  m_GUID: 50fa188b7fca6d34bb7864aeb00a0acb
+  m_GUID: aa57805af2d8a48caa6e867eed6df229
   m_SerializeEntries:
   - m_GUID: 4349b923f6864b74fa8490103668540a
     m_Address: Effect/Dash Particle System
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 841f15f2f329d014dab8a8ad6a3aeb5e
     m_Address: Effect/EnvironmentSnow
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5bc44480d0d1ade47bff27d67edcfc7b
     m_Address: Effect/Jump Dust Particle System
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Pokemon
 {
-    public class TitlePanel : UIPanel
+    public partial class TitlePanel : UIPanel
     {
         [SerializeField] private Button startButton;
         [SerializeField] private Button settingButton;
@@ -12,6 +12,7 @@ namespace Pokemon
 
         public override void OnCreate()
         {
+            base.OnCreate();
             startButton.onClick.AddListener(OnStartButtonClick);
             settingButton.onClick.AddListener(OnSettingButtonClick);
             exitButton.onClick.AddListener(OnExitButtonClick);

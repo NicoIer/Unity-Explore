@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Games.meta
 guid: 114dceedfdfc46d418bbac350c947727
 folderAsset: yes
 DefaultImporter:
+========
+guid: a3a7a67c08f1e4521aabf63c0b4e3c98
+NativeFormatImporter:
+>>>>>>>> PokemonGame:Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset.meta
   externalObjects: {}
+  mainObjectFileID: 11400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

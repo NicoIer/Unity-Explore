@@ -9,26 +9,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Script: {fileID: 0}
   m_Name: UIDebug
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Unity.Addressables.Editor:UnityEditor.AddressableAssets.Settings:AddressableAssetGroup
   m_GroupName: UIDebug
   m_Data:
     m_SerializedData: []
-  m_GUID: 184082983c91c7248b6d9a734258641a
+  m_GUID: a2089c16e83e4432baa7ae995322ce7c
   m_SerializeEntries:
   - m_GUID: 69a575d50c365f343a96f46a0b2eaa05
     m_Address: UIDebug/DebugPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fc187d10aede39642ac725c6dc08b7a5
     m_Address: UIDebug/DebugSlider
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 07a274b39e8775948b328ea2efedbf9e
     m_Address: UIDebug/DebugToggle
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:

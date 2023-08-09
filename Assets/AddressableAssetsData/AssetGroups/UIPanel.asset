@@ -9,22 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Script: {fileID: 0}
   m_Name: UIPanel
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Unity.Addressables.Editor:UnityEditor.AddressableAssets.Settings:AddressableAssetGroup
   m_GroupName: UIPanel
   m_Data:
     m_SerializedData: []
-  m_GUID: 79141e6fa252d2c45aea1e682bac9b10
+  m_GUID: aa52bd6fdf4384831842bee4b4c046a6
   m_SerializeEntries:
   - m_GUID: 52c8e8222f1c57d488494387a1f56353
     m_Address: UIPanel/InputPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8897cb60f59a70b48903fb157460999c
     m_Address: UIPanel/TitlePanel
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0371bc7b890a179479c0182ce140746f, type: 2}
   m_SchemaSet:
