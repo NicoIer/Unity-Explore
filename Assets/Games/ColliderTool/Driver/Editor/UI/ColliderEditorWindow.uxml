@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Games/ColliderTool/Editor/UI/ColliderEditorWindow.uss?fileID=7433441132597879392&amp;guid=2c1c639de1bef46079a199d2aff12424&amp;type=3#ColliderEditorWindow" />
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <uie:Toolbar tooltip="工具" style="visibility: visible; display: flex; overflow: visible; left: auto; top: auto; right: auto; opacity: 1; flex-shrink: 1; flex-grow: 0; flex-wrap: nowrap; flex-direction: row;">
+                <uie:ToolbarButton text="光标" display-tooltip-when-elided="true" name="arrow" style="background-image: none; flex-grow: initial; flex-basis: initial; flex-shrink: initial; left: auto; -unity-background-scale-mode: scale-and-crop;" />
+                <uie:ToolbarButton text="绘制" display-tooltip-when-elided="true" name="paint" />
+                <uie:ToolbarButton text="橡皮" display-tooltip-when-elided="true" name="erase" />
+                <uie:ToolbarButton text="填充" display-tooltip-when-elided="true" name="fill" />
+            </uie:Toolbar>
+            <ui:Vector3Field label="size" name="v3_size" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
+            <uie:ObjectField label="绘制目标" name="target" style="flex-shrink: 1; align-items: auto; justify-content: flex-start; align-self: stretch; flex-direction: column;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+</ui:UXML>

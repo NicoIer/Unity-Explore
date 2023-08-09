@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: d5f3aa88ab9854e9bab32055d5738332
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: fd98612e779a5bc777160acda4d7b24a
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -87,6 +87,8 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - hot_update_dll
+    - aot_dll
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 1d46861779e302e4fbd007a91d60e0d5, type: 2}
