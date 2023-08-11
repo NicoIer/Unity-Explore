@@ -6,7 +6,7 @@ namespace ColliderTool
     /// 基于MonoBehaviour的单例模式 仅场景内单例 不会跨场景 切换场景会被销毁
     /// 这个单例是线程安全的 
     /// </summary>
-    internal abstract class SceneSingleton<T> : MonoBehaviour where T : SceneSingleton<T>
+    public abstract class SceneSingleton<T> : MonoBehaviour where T : SceneSingleton<T>
     {
         private static readonly object _lock = typeof(T);
         private static T _instance;
