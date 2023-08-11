@@ -12,7 +12,7 @@ namespace ColliderTool
         private MergeCollider _mergeCollider => MergeCollider.Instance;
         private Vector3 cellSize => _mergeCollider.cellSize;
         private Vector3 intersection;
-        public Vector2 drawAreaSize = new Vector2(20, 20);
+        public Vector2Int drawAreaSize = new Vector2Int(20, 20);
 
         private Surface surface => new Surface(Vector3.up, -_mergeCollider.transform.position.y);
 
@@ -67,20 +67,25 @@ namespace ColliderTool
             Bounds bounds = new Bounds(center.worldCenter, new Vector3(width, 0, height));
 
             // Gizmos.DrawWireCube(bounds.center, bounds.size);
-            //x轴绘制 x+1条线
-            for (int x = 0; x < drawAreaSize.x + 1; x++)
+            //z轴绘制 current+1条线
+            for (int current = 0; current < drawAreaSize.x + 1; current++)
             {
-                float startX = bounds.min.x + x * cellSize.x;
+                float startX = bounds.min.x + current * cellSize.x;
                 Gizmos.DrawLine(new Vector3(startX, 0, bounds.min.z), new Vector3(startX, 0, bounds.max.z));
             }
 
-            //z轴绘制 z+1条线
+            //x轴绘制 z+1条线
             for (int z = 0; z < drawAreaSize.y + 1; z++)
             {
                 float startZ = bounds.min.z + z * cellSize.z;
                 Gizmos.DrawLine(new Vector3(bounds.min.x, 0, startZ), new Vector3(bounds.max.x, 0, startZ));
             }
+            
+            //在交点处绘制一个Box
+            Vector3 boxCenter = center.worldCenter + new Vector3(0, cellSize.y / 2, 0);
+            Gizmos.DrawWireCube(boxCenter, cellSize);
         }
+        
 #endif
     }
 }

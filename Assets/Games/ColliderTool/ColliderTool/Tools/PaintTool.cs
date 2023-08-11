@@ -13,11 +13,5 @@ namespace ColliderTool
         private void OnPaint()
         {
         }
-
-
-        public override void OnSceneGUI()
-        {
-
-        }
     }
 }

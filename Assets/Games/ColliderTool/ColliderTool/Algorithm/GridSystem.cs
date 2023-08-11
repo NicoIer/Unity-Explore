@@ -8,8 +8,8 @@ namespace ColliderTool
         public Grid(Vector3 worldPos, Vector3 size)
         {
             this.size = size;
-            pos = new Vector3Int(Mathf.FloorToInt(worldPos.x / size.x), Mathf.FloorToInt(worldPos.y / size.y),
-                Mathf.FloorToInt(worldPos.z / size.z));
+            pos = new Vector3Int(Mathf.RoundToInt(worldPos.x / size.x), Mathf.RoundToInt(worldPos.y / size.y),
+                Mathf.RoundToInt(worldPos.z / size.z));
         }
         public Grid(Vector3 size, Vector3Int pos)
         {

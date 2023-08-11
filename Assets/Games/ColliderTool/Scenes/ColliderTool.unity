@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c56c2ac2554c0caf8c1fbd9983ae52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawAreaSize: {x: 20, y: 20}
+  drawAreaSize: {x: 5, y: 5}
 --- !u!1 &184072781
 GameObject:
   m_ObjectHideFlags: 0
