@@ -9,6 +9,10 @@ namespace ColliderTool
     /// </summary>
     public static class SpaceGeometry
     {
+        public static Vector3 RaySurfaceIntersection(Ray ray, Surface surface)
+        {
+            return LineSurfaceIntersection(ray.origin, ray.direction, surface);
+        }
         //线和平面的交点
         public static Vector3 LineSurfaceIntersection(Vector3 lineStart, Vector3 lineDirection, Surface surface)
         {

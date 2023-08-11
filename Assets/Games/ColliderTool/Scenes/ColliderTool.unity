@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c56c2ac2554c0caf8c1fbd9983ae52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawAreaSize: {x: 20, y: 20}
 --- !u!1 &184072781
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be066c5e03bb489a9edfd337b07f7d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellSize: {x: 0, y: 0, z: 0}
+  cellSize: {x: 1, y: 1, z: 1}
 --- !u!156049354 &1346248161
 Grid:
   m_ObjectHideFlags: 0
