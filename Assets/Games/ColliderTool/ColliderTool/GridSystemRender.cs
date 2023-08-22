@@ -47,11 +47,11 @@ namespace ColliderTool
             {
                 Gizmos.DrawWireCube(grid.center + new Vector3(0, grid.size.y / 2, 0), grid.size);
             }
-            //绘制临时内容
-            foreach (var grid in Driver.Instance.currentPlane.container.tmpGrids)
-            {
-                Gizmos.DrawWireCube(grid.center + new Vector3(0, grid.size.y / 2, 0), grid.size);
-            }
+            // //绘制临时内容
+            // foreach (var grid in Driver.Instance.currentPlane.container.tmpGrids)
+            // {
+            //     Gizmos.DrawWireCube(grid.center + new Vector3(0, grid.size.y / 2, 0), grid.size);
+            // }
         }
 
 #endif

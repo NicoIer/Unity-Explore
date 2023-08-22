@@ -8,6 +8,7 @@ namespace ColliderTool
     internal class ColliderInputPalette : SceneSingleton<ColliderInputPalette>, IColliderToolInput
     {
         public event Action<ColliderEditorTool> OnToolSelected;
+        // private List<ColliderEditorTool> _tools = new List<ColliderEditorTool>();
         private ArrowTool _arrowTool;
         private PaintTool _paintTool;
         private EraseTool _eraseTool;
@@ -15,6 +16,13 @@ namespace ColliderTool
 
         private void Start()
         {
+            // _tools = new List<ColliderEditorTool>
+            // {
+            //     new ArrowTool(),
+            //     new PaintTool(),
+            //     new EraseTool(),
+            //     new FillTool()
+            // };
             _arrowTool = new ArrowTool();
             _paintTool = new PaintTool();
             _eraseTool = new EraseTool();
@@ -74,7 +82,12 @@ namespace ColliderTool
             {
                 OnToolSelected?.Invoke(_fillTool);
             }
-
+#if UNITY_EDITOR
+            if (GUILayout.Button("Export", GUILayout.Width(defaultWidth)))
+            {
+                Driver.Instance.ExportPrefab();
+            }
+#endif
             GUILayout.EndHorizontal();
         }
     }

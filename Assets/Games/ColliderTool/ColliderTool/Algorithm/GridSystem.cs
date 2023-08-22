@@ -14,6 +14,7 @@ namespace ColliderTool
             pos = new Vector3Int(Mathf.RoundToInt(worldPos.x / size.x), Mathf.RoundToInt(worldPos.y / size.y),
                 Mathf.RoundToInt(worldPos.z / size.z));
         }
+
         public Grid(Vector3 size, Vector3Int pos)
         {
             this.size = size;
@@ -32,6 +33,15 @@ namespace ColliderTool
         public override int GetHashCode()
         {
             return pos.GetHashCode();
+        }
+        /// <summary>
+        /// 只要坐标相同就是同一个网格
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            return obj is Grid grid && grid.pos.Equals(this.pos);
         }
     }
 }

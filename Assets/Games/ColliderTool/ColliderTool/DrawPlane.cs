@@ -9,7 +9,7 @@ namespace ColliderTool
     /// 绘制平面 记录了当前的绘制信息
     /// </summary>
     [DisallowMultipleComponent]
-    public class DrawPlane : SceneSingleton<DrawPlane> //TODO 不做单例 这样可以有多个绘制平面
+    public class DrawPlane : SceneSingleton<DrawPlane>
     {
         public GridContainer container { get; private set; }
 

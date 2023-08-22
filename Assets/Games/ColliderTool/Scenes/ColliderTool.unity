@@ -1492,7 +1492,7 @@ GameObject:
   - component: {fileID: 1346248161}
   - component: {fileID: 1346248160}
   m_Layer: 0
-  m_Name: MergeCollider
+  m_Name: DrawPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2111,8 +2111,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 97258394}
-  - {fileID: 1329690642}
   - {fileID: 1346248162}
+  - {fileID: 1329690642}
   - {fileID: 1811665316}
   - {fileID: 1831642940}
   - {fileID: 556096064}

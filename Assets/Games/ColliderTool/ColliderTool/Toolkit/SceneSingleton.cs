@@ -23,10 +23,10 @@ namespace ColliderTool
                 if (_instance == null)
                 {
                     //双重检查锁
-                    lock (_lock)
-                    {
-                        if (_instance == null)
-                        {
+                    // lock (_lock)
+                    // {
+                        // if (_instance == null)
+                        // {
                             _instance = FindObjectOfType<T>(); //从场景中寻找一个T类型的组件
                             if (_instance == null)
                             {
@@ -35,8 +35,8 @@ namespace ColliderTool
                                 _instance = obj.AddComponent<T>();
                                 return _instance;
                             }
-                        }
-                    }
+                        // }
+                    // }
 
                     //如果在Awake前被访问 则 Awake将在此处调用一次
                     _instance.Awake();

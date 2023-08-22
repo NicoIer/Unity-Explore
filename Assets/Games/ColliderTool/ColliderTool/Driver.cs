@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -53,6 +54,57 @@ namespace ColliderTool
             if (_currentTool == null) return;
             _currentTool.OnUpdate();
         }
-        
+
+#if UNITY_EDITOR
+        public void ExportPrefab()
+        {
+            Dictionary<Vector3, List<Grid>> size2Grids = __FilterGrids__();
+            List<Bounds> bounds = new List<Bounds>(size2Grids.Count / 2);
+            foreach (var grids in size2Grids.Values)
+            {
+                bounds.AddRange(__Combine__(grids));
+            }
+            // 通过bounds生成BoxCollider
+        }
+
+        /// <summary>
+        /// 合并网格，尽可能的减少最后的网格数量
+        /// </summary>
+        /// <param name="grids">网格坐标->网格的dict</param>
+        /// <returns></returns>
+        private List<Bounds> __Combine__(List<Grid> grids)
+        {
+            List<Bounds> bounds = new List<Bounds>(grids.Count / 2);
+            HashSet<Vector3Int> used = new HashSet<Vector3Int>(grids.Count);//已经使用过的grid的pos
+            
+            
+            
+            
+            
+            return bounds;
+        }
+
+
+        /// <summary>
+        /// 过滤网格信息，将相同大小的网格归类
+        /// </summary>
+        /// <returns></returns>
+        private Dictionary<Vector3, List<Grid>> __FilterGrids__()
+        {
+            Dictionary<Vector3, List<Grid>> size2Grids =
+                new Dictionary<Vector3, List<Grid>>();
+            foreach (Grid grid in currentPlane.container)
+            {
+                if (!size2Grids.ContainsKey(grid.size))
+                {
+                    size2Grids.Add(grid.size, new List<Grid>());
+                }
+
+                size2Grids[grid.size].Add(grid);
+            }
+
+            return size2Grids;
+        }
+#endif
     }
 }
