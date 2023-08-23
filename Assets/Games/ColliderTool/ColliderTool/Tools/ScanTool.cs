@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -44,6 +43,8 @@ namespace ColliderTool
             _createdGrids.Clear();
             //遍历场景内的所有物体 找到所有的 MeshFilter 中的mesh 中的顶点信息
             MeshFilter[] filters = Object.FindObjectsOfType<MeshFilter>(false); //这是究极耗时的操作
+            SkinnedMeshRenderer[] renderers = Object.FindObjectsOfType<SkinnedMeshRenderer>(false);
+            
             //遍历所有的顶点信息，找到所有的顶点信息 这里可以并行
             foreach (var filter in filters)
             {

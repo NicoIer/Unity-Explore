@@ -1,5 +1,3 @@
-using System;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace ColliderTool
@@ -37,7 +35,7 @@ namespace ColliderTool
         {
             //点到平面的距离
             //d = |Ax + By + Cz + D| / sqrt(A^2 + B^2 + C^2)
-            return math.abs(surface.normal.x * point.x + surface.normal.y * point.y +
+            return Mathf.Abs(surface.normal.x * point.x + surface.normal.y * point.y +
                              surface.normal.z * point.z + surface.constant) / surface.normal.magnitude;
         }
     }
