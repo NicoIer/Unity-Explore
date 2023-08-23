@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -8,8 +9,18 @@ namespace ColliderTool
     /// </summary>
     public struct Grid
     {
+        public Vector3Int pos;
+        public Vector3 size;
+        public Vector3 halfSize => size / 2;
+        public Vector3 center => new Vector3(pos.x * size.x, pos.y * size.y, pos.z * size.z);
+
+
         public Grid(Vector3 worldPos, Vector3 size)
         {
+            if (size == Vector3.zero)
+            {
+                throw new ArgumentException("size can not be zero");
+            }
             this.size = size;
             pos = new Vector3Int(Mathf.RoundToInt(worldPos.x / size.x), Mathf.RoundToInt(worldPos.y / size.y),
                 Mathf.RoundToInt(worldPos.z / size.z));
@@ -21,10 +32,6 @@ namespace ColliderTool
             this.pos = pos;
         }
 
-        public Vector3Int pos;
-        public Vector3 size;
-        public Vector3 halfSize => size / 2;
-        public Vector3 center => new Vector3(pos.x * size.x, pos.y * size.y, pos.z * size.z);
 
         /// <summary>
         /// 只要在同一个网格坐标就是同一个网格
@@ -34,6 +41,7 @@ namespace ColliderTool
         {
             return pos.GetHashCode();
         }
+
         /// <summary>
         /// 只要坐标相同就是同一个网格
         /// </summary>

@@ -28,7 +28,7 @@ namespace ColliderTool
         public GridContainer(int capacity = 2500)
         {
             _filledGrids = new HashSet<Grid>(capacity);
-            tmpGrids = new HashSet<Grid>(capacity / 2);
+            tmpGrids = new HashSet<Grid>(capacity / 4);
         }
 
         public bool Contains(Grid grid)
@@ -44,13 +44,7 @@ namespace ColliderTool
             };
             return _filledGrids.Contains(grid);
         }
-
-        public bool Contains(Vector3 pos)
-        {
-            Grid grid = new Grid(pos, Vector3.zero);
-            return _filledGrids.Contains(grid);
-        }
-
+        
         public void Remove(Grid grid)
         {
             _filledGrids.Remove(grid);
@@ -89,6 +83,21 @@ namespace ColliderTool
         public void SaveTmpGrids()
         {
             _filledGrids.UnionWith(tmpGrids);
+            tmpGrids.Clear();
+        }
+
+        public void AddTemp(Vector3Int startPos)
+        {
+            tmpGrids.Add(new Grid(startPos, Vector3.one));
+        }
+
+        public void RemoveTemp(Vector3Int startPos)
+        {
+            tmpGrids.Remove(new Grid(startPos, Vector3.one));
+        }
+
+        public void ClearTemp()
+        {
             tmpGrids.Clear();
         }
     }

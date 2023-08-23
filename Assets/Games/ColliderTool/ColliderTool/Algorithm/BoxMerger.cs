@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace ColliderTool
     {
         /// <summary>
         /// 把2D的网格地图合并成多个Box
+        /// TODO 这里可以不用Set 直接左下角和右上角两个点就能确定一个2D Box
         /// </summary>
         /// <returns></returns>
         public static List<HashSet<Vector2Int>> Merge(HashSet<Vector2Int> points)
@@ -106,6 +108,16 @@ namespace ColliderTool
 
 
             return result;
+        }
+
+        public static Bounds ConvertTo(HashSet<Vector2Int> input, Vector3 size, float y)
+        {
+            //找到左下角和右上角就行
+            Vector2Int bottomLeft = input.OrderBy(p => p.x).ThenBy(p => p.y).First();
+            Vector2Int topRight = input.OrderByDescending(p => p.x).ThenByDescending(p => p.y).First();
+            Vector3 center = new Vector3((bottomLeft.x + topRight.x) / 2f, y, (bottomLeft.y + topRight.y) / 2f);
+            Vector3 size3D = new Vector3(size.x * (topRight.x - bottomLeft.x + 1), size.y, size.z * (topRight.y - bottomLeft.y + 1));
+            return new Bounds(center, size3D);
         }
     }
 }

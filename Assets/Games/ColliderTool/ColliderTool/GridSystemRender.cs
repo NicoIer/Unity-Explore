@@ -28,14 +28,15 @@ namespace ColliderTool
             for (int current = 0; current < drawAreaSize.x + 1; current++)
             {
                 float startX = bounds.min.x + current * gridSize.x;
-                Gizmos.DrawLine(new Vector3(startX, 0, bounds.min.z), new Vector3(startX, 0, bounds.max.z));
+                Gizmos.DrawLine(new Vector3(startX, currentGrid.center.y , bounds.min.z), new Vector3(startX, currentGrid.center.y, bounds.max.z));
             }
 
             //x轴绘制 z+1条线
             for (int z = 0; z < drawAreaSize.y + 1; z++)
             {
                 float startZ = bounds.min.z + z * gridSize.z;
-                Gizmos.DrawLine(new Vector3(bounds.min.x, 0, startZ), new Vector3(bounds.max.x, 0, startZ));
+                Gizmos.DrawLine(new Vector3(bounds.min.x, currentGrid.center.y , startZ),
+                    new Vector3(bounds.max.x, currentGrid.center.y , startZ));
             }
 
             //在交点处绘制一个Box
@@ -47,11 +48,12 @@ namespace ColliderTool
             {
                 Gizmos.DrawWireCube(grid.center + new Vector3(0, grid.size.y / 2, 0), grid.size);
             }
-            // //绘制临时内容
-            // foreach (var grid in Driver.Instance.currentPlane.container.tmpGrids)
-            // {
-            //     Gizmos.DrawWireCube(grid.center + new Vector3(0, grid.size.y / 2, 0), grid.size);
-            // }
+            Gizmos.color = Color.blue;
+            //绘制临时内容
+            foreach (var grid in Driver.Instance.currentPlane.container.tmpGrids)
+            {
+                Gizmos.DrawWireCube(grid.center + new Vector3(0, grid.size.y / 2, 0), grid.size);
+            }
         }
 
 #endif
