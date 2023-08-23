@@ -3,8 +3,7 @@
 
 项目分为两个部分，第一个部分是探索各游戏中有趣的 **画面渲染/游戏机制**，第二个部分探索实际工程中经常会用到的技术。
 
-项目以文件夹划分内容，具体开发时会单独开分支。main分支中能够看到所有内容，没有采用submodule
-
+项目以文件夹划分内容，具体开发时会单独开分支。分支开发完毕后会合并到主分支，有时各个分支间的资源存在冲突，会打Tag做标记
 部分内容引用了另一个项目 [NicoIer/Unity-Tookit: Unity's development tools (github.com)](https://github.com/NicoIer/Unity-Tookit)
 
 ## 游戏探索:game_die:
