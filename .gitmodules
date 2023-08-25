@@ -1,3 +1,6 @@
-[submodule "Asstes/Games"]
-	path = Asstes/Games
+[submodule "Collider-Tool"]
+	path = Assets/Games/Collider-Tool
 	url = https://github.com/NicoIer/Collider-Tool.git
+[submodule "MoBa"]
+    path = Assets/Games/MoBa
+    url = https://github.com/NicoIer/Moba.git
