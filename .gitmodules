@@ -4,3 +4,6 @@
 [submodule "MoBa"]
     path = Assets/Games/MoBa
     url = https://github.com/NicoIer/Moba.git
+[submodule "Unity-Toolkits"]
+	path = Assets/Plugins/Unity-Toolkits
+	url = https://github.com/NicoIer/Unity-Toolkit.git
