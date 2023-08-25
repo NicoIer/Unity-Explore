@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "058270c658e2b9dd593e04f0330314b426698430"
     },
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d210e3d76adc0cce77f4ad2af1ade88dad6b1d5a"
+    },
     "com.unity.2d.animation": {
       "version": "9.0.3",
       "depth": 1,
@@ -161,17 +168,18 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.entities": {
-      "version": "1.0.11",
+      "version": "1.0.14",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.burst": "1.8.4",
+        "com.unity.burst": "1.8.7",
         "com.unity.serialization": "3.1.1",
         "com.unity.collections": "2.1.4",
         "com.unity.mathematics": "1.2.6",
         "com.unity.modules.assetbundle": "1.0.0",
         "com.unity.modules.audio": "1.0.0",
         "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.test-framework.performance": "3.0.2",
         "com.unity.nuget.mono-cecil": "1.11.4",
         "com.unity.scriptablebuildpipeline": "1.20.2",
         "com.unity.profiling.core": "1.0.2"
@@ -179,13 +187,13 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.entities.graphics": {
-      "version": "1.0.11",
+      "version": "1.0.14",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.entities": "1.0.11",
+        "com.unity.entities": "1.0.14",
         "com.unity.modules.particlesystem": "1.0.0",
-        "com.unity.render-pipelines.core": "14.0.6"
+        "com.unity.render-pipelines.core": "14.0.7"
       },
       "url": "https://packages.unity.com"
     },
@@ -259,33 +267,11 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.logging": {
-      "version": "1.0.11",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.burst": "1.8.4",
-        "com.unity.collections": "2.1.4"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.netcode": {
-      "version": "1.0.12",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.transport": "2.0.1",
-        "com.unity.entities": "1.0.11",
-        "com.unity.logging": "1.0.11",
-        "com.unity.modules.animation": "1.0.0"
-      },
       "url": "https://packages.unity.com"
     },
     "com.unity.nuget.mono-cecil": {
@@ -403,6 +389,16 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.test-framework.performance": {
+      "version": "3.0.2",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.31",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.testtools.codecoverage": {
       "version": "1.2.4",
       "depth": 1,
@@ -434,17 +430,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.transport": {
-      "version": "2.0.1",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.collections": "2.1.1",
-        "com.unity.burst": "1.8.4",
-        "com.unity.mathematics": "1.2.6"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.ugui": {
       "version": "1.0.0",
       "depth": 0,
@@ -472,6 +457,13 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "com.veriorpies.parrelsync": {
+      "version": "https://github.com/VeriorPies/ParrelSync.git?path=/ParrelSync",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "141b4e1e31966242a6fb7c495b52ac3d1221bc75"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
