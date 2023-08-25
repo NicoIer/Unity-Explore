@@ -1,0 +1,3 @@
+[submodule "Asstes/Games"]
+	path = Asstes/Games
+	url = https://github.com/NicoIer/Collider-Tool.git
