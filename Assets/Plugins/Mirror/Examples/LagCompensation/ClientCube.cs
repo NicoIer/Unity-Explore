@@ -7,48 +7,34 @@ namespace Mirror.Examples.LagCompensationDemo
 {
     public class ClientCube : MonoBehaviour
     {
-        [Header("Components")]
-        public ServerCube server;
+        [Header("Components")] public ServerCube server;
         public Renderer render;
 
-        [Header("Toggle")]
-        public bool interpolate = true;
+        [Header("Toggle")] public bool interpolate = true;
 
-        // snapshot interpolation settings
-        [Header("Snapshot Interpolation")]
-        public SnapshotInterpolationSettings snapshotSettings =
+        // 快照插值的参数设置
+        [Header("Snapshot Interpolation")] public SnapshotInterpolationSettings snapshotSettings =
             new SnapshotInterpolationSettings();
 
-        // runtime settings
+        // 缓存多久前的快照
         public double bufferTime => server.sendInterval * snapshotSettings.bufferTimeMultiplier;
 
-        // <servertime, snaps>
+        // <服务器时间, 消息>
         public SortedList<double, Snapshot3D> snapshots = new SortedList<double, Snapshot3D>();
 
-        // for smooth interpolation, we need to interpolate along server time.
-        // any other time (arrival on client, client local time, etc.) is not
-        // going to give smooth results.
-        internal double localTimeline;
 
-        // catchup / slowdown adjustments are applied to timescale,
-        // to be adjusted in every update instead of when receiving messages.
-        double localTimescale = 1;
+        internal double localTimeline; //本地时间线（沿着服务器时间差值得到）
+        double localTimescale = 1; //本地时间线的速度 落后太多就加速，超前太多就减速
 
-        // we use EMA to average the last second worth of snapshot time diffs.
-        // manually averaging the last second worth of values with a for loop
-        // would be the same, but a moving average is faster because we only
-        // ever add one value.
-        ExponentialMovingAverage driftEma;
-        ExponentialMovingAverage deliveryTimeEma; // average delivery time (standard deviation gives average jitter)
+        ExponentialMovingAverage driftEma; //时间差值的EMA
+        ExponentialMovingAverage deliveryTimeEma; // 交付时间的EMA
 
         // debugging ///////////////////////////////////////////////////////////
-        [Header("Debug")]
-        public Color hitColor      = Color.blue;
-        public Color missedColor   = Color.magenta;
+        [Header("Debug")] public Color hitColor = Color.blue;
+        public Color missedColor = Color.magenta;
         public Color originalColor = Color.black;
 
-        [Header("Simulation")]
-        bool lowFpsMode;
+        [Header("Simulation")] bool lowFpsMode;
         double accumulatedDeltaTime;
 
         void Awake()
@@ -62,18 +48,16 @@ namespace Mirror.Examples.LagCompensationDemo
             deliveryTimeEma = new ExponentialMovingAverage(server.sendRate * snapshotSettings.deliveryTimeEmaDuration);
         }
 
-        // add snapshot & initialize client interpolation time if needed
+        // 客户端收到服务器的消息
         public void OnMessage(Snapshot3D snap)
         {
-            // set local timestamp (= when it was received on our end)
-            // Unity 2019 doesn't have Time.timeAsDouble yet
+            // 设置快照的时间戳
             snap.localTime = NetworkTime.localTime;
 
-            // (optional) dynamic adjustment
+            // 如果动态调整buffer的大小，增加buffer可以抗抖动，但是会增加延迟
             if (snapshotSettings.dynamicAdjustment)
             {
-                // set bufferTime on the fly.
-                // shows in inspector for easier debugging :)
+                // 动态调整buffer的大小
                 snapshotSettings.bufferTimeMultiplier = SnapshotInterpolation.DynamicAdjustment(
                     server.sendInterval,
                     deliveryTimeEma.StandardDeviation,
@@ -81,58 +65,51 @@ namespace Mirror.Examples.LagCompensationDemo
                 );
             }
 
-            // insert into the buffer & initialize / adjust / catchup
+            //把收到的消息插入buffer中，并且更新本地时间线
             SnapshotInterpolation.InsertAndAdjust(
                 snapshots,
                 snapshotSettings.bufferLimit,
                 snap,
                 ref localTimeline,
-                ref localTimescale,
+                ref localTimescale, //本地时间线的速度 落后太多就加速，超前太多就减速，默认会距离服务器时间线 sendInterval * bufferTimeMultiplier
                 server.sendInterval,
                 bufferTime,
                 snapshotSettings.catchupSpeed,
                 snapshotSettings.slowdownSpeed,
-                ref driftEma,
+                ref driftEma, //时间差值的EMA
                 snapshotSettings.catchupNegativeThreshold,
                 snapshotSettings.catchupPositiveThreshold,
-                ref deliveryTimeEma);
+                ref deliveryTimeEma); //交付时间的EMA
         }
 
         void Update()
         {
-            // accumulated delta allows us to simulate correct low fps + deltaTime
-            // if necessary in client low fps mode.
+            // 用于模拟低帧率情况（后台运行） 1fps 
             accumulatedDeltaTime += Time.unscaledDeltaTime;
-
-            // simulate low fps mode. only update once per second.
-            // to simulate webgl background tabs, etc.
-            // after a while, disable low fps mode and see how it behaves.
             if (lowFpsMode && accumulatedDeltaTime < 1) return;
 
-            // only while we have snapshots.
-            // timeline starts when the first snapshot arrives.
+            // 只有当前有数据时才执行
             if (snapshots.Count > 0)
             {
-                // snapshot interpolation
+                // 插值
                 if (interpolate)
                 {
-                    // step
+                    // 更新快照
                     SnapshotInterpolation.Step(
-                        snapshots,
-                        // accumulate delta is Time.unscaledDeltaTime normally.
-                        // and sum of past 10 delta's in low fps mode.
-                        accumulatedDeltaTime,
-                        ref localTimeline,
-                        localTimescale,
-                        out Snapshot3D fromSnapshot,
-                        out Snapshot3D toSnapshot,
-                        out double t);
+                        snapshots, //快照信息
+                        accumulatedDeltaTime, //deltaTime 一帧的时间
+                        ref localTimeline, //本地时间线
+                        localTimescale, //本地时间线的速度
+                        out Snapshot3D fromSnapshot, //插值的起始快照
+                        out Snapshot3D toSnapshot, //插值的结束快照
+                        out double t //插值的比例
+                    );
 
-                    // interpolate & apply
+                    // 进行插值
                     Snapshot3D computed = Snapshot3D.Interpolate(fromSnapshot, toSnapshot, t);
                     transform.position = computed.position;
                 }
-                // apply raw
+                // 不插值，给的是多少就渲染多少
                 else
                 {
                     Snapshot3D snap = snapshots.Values[0];
@@ -141,7 +118,7 @@ namespace Mirror.Examples.LagCompensationDemo
                 }
             }
 
-            // reset simulation helpers
+            // 重制
             accumulatedDeltaTime = 0;
         }
 
@@ -149,7 +126,7 @@ namespace Mirror.Examples.LagCompensationDemo
         {
             // send the command.
             // only x coordinate matters for this simple example.
-            if (server.CmdClicked(transform.position))
+            if (server.CmdClicked(localTimeline, bufferTime, transform.position))
             {
                 Debug.Log($"Click hit!");
                 FlashColor(hitColor);
@@ -201,10 +178,12 @@ namespace Mirror.Examples.LagCompensationDemo
             {
                 localTimeline -= 10.0;
             }
+
             if (GUILayout.Button("Timeline 1s behind"))
             {
                 localTimeline -= 1.0;
             }
+
             if (GUILayout.Button("Timeline 0.1s behind"))
             {
                 localTimeline -= 0.1;
@@ -216,10 +195,12 @@ namespace Mirror.Examples.LagCompensationDemo
             {
                 localTimeline += 0.1;
             }
+
             if (GUILayout.Button("Timeline 1s ahead"))
             {
                 localTimeline += 1.0;
             }
+
             if (GUILayout.Button("Timeline 10s ahead"))
             {
                 localTimeline += 10.0;
