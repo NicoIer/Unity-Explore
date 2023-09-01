@@ -22,6 +22,7 @@
 //     (Transports can use other threads in the background if they manage them)
 //   * Transports should only process messages while the component is enabled.
 //
+
 using System;
 using UnityEngine;
 
@@ -35,6 +36,8 @@ namespace Mirror
 
         /// <summary>Is this transport available in the current platform?</summary>
         public abstract bool Available();
+
+        #region Client
 
         // client //////////////////////////////////////////////////////////////
         /// <summary>Called by Transport when the client connected to the server.</summary>
@@ -56,6 +59,10 @@ namespace Mirror
         /// <summary>Called by Transport when the client disconnected from the server.</summary>
         public Action OnClientDisconnected;
 
+        #endregion
+
+        #region Server
+
         // server //////////////////////////////////////////////////////////////
         /// <summary>Called by Transport when a new client connected to the server.</summary>
         public Action<int> OnServerConnected;
@@ -76,6 +83,10 @@ namespace Mirror
 
         /// <summary>Called by Transport when a client disconnected from the server.</summary>
         public Action<int> OnServerDisconnected;
+
+        #endregion
+
+        #region Client
 
         // client functions ////////////////////////////////////////////////////
         /// <summary>True if the client is currently connected to the server.</summary>
@@ -99,6 +110,10 @@ namespace Mirror
         /// <summary>Disconnects the client from the server</summary>
         public abstract void ClientDisconnect();
 
+        #endregion
+
+        #region Server
+
         // server functions ////////////////////////////////////////////////////
         /// <summary>Returns server address as Uri.</summary>
         // Useful for NetworkDiscovery.
@@ -111,7 +126,8 @@ namespace Mirror
         public abstract void ServerStart();
 
         /// <summary>Send a message to a client over the given channel.</summary>
-        public abstract void ServerSend(int connectionId, ArraySegment<byte> segment, int channelId = Channels.Reliable);
+        public abstract void ServerSend(int connectionId, ArraySegment<byte> segment,
+            int channelId = Channels.Reliable);
 
         /// <summary>Disconnect a client from the server.</summary>
         public abstract void ServerDisconnect(int connectionId);
@@ -122,6 +138,8 @@ namespace Mirror
 
         /// <summary>Stop listening and disconnect all connections.</summary>
         public abstract void ServerStop();
+
+        #endregion
 
         /// <summary>Maximum message size for the given channel.</summary>
         // Different channels often have different sizes, ranging from MTU to
@@ -154,8 +172,13 @@ namespace Mirror
         //
         // => see NetworkLoop.cs for detailed explanations!
 #pragma warning disable UNT0001 // Empty Unity message
-        public void Update() {}
-        public void LateUpdate() {}
+        public void Update()
+        {
+        }
+
+        public void LateUpdate()
+        {
+        }
 #pragma warning restore UNT0001 // Empty Unity message
 
         /// <summary>
@@ -170,10 +193,21 @@ namespace Mirror
         //    them from NetworkClient/Server
         // => VIRTUAL for now so we can take our time to convert transports
         //    without breaking anything.
-        public virtual void ClientEarlyUpdate() {}
-        public virtual void ServerEarlyUpdate() {}
-        public virtual void ClientLateUpdate() {}
-        public virtual void ServerLateUpdate() {}
+        public virtual void ClientEarlyUpdate()
+        {
+        }
+
+        public virtual void ServerEarlyUpdate()
+        {
+        }
+
+        public virtual void ClientLateUpdate()
+        {
+        }
+
+        public virtual void ServerLateUpdate()
+        {
+        }
 
         /// <summary>Shut down the transport, both as client and server</summary>
         public abstract void Shutdown();

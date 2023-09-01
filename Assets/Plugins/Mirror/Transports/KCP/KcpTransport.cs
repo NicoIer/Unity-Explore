@@ -48,13 +48,7 @@ namespace kcp2k
         [Tooltip("Enable to automatically set client & server send/recv buffers to OS limit. Avoids issues with too small buffers under heavy load, potentially dropping connections. Increase the OS limit if this is still too small.")]
         [FormerlySerializedAs("MaximizeSendReceiveBuffersToOSLimit")]
         public bool MaximizeSocketBuffers = true;
-
-        [Header("Allowed Max Message Sizes\nBased on Receive Window Size")]
-        [Tooltip("KCP reliable max message size shown for convenience. Can be changed via ReceiveWindowSize.")]
-        [ReadOnly] public int ReliableMaxMessageSize = 0; // readonly, displayed from OnValidate
-        [Tooltip("KCP unreliable channel max message size for convenience. Not changeable.")]
-        [ReadOnly] public int UnreliableMaxMessageSize = 0; // readonly, displayed from OnValidate
-
+        
         // config is created from the serialized properties above.
         // we can expose the config directly in the future.
         // for now, let's not break people's old settings.
@@ -130,19 +124,13 @@ namespace kcp2k
                 config
             );
 
+            //调试用 电视输出日志
             if (statisticsLog)
                 InvokeRepeating(nameof(OnLogStatistics), 1, 1);
 
             Debug.Log("KcpTransport initialized!");
         }
-
-        protected virtual void OnValidate()
-        {
-            // show max message sizes in inspector for convenience.
-            // 'config' isn't available in edit mode yet, so use MTU define.
-            ReliableMaxMessageSize = KcpPeer.ReliableMaxMessageSize(MTU, ReceiveWindowSize);
-            UnreliableMaxMessageSize = KcpPeer.UnreliableMaxMessageSize(MTU);
-        }
+        
 
         // all except WebGL
         public override bool Available() =>
