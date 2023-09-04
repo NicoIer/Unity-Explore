@@ -144,7 +144,7 @@ namespace kcp2k
         }
         public override void ClientConnect(Uri uri)
         {
-            if (uri.Scheme != Scheme)
+            if (uri.Scheme != Scheme) 
                 throw new ArgumentException($"Invalid url {uri}, use {Scheme}://host:port instead", nameof(uri));
 
             int serverPort = uri.IsDefaultPort ? Port : uri.Port;
