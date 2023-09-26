@@ -4,7 +4,7 @@ using UnityToolkit;
 
 namespace TowerDefence
 {
-    public class LobbyMainPanel: UIPanel
+    public class TowerDefenseLobbyMainPanel: UIPanel
     {
     }
 }

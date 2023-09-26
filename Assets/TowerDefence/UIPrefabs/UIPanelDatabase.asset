@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _panelDict:
     list:
-    - key: 105208548
+    - key: 575820281
       value: {fileID: 1248761370715064355, guid: 6f992d515a1ff4d8f8f8147418823fe1, type: 3}
   panelList:
   - {fileID: 1248761370715064355, guid: 6f992d515a1ff4d8f8f8147418823fe1, type: 3}

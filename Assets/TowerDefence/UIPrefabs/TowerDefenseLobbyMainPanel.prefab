@@ -849,8 +849,9 @@ GameObject:
   - component: {fileID: 1129094683414735740}
   - component: {fileID: 5803467908614761770}
   - component: {fileID: 7028881004086759433}
+  - component: {fileID: 6218629638684368246}
   m_Layer: 5
-  m_Name: LobbyMainPanel
+  m_Name: TowerDefenseLobbyMainPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -893,7 +894,7 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
@@ -945,6 +946,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: 0, y: 0, z: 0, w: 0}
   m_Softness: {x: 0, y: 0}
+--- !u!114 &6218629638684368246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248761370715064355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d46732224124509b4726272ef4ceffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  sortingOrder: 0
 --- !u!1 &1810097559824471202
 GameObject:
   m_ObjectHideFlags: 0
