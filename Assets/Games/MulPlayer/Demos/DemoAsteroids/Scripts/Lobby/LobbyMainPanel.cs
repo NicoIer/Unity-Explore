@@ -154,6 +154,10 @@ namespace Photon.Pun.Demo.Asteroids
             playerListEntries = null;
         }
 
+        /// <summary>
+        /// 当有新玩家加入房间时触发
+        /// </summary>
+        /// <param name="newPlayer"></param>
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
             GameObject entry = Instantiate(PlayerListEntryPrefab);
@@ -242,6 +246,7 @@ namespace Photon.Pun.Demo.Asteroids
             PhotonNetwork.LeaveRoom();
         }
 
+        //点击登录按钮
         public void OnLoginButtonClicked()
         {
             string playerName = PlayerNameInput.text;
